@@ -1,0 +1,2246 @@
+{
+  "schema": "urn:com.ticketmaster.services:schema:ismds:QuickPicks:4.0",
+  "meta": {
+    "type": "urn:com.ticketmaster.services:type:ismds:QuickPicks",
+    "modified": "2025-11-08T22:31:10.719290972Z",
+    "expires": "2025-11-08T22:32:10.719290972Z"
+  },
+  "eventId": "1000631AC8663089",
+  "offset": 0,
+  "total": 28,
+  "promoted": [
+    {
+      "type": "seat",
+      "selection": "standard",
+      "quality": 0.866983,
+      "section": "107M",
+      "row": "28",
+      "offerGroups": [
+        {
+          "offers": ["GJ6DC7BWGE"],
+          "places": ["GEYDOTJ2GI4DUMJT", "GEYDOTJ2GI4DUMJS"],
+          "seats": ["13", "12"],
+          "coordinates": []
+        }
+      ],
+      "area": "16",
+      "descriptionId": "IE5DCNQ",
+      "maxQuantity": 5,
+      "shapes": null,
+      "snapshotImageUrl": "image?systemId=HOST&sectionNames=107M&placeId=GEYDOTJ2GI4DUMJT"
+    },
+    {
+      "type": "seat",
+      "selection": "standard",
+      "quality": 0.073634,
+      "section": "107",
+      "row": "17",
+      "offerGroups": [
+        {
+          "offers": ["GJ6DC7BWGA"],
+          "places": ["GEYDOORRG45DM", "GEYDOORRG45DK"],
+          "seats": ["6", "5"],
+          "coordinates": []
+        }
+      ],
+      "area": "16",
+      "descriptionId": "IE5DCNQ",
+      "maxQuantity": 2,
+      "shapes": null,
+      "snapshotImageUrl": "image?systemId=HOST&sectionNames=107&placeId=GEYDOORRG45DM"
+    },
+    {
+      "type": "seat",
+      "selection": "standard",
+      "quality": 0.073634,
+      "section": "107",
+      "row": "18",
+      "offerGroups": [
+        {
+          "offers": ["GJ6DC7BWGA"],
+          "places": ["GEYDOORRHA5DCNQ", "GEYDOORRHA5DCNI"],
+          "seats": ["16", "15"],
+          "coordinates": []
+        }
+      ],
+      "area": "16",
+      "descriptionId": "IE5DCNQ",
+      "maxQuantity": 2,
+      "shapes": null,
+      "snapshotImageUrl": "image?systemId=HOST&sectionNames=107&placeId=GEYDOORRHA5DCNQ"
+    }
+  ],
+  "picks": [
+    {
+      "type": "seat",
+      "selection": "resale",
+      "quality": 0.073634,
+      "section": "107",
+      "row": "16",
+      "offerGroups": [
+        {
+          "offers": ["GN6DCMBRGQ4DSNBZGA3HYMJVGBRTOMDGGFTDK"],
+          "places": ["GEYDOORRGY5DM", "GEYDOORRGY5DK"],
+          "seats": ["6", "5"],
+          "coordinates": []
+        }
+      ],
+      "area": "16",
+      "descriptionId": "IE5DCNQ",
+      "maxQuantity": 2,
+      "shapes": null,
+      "snapshotImageUrl": "image?systemId=HOST&sectionNames=107&placeId=GEYDOORRGY5DM"
+    },
+    {
+      "type": "seat",
+      "selection": "resale",
+      "quality": 0.881235,
+      "section": "107",
+      "row": "22",
+      "offerGroups": [
+        {
+          "offers": ["GN6DCMBQHAZDGNJTHE2XYMJVGBSDMZTBGI3DK"],
+          "places": ["GEYDOORSGI5DM", "GEYDOORSGI5DK"],
+          "seats": ["6", "5"],
+          "coordinates": []
+        }
+      ],
+      "area": "16",
+      "descriptionId": "IE5DCNQ",
+      "maxQuantity": 2,
+      "shapes": null,
+      "snapshotImageUrl": "image?systemId=HOST&sectionNames=107&placeId=GEYDOORSGI5DM"
+    },
+    {
+      "type": "seat",
+      "selection": "resale",
+      "quality": 0.073634,
+      "section": "107",
+      "row": "21",
+      "offerGroups": [
+        {
+          "offers": ["GN6DCMBRGIYTANZZGE4HYMJVGBSDMZRYMNSDK"],
+          "places": ["GEYDOORSGE5DCMI", "GEYDOORSGE5DCMA"],
+          "seats": ["11", "10"],
+          "coordinates": []
+        }
+      ],
+      "area": "16",
+      "descriptionId": "IE5DCNQ",
+      "maxQuantity": 4,
+      "shapes": null,
+      "snapshotImageUrl": "image?systemId=HOST&sectionNames=107&placeId=GEYDOORSGE5DCMI"
+    },
+    {
+      "type": "seat",
+      "selection": "resale",
+      "quality": 0.866983,
+      "section": "107M",
+      "row": "26",
+      "offerGroups": [
+        {
+          "offers": ["GN6DSOBTGYYDMOJRGJ6DCNJQMUYTIOBRMI2Q"],
+          "places": ["GEYDOTJ2GI3DUNA", "GEYDOTJ2GI3DUMY"],
+          "seats": ["4", "3"],
+          "coordinates": []
+        }
+      ],
+      "area": "16",
+      "descriptionId": "IE5DCNQ",
+      "maxQuantity": 2,
+      "shapes": null,
+      "snapshotImageUrl": "image?systemId=HOST&sectionNames=107M&placeId=GEYDOTJ2GI3DUNA"
+    },
+    {
+      "type": "seat",
+      "selection": "resale",
+      "quality": 0.866983,
+      "section": "107M",
+      "row": "25",
+      "offerGroups": [
+        {
+          "offers": ["GN6DSNZZGA3DCOBZGB6DCNDGGYZGKY3CG42Q"],
+          "places": ["GEYDOTJ2GI2TUMQ", "GEYDOTJ2GI2TUMI"],
+          "seats": ["2", "1"],
+          "coordinates": []
+        }
+      ],
+      "area": "16",
+      "descriptionId": "IE5DCNQ",
+      "maxQuantity": 2,
+      "shapes": null,
+      "snapshotImageUrl": "image?systemId=HOST&sectionNames=107M&placeId=GEYDOTJ2GI2TUMQ"
+    },
+    {
+      "type": "seat",
+      "selection": "resale",
+      "quality": 0.866983,
+      "section": "107M",
+      "row": "26",
+      "offerGroups": [
+        {
+          "offers": ["GN6DCMBRGE3TMNRQGYZXYMJUMY3DIMJXGJRTK"],
+          "places": ["GEYDOTJ2GI3DUNQ", "GEYDOTJ2GI3DUNI"],
+          "seats": ["6", "5"],
+          "coordinates": []
+        }
+      ],
+      "area": "16",
+      "descriptionId": "IE5DCNQ",
+      "maxQuantity": 4,
+      "shapes": null,
+      "snapshotImageUrl": "image?systemId=HOST&sectionNames=107M&placeId=GEYDOTJ2GI3DUNQ"
+    },
+    {
+      "type": "seat",
+      "selection": "resale",
+      "quality": 0.895487,
+      "section": "107",
+      "row": "12",
+      "offerGroups": [
+        {
+          "offers": ["GN6DCMBRGQZTENBSGY4XYMJVGA4DKZRVMY4DK"],
+          "places": ["GEYDOORRGI5DCMA", "GEYDOORRGI5DS"],
+          "seats": ["10", "9"],
+          "coordinates": []
+        }
+      ],
+      "area": "16",
+      "descriptionId": "IE5DCNQ",
+      "maxQuantity": 2,
+      "shapes": null,
+      "snapshotImageUrl": "image?systemId=HOST&sectionNames=107&placeId=GEYDOORRGI5DCMA"
+    },
+    {
+      "type": "seat",
+      "selection": "resale",
+      "quality": 0.895487,
+      "section": "107",
+      "row": "11",
+      "offerGroups": [
+        {
+          "offers": ["GN6DCMBRGE4DEMRQHEYHYMJUMZTGCY3GGE3TK"],
+          "places": ["GEYDOORRGE5DCOA", "GEYDOORRGE5DCNY"],
+          "seats": ["18", "17"],
+          "coordinates": []
+        }
+      ],
+      "area": "16",
+      "descriptionId": "IE5DCNQ",
+      "maxQuantity": 2,
+      "shapes": null,
+      "snapshotImageUrl": "image?systemId=HOST&sectionNames=107&placeId=GEYDOORRGE5DCOA"
+    },
+    {
+      "type": "seat",
+      "selection": "resale",
+      "quality": 0.087886,
+      "section": "107",
+      "row": "8",
+      "offerGroups": [
+        {
+          "offers": ["GN6DCMBRGE3TEMBUGI2HYMJVGBSTOZJWMQ4DK"],
+          "places": ["GEYDOORYHI4A", "GEYDOORYHI3Q"],
+          "seats": ["8", "7"],
+          "coordinates": []
+        }
+      ],
+      "area": "16",
+      "descriptionId": "IE5DCNQ",
+      "maxQuantity": 4,
+      "shapes": null,
+      "snapshotImageUrl": "image?systemId=HOST&sectionNames=107&placeId=GEYDOORYHI4A"
+    },
+    {
+      "type": "seat",
+      "selection": "resale",
+      "quality": 0.073634,
+      "section": "107",
+      "row": "21",
+      "offerGroups": [
+        {
+          "offers": ["GN6DSOJUGM4TINJRGF6DCNDGHA2TAYLCMI2Q"],
+          "places": ["GEYDOORSGE5DCOA", "GEYDOORSGE5DCNY"],
+          "seats": ["18", "17"],
+          "coordinates": []
+        }
+      ],
+      "area": "16",
+      "descriptionId": "IE5DCNQ",
+      "maxQuantity": 4,
+      "shapes": null,
+      "snapshotImageUrl": "image?systemId=HOST&sectionNames=107&placeId=GEYDOORSGE5DCOA"
+    },
+    {
+      "type": "seat",
+      "selection": "standard",
+      "quality": 0.073634,
+      "section": "107",
+      "row": "21",
+      "offerGroups": [
+        {
+          "offers": ["GJ6DC7BWGA"],
+          "places": ["GEYDOORSGE5DI", "GEYDOORSGE5DG"],
+          "seats": ["4", "3"],
+          "coordinates": []
+        }
+      ],
+      "area": "16",
+      "descriptionId": "IE5DCNQ",
+      "maxQuantity": 4,
+      "shapes": null,
+      "snapshotImageUrl": "image?systemId=HOST&sectionNames=107&placeId=GEYDOORSGE5DI"
+    },
+    {
+      "type": "seat",
+      "selection": "resale",
+      "quality": 0.895487,
+      "section": "107",
+      "row": "15",
+      "offerGroups": [
+        {
+          "offers": ["GN6DCMBRGQZTENJRHAZHYMJVGA4DKZTGGFSDK"],
+          "places": ["GEYDOORRGU5DCMQ", "GEYDOORRGU5DCMI"],
+          "seats": ["12", "11"],
+          "coordinates": []
+        }
+      ],
+      "area": "16",
+      "descriptionId": "IE5DCNQ",
+      "maxQuantity": 2,
+      "shapes": null,
+      "snapshotImageUrl": "image?systemId=HOST&sectionNames=107&placeId=GEYDOORRGU5DCMQ"
+    },
+    {
+      "type": "seat",
+      "selection": "standard",
+      "quality": 0.087886,
+      "section": "107",
+      "row": "10",
+      "offerGroups": [
+        {
+          "offers": ["GJ6DC7BVHA"],
+          "places": ["GEYDOORRGA5DM", "GEYDOORRGA5DK"],
+          "seats": ["6", "5"],
+          "coordinates": []
+        }
+      ],
+      "area": "16",
+      "descriptionId": "IE5DCNQ",
+      "maxQuantity": 2,
+      "shapes": null,
+      "snapshotImageUrl": "image?systemId=HOST&sectionNames=107&placeId=GEYDOORRGA5DM"
+    },
+    {
+      "type": "seat",
+      "selection": "resale",
+      "quality": 0.087886,
+      "section": "107",
+      "row": "8",
+      "offerGroups": [
+        {
+          "offers": ["GN6DCMBRGI3TSOJTGIZXYMJUMY3DIMZVGA2DK"],
+          "places": ["GEYDOORYHIZDE", "GEYDOORYHIZDC"],
+          "seats": ["22", "21"],
+          "coordinates": []
+        }
+      ],
+      "area": "16",
+      "descriptionId": "IE5DCNQ",
+      "maxQuantity": 4,
+      "shapes": null,
+      "snapshotImageUrl": "image?systemId=HOST&sectionNames=107&placeId=GEYDOORYHIZDE"
+    },
+    {
+      "type": "seat",
+      "selection": "resale",
+      "quality": 0.087886,
+      "section": "107",
+      "row": "7",
+      "offerGroups": [
+        {
+          "offers": ["GN6DCMBQHEYDAMZZGY2HYMJUMY3DGZJYMYYTK"],
+          "places": ["GEYDOORXHI4A", "GEYDOORXHI3Q"],
+          "seats": ["8", "7"],
+          "coordinates": []
+        }
+      ],
+      "area": "16",
+      "descriptionId": "IE5DCNQ",
+      "maxQuantity": 2,
+      "shapes": null,
+      "snapshotImageUrl": "image?systemId=HOST&sectionNames=107&placeId=GEYDOORXHI4A"
+    },
+    {
+      "type": "seat",
+      "selection": "resale",
+      "quality": 0.087886,
+      "section": "107",
+      "row": "3",
+      "offerGroups": [
+        {
+          "offers": ["GN6DCMBRGI4DENRUGMZHYMJUMY3DIMZVGBSDK"],
+          "places": ["GEYDOORTHI4A", "GEYDOORTHI3Q"],
+          "seats": ["8", "7"],
+          "coordinates": []
+        }
+      ],
+      "area": "16",
+      "descriptionId": "IE5DCNQ",
+      "maxQuantity": 2,
+      "shapes": null,
+      "snapshotImageUrl": "image?systemId=HOST&sectionNames=107&placeId=GEYDOORTHI4A"
+    },
+    {
+      "type": "seat",
+      "selection": "resale",
+      "quality": 0.895487,
+      "section": "107",
+      "row": "11",
+      "offerGroups": [
+        {
+          "offers": ["GN6DCMBRGQ3DAOBVHA2XYMJVGBQTGZJWGA2TK"],
+          "places": ["GEYDOORRGE5DENA", "GEYDOORRGE5DEMY"],
+          "seats": ["24", "23"],
+          "coordinates": []
+        }
+      ],
+      "area": "16",
+      "descriptionId": "IE5DCNQ",
+      "maxQuantity": 2,
+      "shapes": null,
+      "snapshotImageUrl": "image?systemId=HOST&sectionNames=107&placeId=GEYDOORRGE5DENA"
+    },
+    {
+      "type": "seat",
+      "selection": "resale",
+      "quality": 0.087886,
+      "section": "107",
+      "row": "9",
+      "offerGroups": [
+        {
+          "offers": ["GN6DCMBQGY4TSOBWGUYXYMJUMY3DGZBSGJSDK"],
+          "places": ["GEYDOORZHIZDI", "GEYDOORZHIZDG"],
+          "seats": ["24", "23"],
+          "coordinates": []
+        }
+      ],
+      "area": "16",
+      "descriptionId": "IE5DCNQ",
+      "maxQuantity": 2,
+      "shapes": null,
+      "snapshotImageUrl": "image?systemId=HOST&sectionNames=107&placeId=GEYDOORZHIZDI"
+    },
+    {
+      "type": "seat",
+      "selection": "resale",
+      "quality": 0.909739,
+      "section": "107",
+      "row": "2",
+      "offerGroups": [
+        {
+          "offers": ["GN6DSOJVGI3DINZZGZ6DCNJQMFTGMNZRMU2Q"],
+          "places": ["GEYDOORSHI3A", "GEYDOORSHI2Q"],
+          "seats": ["6", "5"],
+          "coordinates": []
+        }
+      ],
+      "area": "16",
+      "descriptionId": "IE5DCNQ",
+      "maxQuantity": 2,
+      "shapes": null,
+      "snapshotImageUrl": "image?systemId=HOST&sectionNames=107&placeId=GEYDOORSHI3A"
+    },
+    {
+      "type": "seat",
+      "selection": "resale",
+      "quality": 0.909739,
+      "section": "107",
+      "row": "2",
+      "offerGroups": [
+        {
+          "offers": ["GN6DCMBRGEYTGOJQHE2HYMJUMY3DIMBTGNQTK"],
+          "places": ["GEYDOORSHI4A", "GEYDOORSHI3Q"],
+          "seats": ["8", "7"],
+          "coordinates": []
+        }
+      ],
+      "area": "16",
+      "descriptionId": "IE5DCNQ",
+      "maxQuantity": 4,
+      "shapes": null,
+      "snapshotImageUrl": "image?systemId=HOST&sectionNames=107&placeId=GEYDOORSHI4A"
+    }
+  ],
+  "places": [
+    {
+      "accessibility": [],
+      "areas": ["16"],
+      "attributes": [],
+      "available": true,
+      "branding": [],
+      "description": "IE5DCNQ",
+      "inventoryTypes": ["resale"],
+      "offerTypes": ["standard"],
+      "offers": ["GN6DCMBRGEYTGOJQHE2HYMJUMY3DIMBTGNQTK"],
+      "priceLevels": [],
+      "priceLevelSecnames": [],
+      "seating": "reserved",
+      "section": "107",
+      "shapes": ["s_30"],
+      "ticketTypes": ["SKT343MURQU"],
+      "places": ["GEYDOORSHI3Q", "GEYDOORSHI4A"],
+      "placeGroups": []
+    },
+    {
+      "accessibility": [],
+      "areas": ["16"],
+      "attributes": [],
+      "available": true,
+      "branding": [],
+      "description": "IE5DCNQ",
+      "inventoryTypes": ["resale"],
+      "offerTypes": ["standard"],
+      "offers": ["GN6DCMBRGQZTENJRHAZHYMJVGA4DKZTGGFSDK"],
+      "priceLevels": [],
+      "priceLevelSecnames": [],
+      "seating": "reserved",
+      "section": "107",
+      "shapes": ["s_30"],
+      "ticketTypes": ["SKT343MURQU"],
+      "places": ["GEYDOORRGU5DCMI", "GEYDOORRGU5DCMQ"],
+      "placeGroups": []
+    },
+    {
+      "accessibility": [],
+      "areas": ["16"],
+      "attributes": [],
+      "available": true,
+      "branding": [],
+      "description": "IE5DCNQ",
+      "inventoryTypes": ["resale"],
+      "offerTypes": ["standard"],
+      "offers": ["GN6DCMBRGIYTANZZGE4HYMJVGBSDMZRYMNSDK"],
+      "priceLevels": [],
+      "priceLevelSecnames": [],
+      "seating": "reserved",
+      "section": "107",
+      "shapes": ["s_30"],
+      "ticketTypes": ["SKT343MURQU"],
+      "places": ["GEYDOORSGE5DCMA", "GEYDOORSGE5DCMI"],
+      "placeGroups": []
+    },
+    {
+      "accessibility": [],
+      "areas": ["16"],
+      "attributes": [],
+      "available": true,
+      "branding": [],
+      "description": "IE5DCNQ",
+      "inventoryTypes": ["resale"],
+      "offerTypes": ["standard"],
+      "offers": ["GN6DCMBRGE3TEMBUGI2HYMJVGBSTOZJWMQ4DK"],
+      "priceLevels": [],
+      "priceLevelSecnames": [],
+      "seating": "reserved",
+      "section": "107",
+      "shapes": ["s_30"],
+      "ticketTypes": ["SKT343MURQU"],
+      "places": ["GEYDOORYHI3Q", "GEYDOORYHI4A"],
+      "placeGroups": []
+    },
+    {
+      "accessibility": [],
+      "areas": ["16"],
+      "attributes": [],
+      "available": true,
+      "branding": [],
+      "description": "IE5DCNQ",
+      "inventoryTypes": ["resale"],
+      "offerTypes": ["standard"],
+      "offers": ["GN6DCMBQHEYDAMZZGY2HYMJUMY3DGZJYMYYTK"],
+      "priceLevels": [],
+      "priceLevelSecnames": [],
+      "seating": "reserved",
+      "section": "107",
+      "shapes": ["s_30"],
+      "ticketTypes": ["SKT343MURQU"],
+      "places": ["GEYDOORXHI3Q", "GEYDOORXHI4A"],
+      "placeGroups": []
+    },
+    {
+      "accessibility": [],
+      "areas": ["16"],
+      "attributes": [],
+      "available": true,
+      "branding": [],
+      "description": "IE5DCNQ",
+      "inventoryTypes": ["primary"],
+      "offerTypes": ["standard"],
+      "offers": ["GJ6DC7BWGE"],
+      "priceLevels": ["61"],
+      "priceLevelSecnames": ["P14"],
+      "seating": "reserved",
+      "section": "107M",
+      "shapes": ["s_30"],
+      "ticketTypes": ["000000000001"],
+      "places": ["GEYDOTJ2GI4DUMJS", "GEYDOTJ2GI4DUMJT"],
+      "placeGroups": []
+    },
+    {
+      "accessibility": [],
+      "areas": ["16"],
+      "attributes": [],
+      "available": true,
+      "branding": [],
+      "description": "IE5DCNQ",
+      "inventoryTypes": ["resale"],
+      "offerTypes": ["standard"],
+      "offers": ["GN6DCMBRGE4DEMRQHEYHYMJUMZTGCY3GGE3TK"],
+      "priceLevels": [],
+      "priceLevelSecnames": [],
+      "seating": "reserved",
+      "section": "107",
+      "shapes": ["s_30"],
+      "ticketTypes": ["SKT343MURQU"],
+      "places": ["GEYDOORRGE5DCNY", "GEYDOORRGE5DCOA"],
+      "placeGroups": []
+    },
+    {
+      "accessibility": [],
+      "areas": ["16"],
+      "attributes": [],
+      "available": true,
+      "branding": [],
+      "description": "IE5DCNQ",
+      "inventoryTypes": ["resale"],
+      "offerTypes": ["standard"],
+      "offers": ["GN6DCMBRGI4DENRUGMZHYMJUMY3DIMZVGBSDK"],
+      "priceLevels": [],
+      "priceLevelSecnames": [],
+      "seating": "reserved",
+      "section": "107",
+      "shapes": ["s_30"],
+      "ticketTypes": ["SKT343MURQU"],
+      "places": ["GEYDOORTHI3Q", "GEYDOORTHI4A"],
+      "placeGroups": []
+    },
+    {
+      "accessibility": [],
+      "areas": ["16"],
+      "attributes": [],
+      "available": true,
+      "branding": [],
+      "description": "IE5DCNQ",
+      "inventoryTypes": ["resale"],
+      "offerTypes": ["standard"],
+      "offers": ["GN6DSOBTGYYDMOJRGJ6DCNJQMUYTIOBRMI2Q"],
+      "priceLevels": [],
+      "priceLevelSecnames": [],
+      "seating": "reserved",
+      "section": "107M",
+      "shapes": ["s_30"],
+      "ticketTypes": ["SKT343MURQU"],
+      "places": ["GEYDOTJ2GI3DUMY", "GEYDOTJ2GI3DUNA"],
+      "placeGroups": []
+    },
+    {
+      "accessibility": [],
+      "areas": ["16"],
+      "attributes": [],
+      "available": true,
+      "branding": [],
+      "description": "IE5DCNQ",
+      "inventoryTypes": ["resale"],
+      "offerTypes": ["standard"],
+      "offers": ["GN6DSOJUGM4TINJRGF6DCNDGHA2TAYLCMI2Q"],
+      "priceLevels": [],
+      "priceLevelSecnames": [],
+      "seating": "reserved",
+      "section": "107",
+      "shapes": ["s_30"],
+      "ticketTypes": ["SKT343MURQU"],
+      "places": ["GEYDOORSGE5DCNY", "GEYDOORSGE5DCOA"],
+      "placeGroups": []
+    },
+    {
+      "accessibility": [],
+      "areas": ["16"],
+      "attributes": [],
+      "available": true,
+      "branding": [],
+      "description": "IE5DCNQ",
+      "inventoryTypes": ["resale"],
+      "offerTypes": ["standard"],
+      "offers": ["GN6DCMBRGQ3DAOBVHA2XYMJVGBQTGZJWGA2TK"],
+      "priceLevels": [],
+      "priceLevelSecnames": [],
+      "seating": "reserved",
+      "section": "107",
+      "shapes": ["s_30"],
+      "ticketTypes": ["SKT343MURQU"],
+      "places": ["GEYDOORRGE5DEMY", "GEYDOORRGE5DENA"],
+      "placeGroups": []
+    },
+    {
+      "accessibility": [],
+      "areas": ["16"],
+      "attributes": [],
+      "available": true,
+      "branding": [],
+      "description": "IE5DCNQ",
+      "inventoryTypes": ["primary"],
+      "offerTypes": ["standard"],
+      "offers": ["GJ6DC7BWGA"],
+      "priceLevels": ["60"],
+      "priceLevelSecnames": ["P13"],
+      "seating": "reserved",
+      "section": "107",
+      "shapes": ["s_30"],
+      "ticketTypes": ["000000000001"],
+      "places": [
+        "GEYDOORRG45DK",
+        "GEYDOORRG45DM",
+        "GEYDOORRHA5DCNI",
+        "GEYDOORRHA5DCNQ",
+        "GEYDOORSGE5DG",
+        "GEYDOORSGE5DI"
+      ],
+      "placeGroups": []
+    },
+    {
+      "accessibility": [],
+      "areas": ["16"],
+      "attributes": [],
+      "available": true,
+      "branding": [],
+      "description": "IE5DCNQ",
+      "inventoryTypes": ["resale"],
+      "offerTypes": ["standard"],
+      "offers": ["GN6DCMBRGI3TSOJTGIZXYMJUMY3DIMZVGA2DK"],
+      "priceLevels": [],
+      "priceLevelSecnames": [],
+      "seating": "reserved",
+      "section": "107",
+      "shapes": ["s_30"],
+      "ticketTypes": ["SKT343MURQU"],
+      "places": ["GEYDOORYHIZDC", "GEYDOORYHIZDE"],
+      "placeGroups": []
+    },
+    {
+      "accessibility": [],
+      "areas": ["16"],
+      "attributes": [],
+      "available": true,
+      "branding": [],
+      "description": "IE5DCNQ",
+      "inventoryTypes": ["resale"],
+      "offerTypes": ["standard"],
+      "offers": ["GN6DCMBQHAZDGNJTHE2XYMJVGBSDMZTBGI3DK"],
+      "priceLevels": [],
+      "priceLevelSecnames": [],
+      "seating": "reserved",
+      "section": "107",
+      "shapes": ["s_30"],
+      "ticketTypes": ["SKT343MURQU"],
+      "places": ["GEYDOORSGI5DK", "GEYDOORSGI5DM"],
+      "placeGroups": []
+    },
+    {
+      "accessibility": [],
+      "areas": ["16"],
+      "attributes": [],
+      "available": true,
+      "branding": [],
+      "description": "IE5DCNQ",
+      "inventoryTypes": ["primary"],
+      "offerTypes": ["standard"],
+      "offers": ["GJ6DC7BVHA"],
+      "priceLevels": ["58"],
+      "priceLevelSecnames": ["P11"],
+      "seating": "reserved",
+      "section": "107",
+      "shapes": ["s_30"],
+      "ticketTypes": ["000000000001"],
+      "places": ["GEYDOORRGA5DK", "GEYDOORRGA5DM"],
+      "placeGroups": []
+    },
+    {
+      "accessibility": [],
+      "areas": ["16"],
+      "attributes": [],
+      "available": true,
+      "branding": [],
+      "description": "IE5DCNQ",
+      "inventoryTypes": ["resale"],
+      "offerTypes": ["standard"],
+      "offers": ["GN6DCMBRGE3TMNRQGYZXYMJUMY3DIMJXGJRTK"],
+      "priceLevels": [],
+      "priceLevelSecnames": [],
+      "seating": "reserved",
+      "section": "107M",
+      "shapes": ["s_30"],
+      "ticketTypes": ["SKT343MURQU"],
+      "places": ["GEYDOTJ2GI3DUNI", "GEYDOTJ2GI3DUNQ"],
+      "placeGroups": []
+    },
+    {
+      "accessibility": [],
+      "areas": ["16"],
+      "attributes": [],
+      "available": true,
+      "branding": [],
+      "description": "IE5DCNQ",
+      "inventoryTypes": ["resale"],
+      "offerTypes": ["standard"],
+      "offers": ["GN6DSNZZGA3DCOBZGB6DCNDGGYZGKY3CG42Q"],
+      "priceLevels": [],
+      "priceLevelSecnames": [],
+      "seating": "reserved",
+      "section": "107M",
+      "shapes": ["s_30"],
+      "ticketTypes": ["SKT343MURQU"],
+      "places": ["GEYDOTJ2GI2TUMI", "GEYDOTJ2GI2TUMQ"],
+      "placeGroups": []
+    },
+    {
+      "accessibility": [],
+      "areas": ["16"],
+      "attributes": [],
+      "available": true,
+      "branding": [],
+      "description": "IE5DCNQ",
+      "inventoryTypes": ["resale"],
+      "offerTypes": ["standard"],
+      "offers": ["GN6DCMBRGQ4DSNBZGA3HYMJVGBRTOMDGGFTDK"],
+      "priceLevels": [],
+      "priceLevelSecnames": [],
+      "seating": "reserved",
+      "section": "107",
+      "shapes": ["s_30"],
+      "ticketTypes": ["SKT343MURQU"],
+      "places": ["GEYDOORRGY5DK", "GEYDOORRGY5DM"],
+      "placeGroups": []
+    },
+    {
+      "accessibility": [],
+      "areas": ["16"],
+      "attributes": [],
+      "available": true,
+      "branding": [],
+      "description": "IE5DCNQ",
+      "inventoryTypes": ["resale"],
+      "offerTypes": ["standard"],
+      "offers": ["GN6DCMBQGY4TSOBWGUYXYMJUMY3DGZBSGJSDK"],
+      "priceLevels": [],
+      "priceLevelSecnames": [],
+      "seating": "reserved",
+      "section": "107",
+      "shapes": ["s_30"],
+      "ticketTypes": ["SKT343MURQU"],
+      "places": ["GEYDOORZHIZDG", "GEYDOORZHIZDI"],
+      "placeGroups": []
+    },
+    {
+      "accessibility": [],
+      "areas": ["16"],
+      "attributes": [],
+      "available": true,
+      "branding": [],
+      "description": "IE5DCNQ",
+      "inventoryTypes": ["resale"],
+      "offerTypes": ["standard"],
+      "offers": ["GN6DSOJVGI3DINZZGZ6DCNJQMFTGMNZRMU2Q"],
+      "priceLevels": [],
+      "priceLevelSecnames": [],
+      "seating": "reserved",
+      "section": "107",
+      "shapes": ["s_30"],
+      "ticketTypes": ["SKT343MURQU"],
+      "places": ["GEYDOORSHI2Q", "GEYDOORSHI3A"],
+      "placeGroups": []
+    },
+    {
+      "accessibility": [],
+      "areas": ["16"],
+      "attributes": [],
+      "available": true,
+      "branding": [],
+      "description": "IE5DCNQ",
+      "inventoryTypes": ["resale"],
+      "offerTypes": ["standard"],
+      "offers": ["GN6DCMBRGQZTENBSGY4XYMJVGA4DKZRVMY4DK"],
+      "priceLevels": [],
+      "priceLevelSecnames": [],
+      "seating": "reserved",
+      "section": "107",
+      "shapes": ["s_30"],
+      "ticketTypes": ["SKT343MURQU"],
+      "places": ["GEYDOORRGI5DCMA", "GEYDOORRGI5DS"],
+      "placeGroups": []
+    }
+  ],
+  "sections": [],
+  "_links": {
+    "self": [
+      {
+        "href": "/host/1000631AC8663089/quickpicks-v4?qty=2&q=and(not('accessible'),any(shapes,'s_30'))&show=places+maxQuantity+sections&mode=primary:ppsectionrow+resale:ga_areas+platinum:all&offset=0&limit=20&sort=noTaxTotalprice&promoted=primary&numberOfTopPicksForPrimaryCheck=5&minNumberOfPrimaryOnTop=5&ticketTypes=000000000001&ticketTypes=0C000100000A&includePlatinumInventoryType=false"
+      }
+    ],
+    "event": [
+      {
+        "href": "/event/1000631AC8663089"
+      }
+    ],
+    "area": [
+      {
+        "href": "/host/1000631AC8663089/areas/{areaId}",
+        "templated": true
+      }
+    ],
+    "offer": [
+      {
+        "href": "/host/1000631AC8663089/offers/{offerId}",
+        "templated": true
+      }
+    ],
+    "tickettype": [
+      {
+        "href": "/host/1000631AC8663089/tickettypes/{ticketTypeId}",
+        "templated": true
+      }
+    ],
+    "place": [
+      {
+        "href": "/host/1000631AC8663089/places/{placeId}",
+        "templated": true
+      }
+    ],
+    "snapshotImageBase": [
+      {
+        "href": "https://mapsapi.tmol.io/maps/geometry/3/event/1000631AC8663089/"
+      }
+    ],
+    "description": [
+      {
+        "href": "/host/1000631AC8663089/descriptions/{descriptionId}",
+        "templated": true
+      }
+    ],
+    "next": [
+      {
+        "href": "/host/1000631AC8663089/quickpicks-v4?qty=2&q=and(not('accessible'),any(shapes,'s_30'))&show=places+maxQuantity+sections&mode=primary:ppsectionrow+resale:ga_areas+platinum:all&offset=20&limit=20&sort=noTaxTotalprice&promoted=primary&numberOfTopPicksForPrimaryCheck=5&minNumberOfPrimaryOnTop=5&ticketTypes=000000000001,0C000100000A&includePlatinumInventoryType=false"
+      }
+    ]
+  },
+  "_embedded": {
+    "description": [
+      {
+        "schema": "urn:com.ticketmaster.services:schema:ismds:EventCompoundDescription:1.0",
+        "meta": {
+          "type": "urn:com.ticketmaster.services:type:ismds:Description",
+          "modified": "2025-11-08T22:31:10.719290972Z",
+          "expires": "2025-11-08T22:41:10.719290972Z"
+        },
+        "eventId": "1000631AC8663089",
+        "descriptionId": "IE5DCNQ",
+        "descriptions": ["LOWER BOWL SEATING"],
+        "_links": {
+          "self": [
+            {
+              "href": "/host/1000631AC8663089/descriptions/IE5DCNQ"
+            }
+          ],
+          "event": [
+            {
+              "href": "/event/1000631AC8663089"
+            }
+          ]
+        }
+      }
+    ],
+    "offer": [
+      {
+        "schema": "urn:com.ticketmaster.services:schema:ismds:ResaleOffer:1.0",
+        "meta": {
+          "type": "urn:com.ticketmaster.services:type:ismds:EventOffer",
+          "modified": "2025-11-08T22:31:10.719290972Z",
+          "expires": "2025-11-08T22:32:10.719290972Z"
+        },
+        "offerId": "GN6DCMBRGQ4DSNBZGA3HYMJVGBRTOMDGGFTDK",
+        "rank": 0,
+        "online": true,
+        "protected": false,
+        "rollup": false,
+        "inventoryType": "resale",
+        "offerType": "standard",
+        "listingId": "1014894906",
+        "listingVersionId": "resale-listingVer-000000150c70f1f5",
+        "currency": "CAD",
+        "listPrice": 150.0,
+        "faceValue": 150.0,
+        "totalPrice": 180.75,
+        "noChargesPrice": 150.0,
+        "charges": [
+          {
+            "reason": "service",
+            "type": "fee",
+            "amount": 30.75
+          }
+        ],
+        "sellableQuantities": [2],
+        "section": "107",
+        "row": "16",
+        "seatFrom": "5",
+        "seatTo": "6",
+        "alternateIds": [
+          {
+            "provider": "tap",
+            "id": "resale-listingVer-000000150c70f1f5:product-product-00000000044e8c79:product-variant-00000011ff3c1a65:1000631AC8663089"
+          }
+        ],
+        "sellerNotes": "",
+        "ticketTypeId": "SKT343MURQU",
+        "deliveries": [],
+        "_links": {
+          "self": [
+            {
+              "href": "/host/1000631AC8663089/offers/GN6DCMBRGQ4DSNBZGA3HYMJVGBRTOMDGGFTDK"
+            }
+          ],
+          "event": [
+            {
+              "href": "/event/1000631AC8663089"
+            }
+          ],
+          "tickettype": [
+            {
+              "href": "/host/1000631AC8663089/tickettypes/SKT343MURQU"
+            }
+          ]
+        }
+      },
+      {
+        "schema": "urn:com.ticketmaster.services:schema:ismds:ResaleOffer:1.0",
+        "meta": {
+          "type": "urn:com.ticketmaster.services:type:ismds:EventOffer",
+          "modified": "2025-11-08T22:31:10.719290972Z",
+          "expires": "2025-11-08T22:32:10.719290972Z"
+        },
+        "offerId": "GN6DCMBQHAZDGNJTHE2XYMJVGBSDMZTBGI3DK",
+        "rank": 0,
+        "online": true,
+        "protected": false,
+        "rollup": false,
+        "inventoryType": "resale",
+        "offerType": "standard",
+        "listingId": "1008235395",
+        "listingVersionId": "resale-listingVer-000000150d6fa265",
+        "currency": "CAD",
+        "listPrice": 167,
+        "faceValue": 167,
+        "totalPrice": 201.24,
+        "noChargesPrice": 165.0,
+        "charges": [
+          {
+            "reason": "service",
+            "type": "fee",
+            "amount": 34.24
+          }
+        ],
+        "sellableQuantities": [2],
+        "section": "107",
+        "row": "22",
+        "seatFrom": "5",
+        "seatTo": "6",
+        "alternateIds": [
+          {
+            "provider": "tap",
+            "id": "resale-listingVer-000000150d6fa265:product-product-00000000044e8c79:product-variant-00000011b6fccd15:1000631AC8663089"
+          }
+        ],
+        "sellerNotes": "",
+        "ticketTypeId": "SKT343MURQU",
+        "deliveries": [],
+        "_links": {
+          "self": [
+            {
+              "href": "/host/1000631AC8663089/offers/GN6DCMBQHAZDGNJTHE2XYMJVGBSDMZTBGI3DK"
+            }
+          ],
+          "event": [
+            {
+              "href": "/event/1000631AC8663089"
+            }
+          ],
+          "tickettype": [
+            {
+              "href": "/host/1000631AC8663089/tickettypes/SKT343MURQU"
+            }
+          ]
+        }
+      },
+      {
+        "schema": "urn:com.ticketmaster.services:schema:ismds:ResaleOffer:1.0",
+        "meta": {
+          "type": "urn:com.ticketmaster.services:type:ismds:EventOffer",
+          "modified": "2025-11-08T22:31:10.719290972Z",
+          "expires": "2025-11-08T22:32:10.719290972Z"
+        },
+        "offerId": "GN6DCMBRGIYTANZZGE4HYMJVGBSDMZRYMNSDK",
+        "rank": 0,
+        "online": true,
+        "protected": false,
+        "rollup": false,
+        "inventoryType": "resale",
+        "offerType": "standard",
+        "listingId": "1012107918",
+        "listingVersionId": "resale-listingVer-000000150d6f8cd5",
+        "currency": "CAD",
+        "listPrice": 168,
+        "faceValue": 168,
+        "totalPrice": 202.44,
+        "noChargesPrice": 166.0,
+        "charges": [
+          {
+            "reason": "service",
+            "type": "fee",
+            "amount": 34.44
+          }
+        ],
+        "sellableQuantities": [2, 4],
+        "section": "107",
+        "row": "21",
+        "seatFrom": "8",
+        "seatTo": "11",
+        "alternateIds": [
+          {
+            "provider": "tap",
+            "id": "resale-listingVer-000000150d6f8cd5:product-product-00000000044e8c79:product-variant-00000011e0d70c85:1000631AC8663089"
+          }
+        ],
+        "sellerNotes": "",
+        "ticketTypeId": "SKT343MURQU",
+        "deliveries": [],
+        "_links": {
+          "self": [
+            {
+              "href": "/host/1000631AC8663089/offers/GN6DCMBRGIYTANZZGE4HYMJVGBSDMZRYMNSDK"
+            }
+          ],
+          "event": [
+            {
+              "href": "/event/1000631AC8663089"
+            }
+          ],
+          "tickettype": [
+            {
+              "href": "/host/1000631AC8663089/tickettypes/SKT343MURQU"
+            }
+          ]
+        }
+      },
+      {
+        "schema": "urn:com.ticketmaster.services:schema:ismds:ResaleOffer:1.0",
+        "meta": {
+          "type": "urn:com.ticketmaster.services:type:ismds:EventOffer",
+          "modified": "2025-11-08T22:31:10.719290972Z",
+          "expires": "2025-11-08T22:32:10.719290972Z"
+        },
+        "offerId": "GN6DSOBTGYYDMOJRGJ6DCNJQMUYTIOBRMI2Q",
+        "rank": 0,
+        "online": true,
+        "protected": false,
+        "rollup": false,
+        "inventoryType": "resale",
+        "offerType": "standard",
+        "listingId": "983606912",
+        "listingVersionId": "resale-listingVer-000000150e1481b5",
+        "currency": "CAD",
+        "listPrice": 170.0,
+        "faceValue": 170.0,
+        "totalPrice": 204.85,
+        "noChargesPrice": 170.0,
+        "charges": [
+          {
+            "reason": "service",
+            "type": "fee",
+            "amount": 34.85
+          }
+        ],
+        "sellableQuantities": [2],
+        "section": "107M",
+        "row": "26",
+        "seatFrom": "3",
+        "seatTo": "4",
+        "alternateIds": [
+          {
+            "provider": "tap",
+            "id": "resale-listingVer-000000150e1481b5:product-product-00000000044e8c79:product-variant-000000112bccb1d5:1000631AC8663089"
+          }
+        ],
+        "sellerNotes": "",
+        "ticketTypeId": "SKT343MURQU",
+        "deliveries": [],
+        "_links": {
+          "self": [
+            {
+              "href": "/host/1000631AC8663089/offers/GN6DSOBTGYYDMOJRGJ6DCNJQMUYTIOBRMI2Q"
+            }
+          ],
+          "event": [
+            {
+              "href": "/event/1000631AC8663089"
+            }
+          ],
+          "tickettype": [
+            {
+              "href": "/host/1000631AC8663089/tickettypes/SKT343MURQU"
+            }
+          ]
+        }
+      },
+      {
+        "schema": "urn:com.ticketmaster.services:schema:ismds:ResaleOffer:1.0",
+        "meta": {
+          "type": "urn:com.ticketmaster.services:type:ismds:EventOffer",
+          "modified": "2025-11-08T22:31:10.719290972Z",
+          "expires": "2025-11-08T22:32:10.719290972Z"
+        },
+        "offerId": "GN6DSNZZGA3DCOBZGB6DCNDGGYZGKY3CG42Q",
+        "rank": 0,
+        "online": true,
+        "protected": false,
+        "rollup": false,
+        "inventoryType": "resale",
+        "offerType": "standard",
+        "listingId": "979061890",
+        "listingVersionId": "resale-listingVer-00000014f62ecb75",
+        "currency": "CAD",
+        "listPrice": 175.0,
+        "faceValue": 175.0,
+        "totalPrice": 210.88,
+        "noChargesPrice": 175.0,
+        "charges": [
+          {
+            "reason": "service",
+            "type": "fee",
+            "amount": 35.88
+          }
+        ],
+        "sellableQuantities": [2],
+        "section": "107M",
+        "row": "25",
+        "seatFrom": "1",
+        "seatTo": "2",
+        "alternateIds": [
+          {
+            "provider": "tap",
+            "id": "resale-listingVer-00000014f62ecb75:product-product-00000000044e8c79:product-variant-00000011181f5dc5:1000631AC8663089"
+          }
+        ],
+        "sellerNotes": "",
+        "ticketTypeId": "SKT343MURQU",
+        "deliveries": [],
+        "_links": {
+          "self": [
+            {
+              "href": "/host/1000631AC8663089/offers/GN6DSNZZGA3DCOBZGB6DCNDGGYZGKY3CG42Q"
+            }
+          ],
+          "event": [
+            {
+              "href": "/event/1000631AC8663089"
+            }
+          ],
+          "tickettype": [
+            {
+              "href": "/host/1000631AC8663089/tickettypes/SKT343MURQU"
+            }
+          ]
+        }
+      },
+      {
+        "schema": "urn:com.ticketmaster.services:schema:ismds:ResaleOffer:1.0",
+        "meta": {
+          "type": "urn:com.ticketmaster.services:type:ismds:EventOffer",
+          "modified": "2025-11-08T22:31:10.719290972Z",
+          "expires": "2025-11-08T22:32:10.719290972Z"
+        },
+        "offerId": "GN6DCMBRGE3TMNRQGYZXYMJUMY3DIMJXGJRTK",
+        "rank": 0,
+        "online": true,
+        "protected": false,
+        "rollup": false,
+        "inventoryType": "resale",
+        "offerType": "standard",
+        "listingId": "1011766063",
+        "listingVersionId": "resale-listingVer-00000014f64172c5",
+        "currency": "CAD",
+        "listPrice": 175.0,
+        "faceValue": 175.0,
+        "totalPrice": 210.88,
+        "noChargesPrice": 175.0,
+        "charges": [
+          {
+            "reason": "service",
+            "type": "fee",
+            "amount": 35.88
+          }
+        ],
+        "sellableQuantities": [2],
+        "section": "107M",
+        "row": "26",
+        "seatFrom": "5",
+        "seatTo": "6",
+        "alternateIds": [
+          {
+            "provider": "tap",
+            "id": "resale-listingVer-00000014f64172c5:product-product-00000000044e8c79:product-variant-00000011dcc952c5:1000631AC8663089"
+          }
+        ],
+        "sellerNotes": "",
+        "ticketTypeId": "SKT343MURQU",
+        "deliveries": [],
+        "_links": {
+          "self": [
+            {
+              "href": "/host/1000631AC8663089/offers/GN6DCMBRGE3TMNRQGYZXYMJUMY3DIMJXGJRTK"
+            }
+          ],
+          "event": [
+            {
+              "href": "/event/1000631AC8663089"
+            }
+          ],
+          "tickettype": [
+            {
+              "href": "/host/1000631AC8663089/tickettypes/SKT343MURQU"
+            }
+          ]
+        }
+      },
+      {
+        "schema": "urn:com.ticketmaster.services:schema:ismds:ResaleOffer:1.0",
+        "meta": {
+          "type": "urn:com.ticketmaster.services:type:ismds:EventOffer",
+          "modified": "2025-11-08T22:31:10.719290972Z",
+          "expires": "2025-11-08T22:32:10.719290972Z"
+        },
+        "offerId": "GN6DCMBRGQZTENBSGY4XYMJVGA4DKZRVMY4DK",
+        "rank": 0,
+        "online": true,
+        "protected": false,
+        "rollup": false,
+        "inventoryType": "resale",
+        "offerType": "standard",
+        "listingId": "1014324269",
+        "listingVersionId": "resale-listingVer-00000015085f5f85",
+        "currency": "CAD",
+        "listPrice": 179.0,
+        "faceValue": 179.0,
+        "totalPrice": 215.7,
+        "noChargesPrice": 179.0,
+        "charges": [
+          {
+            "reason": "service",
+            "type": "fee",
+            "amount": 36.7
+          }
+        ],
+        "sellableQuantities": [2],
+        "section": "107",
+        "row": "12",
+        "seatFrom": "9",
+        "seatTo": "10",
+        "alternateIds": [
+          {
+            "provider": "tap",
+            "id": "resale-listingVer-00000015085f5f85:product-product-00000000044e8c79:product-variant-00000011fad9c305:1000631AC8663089"
+          }
+        ],
+        "sellerNotes": "",
+        "ticketTypeId": "SKT343MURQU",
+        "deliveries": [],
+        "_links": {
+          "self": [
+            {
+              "href": "/host/1000631AC8663089/offers/GN6DCMBRGQZTENBSGY4XYMJVGA4DKZRVMY4DK"
+            }
+          ],
+          "event": [
+            {
+              "href": "/event/1000631AC8663089"
+            }
+          ],
+          "tickettype": [
+            {
+              "href": "/host/1000631AC8663089/tickettypes/SKT343MURQU"
+            }
+          ]
+        }
+      },
+      {
+        "schema": "urn:com.ticketmaster.services:schema:ismds:ResaleOffer:1.0",
+        "meta": {
+          "type": "urn:com.ticketmaster.services:type:ismds:EventOffer",
+          "modified": "2025-11-08T22:31:10.719290972Z",
+          "expires": "2025-11-08T22:32:10.719290972Z"
+        },
+        "offerId": "GN6DCMBRGE4DEMRQHEYHYMJUMZTGCY3GGE3TK",
+        "rank": 0,
+        "online": true,
+        "protected": false,
+        "rollup": false,
+        "inventoryType": "resale",
+        "offerType": "standard",
+        "listingId": "1011822090",
+        "listingVersionId": "resale-listingVer-00000014ffacf175",
+        "currency": "CAD",
+        "listPrice": 200.0,
+        "faceValue": 200.0,
+        "totalPrice": 241.0,
+        "noChargesPrice": 200.0,
+        "charges": [
+          {
+            "reason": "service",
+            "type": "fee",
+            "amount": 41.0
+          }
+        ],
+        "sellableQuantities": [2],
+        "section": "107",
+        "row": "11",
+        "seatFrom": "17",
+        "seatTo": "18",
+        "alternateIds": [
+          {
+            "provider": "tap",
+            "id": "resale-listingVer-00000014ffacf175:product-product-00000000044e8c79:product-variant-00000011de2541e5:1000631AC8663089"
+          }
+        ],
+        "sellerNotes": "",
+        "ticketTypeId": "SKT343MURQU",
+        "deliveries": [],
+        "_links": {
+          "self": [
+            {
+              "href": "/host/1000631AC8663089/offers/GN6DCMBRGE4DEMRQHEYHYMJUMZTGCY3GGE3TK"
+            }
+          ],
+          "event": [
+            {
+              "href": "/event/1000631AC8663089"
+            }
+          ],
+          "tickettype": [
+            {
+              "href": "/host/1000631AC8663089/tickettypes/SKT343MURQU"
+            }
+          ]
+        }
+      },
+      {
+        "schema": "urn:com.ticketmaster.services:schema:ismds:ResaleOffer:1.0",
+        "meta": {
+          "type": "urn:com.ticketmaster.services:type:ismds:EventOffer",
+          "modified": "2025-11-08T22:31:10.719290972Z",
+          "expires": "2025-11-08T22:32:10.719290972Z"
+        },
+        "offerId": "GN6DCMBRGE3TEMBUGI2HYMJVGBSTOZJWMQ4DK",
+        "rank": 0,
+        "online": true,
+        "protected": false,
+        "rollup": false,
+        "inventoryType": "resale",
+        "offerType": "standard",
+        "listingId": "1011720424",
+        "listingVersionId": "resale-listingVer-000000150e7e6d85",
+        "currency": "CAD",
+        "listPrice": 201.0,
+        "faceValue": 201.0,
+        "totalPrice": 242.21,
+        "noChargesPrice": 201.0,
+        "charges": [
+          {
+            "reason": "service",
+            "type": "fee",
+            "amount": 41.21
+          }
+        ],
+        "sellableQuantities": [2, 4],
+        "section": "107",
+        "row": "8",
+        "seatFrom": "5",
+        "seatTo": "8",
+        "alternateIds": [
+          {
+            "provider": "tap",
+            "id": "resale-listingVer-000000150e7e6d85:product-product-00000000044e8c79:product-variant-00000011dbfb1955:1000631AC8663089"
+          }
+        ],
+        "sellerNotes": "",
+        "ticketTypeId": "SKT343MURQU",
+        "deliveries": [],
+        "_links": {
+          "self": [
+            {
+              "href": "/host/1000631AC8663089/offers/GN6DCMBRGE3TEMBUGI2HYMJVGBSTOZJWMQ4DK"
+            }
+          ],
+          "event": [
+            {
+              "href": "/event/1000631AC8663089"
+            }
+          ],
+          "tickettype": [
+            {
+              "href": "/host/1000631AC8663089/tickettypes/SKT343MURQU"
+            }
+          ]
+        }
+      },
+      {
+        "schema": "urn:com.ticketmaster.services:schema:ismds:ResaleOffer:1.0",
+        "meta": {
+          "type": "urn:com.ticketmaster.services:type:ismds:EventOffer",
+          "modified": "2025-11-08T22:31:10.719290972Z",
+          "expires": "2025-11-08T22:32:10.719290972Z"
+        },
+        "offerId": "GN6DSOJUGM4TINJRGF6DCNDGHA2TAYLCMI2Q",
+        "rank": 0,
+        "online": true,
+        "protected": false,
+        "rollup": false,
+        "inventoryType": "resale",
+        "offerType": "standard",
+        "listingId": "994394511",
+        "listingVersionId": "resale-listingVer-00000014f850abb5",
+        "currency": "CAD",
+        "listPrice": 220.0,
+        "faceValue": 220.0,
+        "totalPrice": 265.1,
+        "noChargesPrice": 220.0,
+        "charges": [
+          {
+            "reason": "service",
+            "type": "fee",
+            "amount": 45.1
+          }
+        ],
+        "sellableQuantities": [2],
+        "section": "107",
+        "row": "21",
+        "seatFrom": "17",
+        "seatTo": "18",
+        "alternateIds": [
+          {
+            "provider": "tap",
+            "id": "resale-listingVer-00000014f850abb5:product-product-00000000044e8c79:product-variant-0000001169f826a5:1000631AC8663089"
+          }
+        ],
+        "sellerNotes": "",
+        "ticketTypeId": "SKT343MURQU",
+        "deliveries": [],
+        "_links": {
+          "self": [
+            {
+              "href": "/host/1000631AC8663089/offers/GN6DSOJUGM4TINJRGF6DCNDGHA2TAYLCMI2Q"
+            }
+          ],
+          "event": [
+            {
+              "href": "/event/1000631AC8663089"
+            }
+          ],
+          "tickettype": [
+            {
+              "href": "/host/1000631AC8663089/tickettypes/SKT343MURQU"
+            }
+          ]
+        }
+      },
+      {
+        "schema": "urn:com.ticketmaster.services:schema:ismds:EventOffer:1.0",
+        "meta": {
+          "type": "urn:com.ticketmaster.services:type:ismds:EventOffer",
+          "modified": "2025-11-08T22:31:10.719290972Z",
+          "expires": "2025-11-08T22:41:10.719290972Z"
+        },
+        "offerId": "GJ6DC7BWGA",
+        "name": "Standard Ticket",
+        "rank": 0,
+        "online": true,
+        "protected": false,
+        "rollup": false,
+        "inventoryType": "primary",
+        "offerType": "standard",
+        "ticketTypeId": "000000000001",
+        "auditPriceLevel": "13",
+        "priceLevelId": "60",
+        "priceLevelSecname": "P13",
+        "description": "Standard Ticket",
+        "currency": "CAD",
+        "listPrice": 259.0,
+        "faceValue": 259.0,
+        "totalPrice": 289.65,
+        "noChargesPrice": 259.0,
+        "charges": [
+          {
+            "reason": "service",
+            "type": "fee",
+            "amount": 30.65
+          },
+          {
+            "reason": "order_processing",
+            "type": "fee",
+            "subType": "default",
+            "amount": 0.0
+          }
+        ],
+        "sellableQuantities": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+        "alternateIds": [],
+        "_links": {
+          "self": [
+            {
+              "href": "/host/1000631AC8663089/offers/GJ6DC7BWGA"
+            }
+          ],
+          "event": [
+            {
+              "href": "/event/1000631AC8663089"
+            }
+          ],
+          "tickettype": [
+            {
+              "href": "/host/1000631AC8663089/tickettypes/000000000001"
+            }
+          ]
+        }
+      },
+      {
+        "schema": "urn:com.ticketmaster.services:schema:ismds:ResaleOffer:1.0",
+        "meta": {
+          "type": "urn:com.ticketmaster.services:type:ismds:EventOffer",
+          "modified": "2025-11-08T22:31:10.719290972Z",
+          "expires": "2025-11-08T22:32:10.719290972Z"
+        },
+        "offerId": "GN6DCMBRGQZTENJRHAZHYMJVGA4DKZTGGFSDK",
+        "rank": 0,
+        "online": true,
+        "protected": false,
+        "rollup": false,
+        "inventoryType": "resale",
+        "offerType": "standard",
+        "listingId": "1014325182",
+        "listingVersionId": "resale-listingVer-00000015085ff1d5",
+        "currency": "CAD",
+        "listPrice": 249.0,
+        "faceValue": 249.0,
+        "totalPrice": 300.05,
+        "noChargesPrice": 249.0,
+        "charges": [
+          {
+            "reason": "service",
+            "type": "fee",
+            "amount": 51.05
+          }
+        ],
+        "sellableQuantities": [2],
+        "section": "107",
+        "row": "15",
+        "seatFrom": "11",
+        "seatTo": "12",
+        "alternateIds": [
+          {
+            "provider": "tap",
+            "id": "resale-listingVer-00000015085ff1d5:product-product-00000000044e8c79:product-variant-00000011fadba025:1000631AC8663089"
+          }
+        ],
+        "sellerNotes": "",
+        "ticketTypeId": "SKT343MURQU",
+        "deliveries": [],
+        "_links": {
+          "self": [
+            {
+              "href": "/host/1000631AC8663089/offers/GN6DCMBRGQZTENJRHAZHYMJVGA4DKZTGGFSDK"
+            }
+          ],
+          "event": [
+            {
+              "href": "/event/1000631AC8663089"
+            }
+          ],
+          "tickettype": [
+            {
+              "href": "/host/1000631AC8663089/tickettypes/SKT343MURQU"
+            }
+          ]
+        }
+      },
+      {
+        "schema": "urn:com.ticketmaster.services:schema:ismds:EventOffer:1.0",
+        "meta": {
+          "type": "urn:com.ticketmaster.services:type:ismds:EventOffer",
+          "modified": "2025-11-08T22:31:10.719290972Z",
+          "expires": "2025-11-08T22:41:10.719290972Z"
+        },
+        "offerId": "GJ6DC7BVHA",
+        "name": "Standard Ticket",
+        "rank": 0,
+        "online": true,
+        "protected": false,
+        "rollup": false,
+        "inventoryType": "primary",
+        "offerType": "standard",
+        "ticketTypeId": "000000000001",
+        "auditPriceLevel": "11",
+        "priceLevelId": "58",
+        "priceLevelSecname": "P11",
+        "description": "Standard Ticket",
+        "currency": "CAD",
+        "listPrice": 276.0,
+        "faceValue": 276.0,
+        "totalPrice": 307.15,
+        "noChargesPrice": 276.0,
+        "charges": [
+          {
+            "reason": "service",
+            "type": "fee",
+            "amount": 31.15
+          },
+          {
+            "reason": "order_processing",
+            "type": "fee",
+            "subType": "default",
+            "amount": 0.0
+          }
+        ],
+        "sellableQuantities": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+        "alternateIds": [],
+        "_links": {
+          "self": [
+            {
+              "href": "/host/1000631AC8663089/offers/GJ6DC7BVHA"
+            }
+          ],
+          "event": [
+            {
+              "href": "/event/1000631AC8663089"
+            }
+          ],
+          "tickettype": [
+            {
+              "href": "/host/1000631AC8663089/tickettypes/000000000001"
+            }
+          ]
+        }
+      },
+      {
+        "schema": "urn:com.ticketmaster.services:schema:ismds:ResaleOffer:1.0",
+        "meta": {
+          "type": "urn:com.ticketmaster.services:type:ismds:EventOffer",
+          "modified": "2025-11-08T22:31:10.719290972Z",
+          "expires": "2025-11-08T22:32:10.719290972Z"
+        },
+        "offerId": "GN6DCMBRGI3TSOJTGIZXYMJUMY3DIMZVGA2DK",
+        "rank": 0,
+        "online": true,
+        "protected": false,
+        "rollup": false,
+        "inventoryType": "resale",
+        "offerType": "standard",
+        "listingId": "1012799323",
+        "listingVersionId": "resale-listingVer-00000014f6435045",
+        "currency": "CAD",
+        "listPrice": 258.0,
+        "faceValue": 258.0,
+        "totalPrice": 310.89,
+        "noChargesPrice": 258.0,
+        "charges": [
+          {
+            "reason": "service",
+            "type": "fee",
+            "amount": 52.89
+          }
+        ],
+        "sellableQuantities": [2],
+        "section": "107",
+        "row": "8",
+        "seatFrom": "21",
+        "seatTo": "22",
+        "alternateIds": [
+          {
+            "provider": "tap",
+            "id": "resale-listingVer-00000014f6435045:product-product-00000000044e8c79:product-variant-00000011e719c2a5:1000631AC8663089"
+          }
+        ],
+        "sellerNotes": "",
+        "ticketTypeId": "SKT343MURQU",
+        "deliveries": [],
+        "_links": {
+          "self": [
+            {
+              "href": "/host/1000631AC8663089/offers/GN6DCMBRGI3TSOJTGIZXYMJUMY3DIMZVGA2DK"
+            }
+          ],
+          "event": [
+            {
+              "href": "/event/1000631AC8663089"
+            }
+          ],
+          "tickettype": [
+            {
+              "href": "/host/1000631AC8663089/tickettypes/SKT343MURQU"
+            }
+          ]
+        }
+      },
+      {
+        "schema": "urn:com.ticketmaster.services:schema:ismds:ResaleOffer:1.0",
+        "meta": {
+          "type": "urn:com.ticketmaster.services:type:ismds:EventOffer",
+          "modified": "2025-11-08T22:31:10.719290972Z",
+          "expires": "2025-11-08T22:32:10.719290972Z"
+        },
+        "offerId": "GN6DCMBQHEYDAMZZGY2HYMJUMY3DGZJYMYYTK",
+        "rank": 0,
+        "online": true,
+        "protected": false,
+        "rollup": false,
+        "inventoryType": "resale",
+        "offerType": "standard",
+        "listingId": "1009003964",
+        "listingVersionId": "resale-listingVer-00000014f63e8f15",
+        "currency": "CAD",
+        "listPrice": 268.0,
+        "faceValue": 268.0,
+        "totalPrice": 322.94,
+        "noChargesPrice": 268.0,
+        "charges": [
+          {
+            "reason": "service",
+            "type": "fee",
+            "amount": 54.94
+          }
+        ],
+        "sellableQuantities": [2],
+        "section": "107",
+        "row": "7",
+        "seatFrom": "7",
+        "seatTo": "8",
+        "alternateIds": [
+          {
+            "provider": "tap",
+            "id": "resale-listingVer-00000014f63e8f15:product-product-00000000044e8c79:product-variant-00000011bca56a15:1000631AC8663089"
+          }
+        ],
+        "sellerNotes": "",
+        "ticketTypeId": "SKT343MURQU",
+        "deliveries": [],
+        "_links": {
+          "self": [
+            {
+              "href": "/host/1000631AC8663089/offers/GN6DCMBQHEYDAMZZGY2HYMJUMY3DGZJYMYYTK"
+            }
+          ],
+          "event": [
+            {
+              "href": "/event/1000631AC8663089"
+            }
+          ],
+          "tickettype": [
+            {
+              "href": "/host/1000631AC8663089/tickettypes/SKT343MURQU"
+            }
+          ]
+        }
+      },
+      {
+        "schema": "urn:com.ticketmaster.services:schema:ismds:ResaleOffer:1.0",
+        "meta": {
+          "type": "urn:com.ticketmaster.services:type:ismds:EventOffer",
+          "modified": "2025-11-08T22:31:10.719290972Z",
+          "expires": "2025-11-08T22:32:10.719290972Z"
+        },
+        "offerId": "GN6DCMBRGI4DENRUGMZHYMJUMY3DIMZVGBSDK",
+        "rank": 0,
+        "online": true,
+        "protected": false,
+        "rollup": false,
+        "inventoryType": "resale",
+        "offerType": "standard",
+        "listingId": "1012826432",
+        "listingVersionId": "resale-listingVer-00000014f64350d5",
+        "currency": "CAD",
+        "listPrice": 270.0,
+        "faceValue": 270.0,
+        "totalPrice": 325.35,
+        "noChargesPrice": 270.0,
+        "charges": [
+          {
+            "reason": "service",
+            "type": "fee",
+            "amount": 55.35
+          }
+        ],
+        "sellableQuantities": [2],
+        "section": "107",
+        "row": "3",
+        "seatFrom": "7",
+        "seatTo": "8",
+        "alternateIds": [
+          {
+            "provider": "tap",
+            "id": "resale-listingVer-00000014f64350d5:product-product-00000000044e8c79:product-variant-00000011e78a4355:1000631AC8663089"
+          }
+        ],
+        "sellerNotes": "",
+        "ticketTypeId": "SKT343MURQU",
+        "deliveries": [],
+        "_links": {
+          "self": [
+            {
+              "href": "/host/1000631AC8663089/offers/GN6DCMBRGI4DENRUGMZHYMJUMY3DIMZVGBSDK"
+            }
+          ],
+          "event": [
+            {
+              "href": "/event/1000631AC8663089"
+            }
+          ],
+          "tickettype": [
+            {
+              "href": "/host/1000631AC8663089/tickettypes/SKT343MURQU"
+            }
+          ]
+        }
+      },
+      {
+        "schema": "urn:com.ticketmaster.services:schema:ismds:ResaleOffer:1.0",
+        "meta": {
+          "type": "urn:com.ticketmaster.services:type:ismds:EventOffer",
+          "modified": "2025-11-08T22:31:10.719290972Z",
+          "expires": "2025-11-08T22:32:10.719290972Z"
+        },
+        "offerId": "GN6DCMBRGQ3DAOBVHA2XYMJVGBQTGZJWGA2TK",
+        "rank": 0,
+        "online": true,
+        "protected": false,
+        "rollup": false,
+        "inventoryType": "resale",
+        "offerType": "standard",
+        "listingId": "1014608585",
+        "listingVersionId": "resale-listingVer-000000150a3e6055",
+        "currency": "CAD",
+        "listPrice": 272.0,
+        "faceValue": 272.0,
+        "totalPrice": 327.76,
+        "noChargesPrice": 272.0,
+        "charges": [
+          {
+            "reason": "service",
+            "type": "fee",
+            "amount": 55.76
+          }
+        ],
+        "sellableQuantities": [2],
+        "section": "107",
+        "row": "11",
+        "seatFrom": "23",
+        "seatTo": "24",
+        "alternateIds": [
+          {
+            "provider": "tap",
+            "id": "resale-listingVer-000000150a3e6055:product-product-00000000044e8c79:product-variant-00000011fce32625:1000631AC8663089"
+          }
+        ],
+        "sellerNotes": "",
+        "ticketTypeId": "SKT343MURQU",
+        "deliveries": [],
+        "_links": {
+          "self": [
+            {
+              "href": "/host/1000631AC8663089/offers/GN6DCMBRGQ3DAOBVHA2XYMJVGBQTGZJWGA2TK"
+            }
+          ],
+          "event": [
+            {
+              "href": "/event/1000631AC8663089"
+            }
+          ],
+          "tickettype": [
+            {
+              "href": "/host/1000631AC8663089/tickettypes/SKT343MURQU"
+            }
+          ]
+        }
+      },
+      {
+        "schema": "urn:com.ticketmaster.services:schema:ismds:ResaleOffer:1.0",
+        "meta": {
+          "type": "urn:com.ticketmaster.services:type:ismds:EventOffer",
+          "modified": "2025-11-08T22:31:10.719290972Z",
+          "expires": "2025-11-08T22:32:10.719290972Z"
+        },
+        "offerId": "GN6DCMBQGY4TSOBWGUYXYMJUMY3DGZBSGJSDK",
+        "rank": 0,
+        "online": true,
+        "protected": false,
+        "rollup": false,
+        "inventoryType": "resale",
+        "offerType": "standard",
+        "listingId": "1006998651",
+        "listingVersionId": "resale-listingVer-00000014f63d22d5",
+        "currency": "CAD",
+        "listPrice": 275.0,
+        "faceValue": 275.0,
+        "totalPrice": 331.38,
+        "noChargesPrice": 275.0,
+        "charges": [
+          {
+            "reason": "service",
+            "type": "fee",
+            "amount": 56.38
+          }
+        ],
+        "sellableQuantities": [2],
+        "section": "107",
+        "row": "9",
+        "seatFrom": "23",
+        "seatTo": "24",
+        "alternateIds": [
+          {
+            "provider": "tap",
+            "id": "resale-listingVer-00000014f63d22d5:product-product-00000000044e8c79:product-variant-00000011af6b5aa5:1000631AC8663089"
+          }
+        ],
+        "sellerNotes": "",
+        "ticketTypeId": "SKT343MURQU",
+        "deliveries": [],
+        "_links": {
+          "self": [
+            {
+              "href": "/host/1000631AC8663089/offers/GN6DCMBQGY4TSOBWGUYXYMJUMY3DGZBSGJSDK"
+            }
+          ],
+          "event": [
+            {
+              "href": "/event/1000631AC8663089"
+            }
+          ],
+          "tickettype": [
+            {
+              "href": "/host/1000631AC8663089/tickettypes/SKT343MURQU"
+            }
+          ]
+        }
+      },
+      {
+        "schema": "urn:com.ticketmaster.services:schema:ismds:ResaleOffer:1.0",
+        "meta": {
+          "type": "urn:com.ticketmaster.services:type:ismds:EventOffer",
+          "modified": "2025-11-08T22:31:10.719290972Z",
+          "expires": "2025-11-08T22:32:10.719290972Z"
+        },
+        "offerId": "GN6DSOJVGI3DINZZGZ6DCNJQMFTGMNZRMU2Q",
+        "rank": 0,
+        "online": true,
+        "protected": false,
+        "rollup": false,
+        "inventoryType": "resale",
+        "offerType": "standard",
+        "listingId": "995264796",
+        "listingVersionId": "resale-listingVer-000000150aff71e5",
+        "currency": "CAD",
+        "listPrice": 277.0,
+        "faceValue": 277.0,
+        "totalPrice": 333.79,
+        "noChargesPrice": 277.0,
+        "charges": [
+          {
+            "reason": "service",
+            "type": "fee",
+            "amount": 56.79
+          }
+        ],
+        "sellableQuantities": [2],
+        "section": "107",
+        "row": "2",
+        "seatFrom": "5",
+        "seatTo": "6",
+        "alternateIds": [
+          {
+            "provider": "tap",
+            "id": "resale-listingVer-000000150aff71e5:product-product-00000000044e8c79:product-variant-000000116f98bf85:1000631AC8663089"
+          }
+        ],
+        "sellerNotes": "",
+        "ticketTypeId": "SKT343MURQU",
+        "deliveries": [],
+        "_links": {
+          "self": [
+            {
+              "href": "/host/1000631AC8663089/offers/GN6DSOJVGI3DINZZGZ6DCNJQMFTGMNZRMU2Q"
+            }
+          ],
+          "event": [
+            {
+              "href": "/event/1000631AC8663089"
+            }
+          ],
+          "tickettype": [
+            {
+              "href": "/host/1000631AC8663089/tickettypes/SKT343MURQU"
+            }
+          ]
+        }
+      },
+      {
+        "schema": "urn:com.ticketmaster.services:schema:ismds:ResaleOffer:1.0",
+        "meta": {
+          "type": "urn:com.ticketmaster.services:type:ismds:EventOffer",
+          "modified": "2025-11-08T22:31:10.719290972Z",
+          "expires": "2025-11-08T22:32:10.719290972Z"
+        },
+        "offerId": "GN6DCMBRGEYTGOJQHE2HYMJUMY3DIMBTGNQTK",
+        "rank": 0,
+        "online": true,
+        "protected": false,
+        "rollup": false,
+        "inventoryType": "resale",
+        "offerType": "standard",
+        "listingId": "1011139094",
+        "listingVersionId": "resale-listingVer-00000014f64033a5",
+        "currency": "CAD",
+        "listPrice": 280.0,
+        "faceValue": 280.0,
+        "totalPrice": 337.4,
+        "noChargesPrice": 280.0,
+        "charges": [
+          {
+            "reason": "service",
+            "type": "fee",
+            "amount": 57.4
+          }
+        ],
+        "sellableQuantities": [2],
+        "section": "107",
+        "row": "2",
+        "seatFrom": "7",
+        "seatTo": "8",
+        "alternateIds": [
+          {
+            "provider": "tap",
+            "id": "resale-listingVer-00000014f64033a5:product-product-00000000044e8c79:product-variant-00000011d0448db5:1000631AC8663089"
+          }
+        ],
+        "sellerNotes": "",
+        "ticketTypeId": "SKT343MURQU",
+        "deliveries": [],
+        "_links": {
+          "self": [
+            {
+              "href": "/host/1000631AC8663089/offers/GN6DCMBRGEYTGOJQHE2HYMJUMY3DIMBTGNQTK"
+            }
+          ],
+          "event": [
+            {
+              "href": "/event/1000631AC8663089"
+            }
+          ],
+          "tickettype": [
+            {
+              "href": "/host/1000631AC8663089/tickettypes/SKT343MURQU"
+            }
+          ]
+        }
+      },
+      {
+        "schema": "urn:com.ticketmaster.services:schema:ismds:EventOffer:1.0",
+        "meta": {
+          "type": "urn:com.ticketmaster.services:type:ismds:EventOffer",
+          "modified": "2025-11-08T22:31:10.719290972Z",
+          "expires": "2025-11-08T22:41:10.719290972Z"
+        },
+        "offerId": "GJ6DC7BWGE",
+        "name": "Standard Ticket",
+        "rank": 0,
+        "online": true,
+        "protected": false,
+        "rollup": false,
+        "inventoryType": "primary",
+        "offerType": "standard",
+        "ticketTypeId": "000000000001",
+        "auditPriceLevel": "14",
+        "priceLevelId": "61",
+        "priceLevelSecname": "P14",
+        "description": "Standard Ticket",
+        "currency": "CAD",
+        "listPrice": 168.0,
+        "faceValue": 168.0,
+        "totalPrice": 193.4,
+        "noChargesPrice": 168.0,
+        "charges": [
+          {
+            "reason": "service",
+            "type": "fee",
+            "amount": 25.4
+          },
+          {
+            "reason": "order_processing",
+            "type": "fee",
+            "subType": "default",
+            "amount": 0.0
+          }
+        ],
+        "sellableQuantities": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+        "alternateIds": [],
+        "_links": {
+          "self": [
+            {
+              "href": "/host/1000631AC8663089/offers/GJ6DC7BWGE"
+            }
+          ],
+          "event": [
+            {
+              "href": "/event/1000631AC8663089"
+            }
+          ],
+          "tickettype": [
+            {
+              "href": "/host/1000631AC8663089/tickettypes/000000000001"
+            }
+          ]
+        }
+      }
+    ],
+    "area": [
+      {
+        "schema": "urn:com.ticketmaster.services:schema:ismds:EventArea:1.0",
+        "meta": {
+          "type": "urn:com.ticketmaster.services:type:ismds:EventArea",
+          "modified": "2025-11-08T22:31:10.719290972Z",
+          "expires": "2025-11-08T22:41:10.719290972Z"
+        },
+        "eventId": "1000631AC8663089",
+        "areaId": "16",
+        "areaType": "zone",
+        "name": "LOWER",
+        "description": "LOWER BOWL SEATING",
+        "_links": {
+          "self": [
+            {
+              "href": "/host/1000631AC8663089/areas/16"
+            }
+          ],
+          "event": [
+            {
+              "href": "/event/1000631AC8663089"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
