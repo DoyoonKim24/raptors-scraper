@@ -12,6 +12,7 @@ export default function Home() {
     rows: [],
     prices: []
   });
+
   const sectionOptions = [
     {name: "CRTN", code: 's_217'},
     {name: "CRTE", code: 's_216'},
@@ -68,9 +69,20 @@ export default function Home() {
   const rowOptions = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32'];
 
   const handleSubmit = () => {
-    console.log("Selected Filters:", selectedFilters);
+    // Convert section names to codes for submission
+    const sectionCodes = selectedFilters.sections.map(name => {
+      const section = sectionOptions.find(option => option.name === name);
+      return section ? section.code : '';
+    }).filter(code => code !== '');
+
+    const filters = {
+      ...selectedFilters,
+      sections: sectionCodes
+    };
+
+    console.log("Selected Filters:", filters);
   }
-  
+
   return (
     <div className="flex flex-1 min-w-0 items-center pt-16">
       <div className="flex-1 min-w-0">
