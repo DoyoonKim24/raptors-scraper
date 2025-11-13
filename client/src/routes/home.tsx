@@ -68,19 +68,28 @@ export default function Home() {
 
   const rowOptions = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32'];
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     // Convert section names to codes for submission
     const sectionCodes = selectedFilters.sections.map(name => {
       const section = sectionOptions.find(option => option.name === name);
       return section ? section.code : '';
     }).filter(code => code !== '');
 
-    const filters = {
-      ...selectedFilters,
-      sections: sectionCodes
-    };
+    const params = new URLSearchParams();
+    if (sectionCodes.length > 0) {
+      params.append('sections', sectionCodes.map(code => `'${code}'`).join(','));
+    }
+    if (selectedFilters.prices.length > 0) {
+      params.append('max_price', selectedFilters.prices[0].toString());
+    }
 
-    console.log("Selected Filters:", filters);
+    try {
+      const response = await fetch(`http://localhost:5000/seats?${params.toString()}`);
+      const data = await response.json();
+      console.log("Response:", data);
+    } catch (error) {
+      console.error("Error:", error);
+    }
   }
 
   return (

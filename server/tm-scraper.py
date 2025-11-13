@@ -101,7 +101,7 @@ params = {
     'show': 'places+maxQuantity+sections',
     'mode': 'primary:ppsectionrow+resale:ga_areas+platinum:all',
     'qty': '2',
-    'q': "and(not('accessible'), and(any(shapes,'s_37','s_28'), any(totalprices, $and(gte(@, 49), lte(@, 200)))))",
+    'q': "and(not('accessible'), and(any(shapes,'s_41','s_25'), any(totalprices, $and(gte(@, 49), lte(@, 200)))))",
     'includeStandard': 'true',
     'includeResale': 'true',
     'includePlatinumInventoryType': 'false',

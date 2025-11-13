@@ -50,13 +50,13 @@ def fetch_prices(event_id, params, event_url, max_retries=2):
         time.sleep(2)
     raise Exception("Session refresh failed")
 
-def monitor_prices(event_id, event_url, section_targets, interval=60):
+def monitor_prices(event_id, event_url, sections, max_price, interval=60):
     while True:
         params = {
             'show': 'places+maxQuantity+sections',
             'mode': 'primary:ppsectionrow+resale:ga_areas+platinum:all',
-            'qty': '2',  
-            'q': "and(not('accessible'), and(any(shapes,'s_37','s_28'), any(totalprices, $and(gte(@, 49), lte(@, 200)))))",
+            'qty': '2',
+            'q': f"and(not('accessible'), and(any(shapes,{sections}), any(totalprices, $and(gte(@, 0), lte(@, {max_price})))))",
             'includeStandard': 'true',
             'includeResale': 'true',
             'includePlatinumInventoryType': 'false',
@@ -69,11 +69,11 @@ def monitor_prices(event_id, event_url, section_targets, interval=60):
             'offset': '0',
             'sort': 'noTaxTotalprice',
         }
+
+        
         r = fetch_prices(event_id, params, event_url)
         data = r.json()
-        with open("quickpicks.json", "w", encoding="utf-8") as f:
-            json.dump(data, f, ensure_ascii=False, indent=2)
-        break
+        return data
         # # Example extraction logic
         # for offer in data.get("_embedded", {}).get("offers", []):
         #     section = offer.get("place", {}).get("section", {}).get("name")
@@ -87,6 +87,6 @@ def monitor_prices(event_id, event_url, section_targets, interval=60):
 # usage
 event_id = "1000631AC8663089"
 event_url = f"https://www.ticketmaster.ca/event/{event_id}"
-targets = {"SEC 102": 150, "SEC 103": 120}
+targets = "'s_41','s_25'"
 
-monitor_prices(event_id, event_url, targets, interval=300)
+monitor_prices(event_id, event_url, targets, 200, interval=300)
