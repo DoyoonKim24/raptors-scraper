@@ -24,7 +24,9 @@ def get_new_session(event_url):
         browser.close()
 
     cookies_dict = {c["name"]: c["value"] for c in cookies}
+    
     headers = logs[0]["headers"]
+    
     session = {"cookies": cookies_dict, "headers": headers}
     with open(SESSION_FILE, "w") as f:
         json.dump(session, f)
@@ -38,9 +40,9 @@ def load_session(event_url):
     else:
         return get_new_session(event_url)
 
-def fetch_prices(event_id, params, event_url, max_retries=2):
+def fetch_prices(event_id, params, max_retries=2):
     base_url = f"https://offeradapter.ticketmaster.ca/api/ismds/event/{event_id}/quickpicks"
-    session = load_session(event_url)
+    session = load_session(f"https://www.ticketmaster.ca/event/{event_id}")
     for _ in range(max_retries):
         r = requests.get(base_url, headers=session["headers"], cookies=session["cookies"], params=params)
         if r.status_code == 200:
@@ -50,28 +52,31 @@ def fetch_prices(event_id, params, event_url, max_retries=2):
         time.sleep(2)
     raise Exception("Session refresh failed")
 
-def monitor_prices(event_id, event_url, sections, max_price, interval=60):
+def monitor_prices(event_id, sections, max_price, interval=60):
     while True:
+        q_param = f"and(not('accessible'),and(any(shapes,{sections}),any(totalprices,$and(gte(@,60),lte(@,{max_price})))))"
+        print(f"Query parameter: {q_param}")
+        
         params = {
             'show': 'places+maxQuantity+sections',
             'mode': 'primary:ppsectionrow+resale:ga_areas+platinum:all',
             'qty': '2',
-            'q': f"and(not('accessible'), and(any(shapes,{sections}), any(totalprices, $and(gte(@, 0), lte(@, {max_price})))))",
+            'q': q_param,
             'includeStandard': 'true',
             'includeResale': 'true',
             'includePlatinumInventoryType': 'false',
-            'ticketTypes': '000000000001,0C000100000A',
+            'ticketTypes': '000000000001',
             'embed': ['area', 'offer', 'description'],
             'apikey': 'b462oi7fic6pehcdkzony5bxhe',
             'apisecret': 'pquzpfrfz7zd2ylvtz3w5dtyse',
             'resaleChannelId': 'internal.ecommerce.consumer.desktop.web.browser.ticketmaster.ca',
-            'limit': '40',
+            'limit': '20',
             'offset': '0',
-            'sort': 'noTaxTotalprice',
+            'sort': 'noTaxTotalprice'
         }
 
         
-        r = fetch_prices(event_id, params, event_url)
+        r = fetch_prices(event_id, params)
         data = r.json()
         return data
         # # Example extraction logic
@@ -84,9 +89,31 @@ def monitor_prices(event_id, event_url, sections, max_price, interval=60):
         # print("Checked. Waiting for next run...")
         # time.sleep(interval)
 
-# usage
-event_id = "1000631AC8663089"
-event_url = f"https://www.ticketmaster.ca/event/{event_id}"
-targets = "'s_41','s_25'"
+event_id = "1000631AC86A30A0"
+event_url = "https://www.ticketmaster.ca/event/1000631AC86A30A0"
 
-monitor_prices(event_id, event_url, targets, 200, interval=300)
+params = {
+    'show': 'places+maxQuantity+sections',
+    'mode': 'primary:ppsectionrow+resale:ga_areas+platinum:all',
+    'qty': '2',
+    'q': "and(not('accessible'),and(any(shapes,'s_217'),any(totalprices,$and(gte(@,100),lte(@,4000)))))",
+    'includeStandard': 'true',
+    'includeResale': 'true',
+    'includePlatinumInventoryType': 'false',
+    'ticketTypes': '000000000001',
+    'embed': ['area', 'offer', 'description'],
+    'apikey': 'b462oi7fic6pehcdkzony5bxhe',
+    'apisecret': 'pquzpfrfz7zd2ylvtz3w5dtyse',
+    'resaleChannelId': 'internal.ecommerce.consumer.desktop.web.browser.ticketmaster.ca',
+    'limit': '40',
+    'offset': '0',
+    'sort': 'noTaxTotalprice'
+}
+response = fetch_prices(event_id, params)
+data = response.json()
+print(f"Status: {response.status_code}")
+print(f"Total tickets: {data.get('total', 0)}")
+
+# Save to file
+with open('quickpicks_result.json', 'w') as f:
+    json.dump(data, f, indent=2)

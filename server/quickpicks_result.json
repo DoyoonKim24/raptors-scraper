@@ -2,8 +2,8 @@
   "schema": "urn:com.ticketmaster.services:schema:ismds:QuickPicks:4.0",
   "meta": {
     "type": "urn:com.ticketmaster.services:type:ismds:QuickPicks",
-    "modified": "2025-11-14T03:12:22.720942275Z",
-    "expires": "2025-11-14T03:13:22.720942275Z"
+    "modified": "2025-11-14T03:52:48.420765315Z",
+    "expires": "2025-11-14T03:53:48.420765315Z"
   },
   "eventId": "1000631AC86A30A0",
   "offset": 0,
@@ -33,7 +33,6 @@
       ],
       "area": "15",
       "descriptionId": "IE5DCNI",
-      "maxQuantity": 2,
       "shapes": null,
       "snapshotImageUrl": "image?systemId=HOST&sectionNames=CRTN&placeId=INJFITR2KZEVAORRGU"
     },
@@ -61,7 +60,6 @@
       ],
       "area": "15",
       "descriptionId": "IE5DCNI",
-      "maxQuantity": 6,
       "shapes": null,
       "snapshotImageUrl": "image?systemId=HOST&sectionNames=BENCH&placeId=IJCU4Q2IHJJECUB2GE"
     },
@@ -89,7 +87,6 @@
       ],
       "area": "15",
       "descriptionId": "IE5DCNI",
-      "maxQuantity": 4,
       "shapes": null,
       "snapshotImageUrl": "image?systemId=HOST&sectionNames=BENCH&placeId=IJCU4Q2IHJJECUB2GM"
     },
@@ -117,7 +114,6 @@
       ],
       "area": "15",
       "descriptionId": "IE5DCNI",
-      "maxQuantity": 2,
       "shapes": null,
       "snapshotImageUrl": "image?systemId=HOST&sectionNames=BENCH&placeId=IJCU4Q2IHJJECUB2GU"
     },
@@ -145,7 +141,6 @@
       ],
       "area": "15",
       "descriptionId": "IE5DCNI",
-      "maxQuantity": 2,
       "shapes": null,
       "snapshotImageUrl": "image?systemId=HOST&sectionNames=CRTN&placeId=INJFITR2KZEVAORRGM"
     },
@@ -173,7 +168,6 @@
       ],
       "area": "15",
       "descriptionId": "IE5DCNI",
-      "maxQuantity": 2,
       "shapes": null,
       "snapshotImageUrl": "image?systemId=HOST&sectionNames=CRTN&placeId=INJFITR2KZEVAORR"
     },
@@ -201,256 +195,14 @@
       ],
       "area": "15",
       "descriptionId": "IE5DCNI",
-      "maxQuantity": 2,
       "shapes": null,
       "snapshotImageUrl": "image?systemId=HOST&sectionNames=CRTN&placeId=INJFITR2KZEVAORT"
     }
   ],
-  "places": [
-    {
-      "accessibility": [],
-      "areas": [
-        "15"
-      ],
-      "attributes": [],
-      "available": true,
-      "branding": [],
-      "description": "IE5DCNI",
-      "inventoryTypes": [
-        "resale"
-      ],
-      "offerTypes": [
-        "standard"
-      ],
-      "offers": [
-        "GN6DSOJZHAZTSOBQGZ6DCNDGMEZWKM3GGM2Q"
-      ],
-      "priceLevels": [],
-      "priceLevelSecnames": [],
-      "seating": "reserved",
-      "section": "BENCH",
-      "shapes": [
-        "s_217"
-      ],
-      "ticketTypes": [
-        "SU6XQ7MPKNE"
-      ],
-      "places": [
-        "IJCU4Q2IHJJECUB2GM",
-        "IJCU4Q2IHJJECUB2GQ"
-      ],
-      "placeGroups": []
-    },
-    {
-      "accessibility": [],
-      "areas": [
-        "15"
-      ],
-      "attributes": [],
-      "available": true,
-      "branding": [],
-      "description": "IE5DCNI",
-      "inventoryTypes": [
-        "resale"
-      ],
-      "offerTypes": [
-        "standard"
-      ],
-      "offers": [
-        "GN6DSOJUG43DQNRVGN6DCNDGMEZWEYTGHE2Q"
-      ],
-      "priceLevels": [],
-      "priceLevelSecnames": [],
-      "seating": "reserved",
-      "section": "BENCH",
-      "shapes": [
-        "s_217"
-      ],
-      "ticketTypes": [
-        "SU6XQ7MPKNE"
-      ],
-      "places": [
-        "IJCU4Q2IHJJECUB2GE",
-        "IJCU4Q2IHJJECUB2GI"
-      ],
-      "placeGroups": []
-    },
-    {
-      "accessibility": [],
-      "areas": [
-        "15"
-      ],
-      "attributes": [],
-      "available": true,
-      "branding": [],
-      "description": "IE5DCNI",
-      "inventoryTypes": [
-        "resale"
-      ],
-      "offerTypes": [
-        "standard"
-      ],
-      "offers": [
-        "GN6DCMBRGEYDQMRQGAZHYMJUMZQTIMZWMJSDK"
-      ],
-      "priceLevels": [],
-      "priceLevelSecnames": [],
-      "seating": "reserved",
-      "section": "BENCH",
-      "shapes": [
-        "s_217"
-      ],
-      "ticketTypes": [
-        "SU6XQ7MPKNE"
-      ],
-      "places": [
-        "IJCU4Q2IHJJECUB2GU",
-        "IJCU4Q2IHJJECUB2GY"
-      ],
-      "placeGroups": []
-    },
-    {
-      "accessibility": [],
-      "areas": [
-        "15"
-      ],
-      "attributes": [],
-      "available": true,
-      "branding": [],
-      "description": "IE5DCNI",
-      "inventoryTypes": [
-        "resale"
-      ],
-      "offerTypes": [
-        "standard"
-      ],
-      "offers": [
-        "GN6DCMBQGU2DOMZQHE2HYMJVGA4DIMRSMQ2DK"
-      ],
-      "priceLevels": [],
-      "priceLevelSecnames": [],
-      "seating": "reserved",
-      "section": "CRTN",
-      "shapes": [
-        "s_217"
-      ],
-      "ticketTypes": [
-        "SU6XQ7MPKNE"
-      ],
-      "places": [
-        "INJFITR2KZEVAORR",
-        "INJFITR2KZEVAORS"
-      ],
-      "placeGroups": []
-    },
-    {
-      "accessibility": [],
-      "areas": [
-        "15"
-      ],
-      "attributes": [],
-      "available": true,
-      "branding": [],
-      "description": "IE5DCNI",
-      "inventoryTypes": [
-        "resale"
-      ],
-      "offerTypes": [
-        "standard"
-      ],
-      "offers": [
-        "GN6DSOBWGI2DKNBWGJ6DCNJQG5TDMN3CGI2Q"
-      ],
-      "priceLevels": [],
-      "priceLevelSecnames": [],
-      "seating": "reserved",
-      "section": "CRTN",
-      "shapes": [
-        "s_217"
-      ],
-      "ticketTypes": [
-        "SU6XQ7MPKNE"
-      ],
-      "places": [
-        "INJFITR2KZEVAORRGM",
-        "INJFITR2KZEVAORRGQ"
-      ],
-      "placeGroups": []
-    },
-    {
-      "accessibility": [],
-      "areas": [
-        "15"
-      ],
-      "attributes": [],
-      "available": true,
-      "branding": [],
-      "description": "IE5DCNI",
-      "inventoryTypes": [
-        "resale"
-      ],
-      "offerTypes": [
-        "standard"
-      ],
-      "offers": [
-        "GN6DCMBQGU2DOMZQGA2HYMJVGA3WMNJXMFSTK"
-      ],
-      "priceLevels": [],
-      "priceLevelSecnames": [],
-      "seating": "reserved",
-      "section": "CRTN",
-      "shapes": [
-        "s_217"
-      ],
-      "ticketTypes": [
-        "SU6XQ7MPKNE"
-      ],
-      "places": [
-        "INJFITR2KZEVAORT",
-        "INJFITR2KZEVAORU"
-      ],
-      "placeGroups": []
-    },
-    {
-      "accessibility": [],
-      "areas": [
-        "15"
-      ],
-      "attributes": [],
-      "available": true,
-      "branding": [],
-      "description": "IE5DCNI",
-      "inventoryTypes": [
-        "resale"
-      ],
-      "offerTypes": [
-        "standard"
-      ],
-      "offers": [
-        "GN6DCMBRGI4TMOBTHE3XYMJUMZQTINJUME2DK"
-      ],
-      "priceLevels": [],
-      "priceLevelSecnames": [],
-      "seating": "reserved",
-      "section": "CRTN",
-      "shapes": [
-        "s_217"
-      ],
-      "ticketTypes": [
-        "SU6XQ7MPKNE"
-      ],
-      "places": [
-        "INJFITR2KZEVAORRGU",
-        "INJFITR2KZEVAORRGY"
-      ],
-      "placeGroups": []
-    }
-  ],
-  "sections": [],
   "_links": {
     "self": [
       {
-        "href": "/host/1000631AC86A30A0/quickpicks-v4?qty=2&q=and(not('accessible'),and(any(shapes,'s_217'),any(totalprices,$and(gte(@,0),lte(@,300000)))))&show=places+maxQuantity+sections&mode=primary:ppsectionrow+resale:ga_areas+platinum:all&offset=0&limit=20&sort=noTaxTotalprice&ticketTypes=000000000001&includePlatinumInventoryType=false"
+        "href": "/host/1000631AC86A30A0/quickpicks-v4?qty=2&q=and(not('accessible'),and(any(shapes,'s_217'),any(totalprices,$and(gte(@,100),lte(@,4000)))))&show=places+maxQuantity+sections&mode=primary:ppsectionrow+resale:ga_areas+platinum:all&offset=0&limit=40&sort=noTaxTotalprice&ticketTypes=000000000001&includePlatinumInventoryType=false"
       }
     ],
     "event": [
@@ -500,8 +252,8 @@
         "schema": "urn:com.ticketmaster.services:schema:ismds:EventCompoundDescription:1.0",
         "meta": {
           "type": "urn:com.ticketmaster.services:type:ismds:Description",
-          "modified": "2025-11-14T03:12:22.720942275Z",
-          "expires": "2025-11-14T03:22:22.720942275Z"
+          "modified": "2025-11-14T03:52:48.420765315Z",
+          "expires": "2025-11-14T04:02:48.420765315Z"
         },
         "eventId": "1000631AC86A30A0",
         "descriptionId": "IE5DCNI",
@@ -527,8 +279,8 @@
         "schema": "urn:com.ticketmaster.services:schema:ismds:ResaleOffer:1.0",
         "meta": {
           "type": "urn:com.ticketmaster.services:type:ismds:EventOffer",
-          "modified": "2025-11-14T03:12:22.720942275Z",
-          "expires": "2025-11-14T03:13:22.720942275Z"
+          "modified": "2025-11-14T03:52:48.420765315Z",
+          "expires": "2025-11-14T03:53:48.420765315Z"
         },
         "offerId": "GN6DCMBRGI4TMOBTHE3XYMJUMZQTINJUME2DK",
         "rank": 0,
@@ -589,8 +341,8 @@
         "schema": "urn:com.ticketmaster.services:schema:ismds:ResaleOffer:1.0",
         "meta": {
           "type": "urn:com.ticketmaster.services:type:ismds:EventOffer",
-          "modified": "2025-11-14T03:12:22.720942275Z",
-          "expires": "2025-11-14T03:13:22.720942275Z"
+          "modified": "2025-11-14T03:52:48.420765315Z",
+          "expires": "2025-11-14T03:53:48.420765315Z"
         },
         "offerId": "GN6DSOJUG43DQNRVGN6DCNDGMEZWEYTGHE2Q",
         "rank": 0,
@@ -651,8 +403,8 @@
         "schema": "urn:com.ticketmaster.services:schema:ismds:ResaleOffer:1.0",
         "meta": {
           "type": "urn:com.ticketmaster.services:type:ismds:EventOffer",
-          "modified": "2025-11-14T03:12:22.720942275Z",
-          "expires": "2025-11-14T03:13:22.720942275Z"
+          "modified": "2025-11-14T03:52:48.420765315Z",
+          "expires": "2025-11-14T03:53:48.420765315Z"
         },
         "offerId": "GN6DSOJZHAZTSOBQGZ6DCNDGMEZWKM3GGM2Q",
         "rank": 0,
@@ -713,8 +465,8 @@
         "schema": "urn:com.ticketmaster.services:schema:ismds:ResaleOffer:1.0",
         "meta": {
           "type": "urn:com.ticketmaster.services:type:ismds:EventOffer",
-          "modified": "2025-11-14T03:12:22.720942275Z",
-          "expires": "2025-11-14T03:13:22.720942275Z"
+          "modified": "2025-11-14T03:52:48.420765315Z",
+          "expires": "2025-11-14T03:53:48.420765315Z"
         },
         "offerId": "GN6DCMBRGEYDQMRQGAZHYMJUMZQTIMZWMJSDK",
         "rank": 0,
@@ -775,8 +527,8 @@
         "schema": "urn:com.ticketmaster.services:schema:ismds:ResaleOffer:1.0",
         "meta": {
           "type": "urn:com.ticketmaster.services:type:ismds:EventOffer",
-          "modified": "2025-11-14T03:12:22.720942275Z",
-          "expires": "2025-11-14T03:13:22.720942275Z"
+          "modified": "2025-11-14T03:52:48.420765315Z",
+          "expires": "2025-11-14T03:53:48.420765315Z"
         },
         "offerId": "GN6DSOBWGI2DKNBWGJ6DCNJQG5TDMN3CGI2Q",
         "rank": 0,
@@ -837,8 +589,8 @@
         "schema": "urn:com.ticketmaster.services:schema:ismds:ResaleOffer:1.0",
         "meta": {
           "type": "urn:com.ticketmaster.services:type:ismds:EventOffer",
-          "modified": "2025-11-14T03:12:22.720942275Z",
-          "expires": "2025-11-14T03:13:22.720942275Z"
+          "modified": "2025-11-14T03:52:48.420765315Z",
+          "expires": "2025-11-14T03:53:48.420765315Z"
         },
         "offerId": "GN6DCMBQGU2DOMZQHE2HYMJVGA4DIMRSMQ2DK",
         "rank": 0,
@@ -899,8 +651,8 @@
         "schema": "urn:com.ticketmaster.services:schema:ismds:ResaleOffer:1.0",
         "meta": {
           "type": "urn:com.ticketmaster.services:type:ismds:EventOffer",
-          "modified": "2025-11-14T03:12:22.720942275Z",
-          "expires": "2025-11-14T03:13:22.720942275Z"
+          "modified": "2025-11-14T03:52:48.420765315Z",
+          "expires": "2025-11-14T03:53:48.420765315Z"
         },
         "offerId": "GN6DCMBQGU2DOMZQGA2HYMJVGA3WMNJXMFSTK",
         "rank": 0,
@@ -963,8 +715,8 @@
         "schema": "urn:com.ticketmaster.services:schema:ismds:EventArea:1.0",
         "meta": {
           "type": "urn:com.ticketmaster.services:type:ismds:EventArea",
-          "modified": "2025-11-14T03:12:22.720942275Z",
-          "expires": "2025-11-14T03:22:22.720942275Z"
+          "modified": "2025-11-14T03:52:48.420765315Z",
+          "expires": "2025-11-14T04:02:48.420765315Z"
         },
         "eventId": "1000631AC86A30A0",
         "areaId": "15",
