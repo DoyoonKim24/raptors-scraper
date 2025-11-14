@@ -1,13 +1,11 @@
 import Dropdown from "./Dropdown";
 import { useState } from "react";
 
-export default function Search({ setTotal, setPicks, setOffers }: 
-  { 
-    setTotal: (total: number) => void, 
-    setPicks: (picks: any[]) => void, 
-    setOffers: (offers: any[]) => void 
-  }) {
-    
+interface SearchProps {
+  onDataUpdate: (data: { picks: any[], offers: any[], total: number, newSearch: boolean }) => void;
+}
+
+export default function Search({ onDataUpdate }: SearchProps) {
   const [selectedFilters, setSelectedFilters] = useState<{
     sections: string[];
     maxRow: string;
@@ -21,6 +19,14 @@ export default function Search({ setTotal, setPicks, setOffers }:
   });
 
   const sectionOptions = [
+    {name: "All Sections", code: ''},
+    {name: "Courtside", code: ''},
+    {name: "Lower Bowl", code: ''},
+    {name: "Upper Bowl", code: ''},
+    {name: "Lower Sideline (center court)", code: ''},
+    {name: "Lower Baseline (end zone)", code: ''},
+    {name: "Upper Sideline (center court)", code: ''},
+    {name: "Upper Baseline (end zone)", code: ''},
     {name: "CRTN", code: 's_217'},
     {name: "CRTE", code: 's_216'},
     {name: "CRTS", code: 's_214'},
@@ -91,12 +97,57 @@ export default function Search({ setTotal, setPicks, setOffers }:
     const val2 = getRowValue(row2);
     return val1 - val2;
   };
+
   const handleSubmit = async () => {
     // Convert section names to codes for submission
-    const sectionCodes = selectedFilters.sections.map(name => {
+    const sectionCodes = selectedFilters.sections.flatMap(name => {
+      if (name === "All Sections") {
+        return sectionOptions
+          .filter(option => option.code !== '')
+          .map(option => option.code);
+      }
+      if (name === "Courtside") {
+        return ['s_217', 's_216', 's_214', 's_215'];
+      }
+      if (name === "Lower Bowl") {
+        return [
+          's_41', 's_25', 's_46', 's_43', 's_208', 's_38', 's_30', 's_24',
+          's_31', 's_40', 's_36', 's_44', 's_27', 's_26', 's_42', 's_127',
+          's_38', 's_29', 's_33', 's_28', 's_37', 's_45'
+        ];
+      }
+      if (name === "Upper Bowl") {
+        return [
+          's_218', 's_203', 's_201', 's_202', 's_49', 's_135', 's_145',
+          's_197', 's_194', 's_196', 's_142', 's_133', 's_50', 's_56',
+          's_200', 's_55', 's_48', 's_131', 's_149', 's_198', 's_195',
+          's_199', 's_152', 's_129'
+        ];
+      }
+      if (name === "Lower Baseline (end zone)") {
+        return ['s_41', 's_25', 's_46', 's_43', 's_44', 's_27', 's_36', 's_42'];
+      }
+      if (name === "Lower Sideline (center court)") {
+        return [
+          's_208', 's_38', 's_30', 's_24', 's_31', 's_40', 's_36', 
+          's_127', 's_38', 's_29', 's_33', 's_28', 's_37', 's_45'
+        ];
+      }
+      if (name === "Upper Baseline (end zone)") {
+        return [
+          's_218', 's_203', 's_201', 's_202', 's_49', 's_50', 's_56', 's_200', 's_55', 's_48',
+        ];
+      }
+      if (name === "Upper Sideline (center court)") {
+        return [
+          's_135', 's_145', 's_197', 's_194', 's_196', 's_142', 's_133',
+          's_131', 's_149', 's_198', 's_195', 's_199', 's_152', 's_129'
+          
+        ];
+      }
       const section = sectionOptions.find(option => option.name === name);
       return section ? section.code : '';
-    }).filter(code => code !== '');
+    });
 
     const params = new URLSearchParams();
     if (sectionCodes.length > 0) {
@@ -107,32 +158,71 @@ export default function Search({ setTotal, setPicks, setOffers }:
     }
 
     params.append('tickets', selectedFilters.tickets.toString());
-
     console.log("Submitting with params:", params.toString());
 
+    let newSearch = true;
+
     try {
-      const response = await fetch(`http://localhost:5000/seats?${params.toString()}`);
-      const data = await response.json();
-      setData(data);
+      let picks: any = null;
+      let total = 0;
+      let offset = 0;
+      const limit = 40;
+      
+      // Keep fetching until we get all data
+      while (true) {
+        const currentParams = new URLSearchParams(params);
+        currentParams.set('offset', offset.toString());
+        
+        console.log(`Fetching batch with offset ${offset}...`);
+        const response = await fetch(`http://localhost:5000/seats?${currentParams.toString()}`);
+        const data = await response.json();
+
+        if (selectedFilters.maxRow === 'All Rows') {
+          picks = data.picks;
+          total = data.picks.length;
+        } else {
+          picks = data.picks.filter((pick: any) => {
+            const row = pick.row;
+            if (compareRows(row, selectedFilters.maxRow) <= 0) {
+              total += 1;
+              return pick; 
+            }
+          });
+        }
+
+        // Add picks from this batch
+        if (data.total > 0) {
+          onDataUpdate({
+            picks: picks,
+            offers: data._embedded.offer,
+            total: total,
+            newSearch: newSearch
+          });
+          newSearch = false;
+          total = 0;
+          
+          // If we got less than the limit, we've reached the end
+          if (data.picks.length < limit) {
+            break;
+          }
+          
+          offset += limit;
+          
+          // Add delay between requests to avoid rate limiting (1-2 seconds)
+          if (offset < 400) { // Only continue if reasonable number of results
+            console.log('Waiting 1.5 seconds before next request...');
+            await new Promise(resolve => setTimeout(resolve, 1500));
+          } else {
+            console.log('Stopping at 200+ results to avoid detection');
+            break;
+          }
+        } else {
+          // No more picks to fetch
+          break;
+        }
+      }
     } catch (error) {
       console.error("Error:", error);
-    }
-  }
-
-  const setData = (data: any) => {
-    console.log("Setting data in Home:", data);
-    setTotal(data.total);
-    setOffers(data._embedded.offer);
-    if (selectedFilters.maxRow === 'All Rows') {
-      setPicks(data.picks);
-    } else {
-      const filteredPicks = data.picks.filter((pick: any) => {
-        const row = pick.row;
-        if (compareRows(row, selectedFilters.maxRow) <= 0) {
-          return pick; 
-        }
-      });
-      setPicks(filteredPicks);
     }
   }
 

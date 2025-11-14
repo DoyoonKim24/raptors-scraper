@@ -43,48 +43,56 @@ def load_session(event_url):
 def fetch_prices(event_id, params, max_retries=2):
     base_url = f"https://offeradapter.ticketmaster.ca/api/ismds/event/{event_id}/quickpicks"
     session = load_session(f"https://www.ticketmaster.ca/event/{event_id}")
-    for _ in range(max_retries):
+    
+    # Add random delay to make requests look more human
+    import random
+    time.sleep(random.uniform(0.5, 1.5))
+    
+    for retry in range(max_retries):
         r = requests.get(base_url, headers=session["headers"], cookies=session["cookies"], params=params)
         if r.status_code == 200:
             return r
-        print(f"[{r.status_code}] Refreshing session...")
-        session = get_new_session(f"https://www.ticketmaster.ca/event/{event_id}")
-        time.sleep(2)
+        elif r.status_code == 429:  # Rate limit
+            wait_time = random.uniform(3, 8)
+            print(f"[{r.status_code}] Rate limited. Waiting {wait_time:.1f} seconds...")
+            time.sleep(wait_time)
+        else:
+            print(f"[{r.status_code}] Refreshing session...")
+            session = get_new_session(f"https://www.ticketmaster.ca/event/{event_id}")
+            time.sleep(random.uniform(2, 4))
     raise Exception("Session refresh failed")
 
-def monitor_prices(event_id, sections, max_price, tickets, interval=60):
-    while True:
-        if sections is None and max_price is None:
-            q_param = "not('accessible')"
-        elif sections is None:
-            q_param = f"and(not('accessible'),any(totalprices,$and(gte(@,0),lte(@,{max_price}))))"
-        elif max_price is None:
-            q_param = f"and(not('accessible'),any(shapes,{sections}))"
-        else:
-            q_param = f"and(not('accessible'),and(any(shapes,{sections}),any(totalprices,$and(gte(@,0),lte(@,{max_price})))))"
-        
-        params = {
-            'show': 'places+maxQuantity+sections',
-            'mode': 'primary:ppsectionrow+resale:ga_areas+platinum:all',
-            'qty': tickets,
-            'q': q_param,
-            'includeStandard': 'true',
-            'includeResale': 'true',
-            'includePlatinumInventoryType': 'false',
-            'ticketTypes': '000000000001',
-            'embed': ['area', 'offer', 'description'],
-            'apikey': 'b462oi7fic6pehcdkzony5bxhe',
-            'apisecret': 'pquzpfrfz7zd2ylvtz3w5dtyse',
-            'resaleChannelId': 'internal.ecommerce.consumer.desktop.web.browser.ticketmaster.ca',
-            'limit': '40',
-            'offset': '0',
-            'sort': 'noTaxTotalprice'
-        }
-
-        
-        r = fetch_prices(event_id, params)
-        data = r.json()
-        return data
+def monitor_prices(event_id, sections, max_price, tickets, offset=0):
+    if sections is None and max_price is None:
+        q_param = "not('accessible')"
+    elif sections is None:
+        q_param = f"and(not('accessible'),any(totalprices,$and(gte(@,0),lte(@,{max_price}))))"
+    elif max_price is None:
+        q_param = f"and(not('accessible'),any(shapes,{sections}))"
+    else:
+        q_param = f"and(not('accessible'),and(any(shapes,{sections}),any(totalprices,$and(gte(@,0),lte(@,{max_price})))))"
+    
+    params = {
+        'show': 'places+maxQuantity+sections',
+        'mode': 'primary:ppsectionrow+resale:ga_areas+platinum:all',
+        'qty': tickets,
+        'q': q_param,
+        'includeStandard': 'true',
+        'includeResale': 'true',
+        'includePlatinumInventoryType': 'false',
+        'ticketTypes': '000000000001',
+        'embed': ['area', 'offer', 'description'],
+        'apikey': 'b462oi7fic6pehcdkzony5bxhe',
+        'apisecret': 'pquzpfrfz7zd2ylvtz3w5dtyse',
+        'resaleChannelId': 'internal.ecommerce.consumer.desktop.web.browser.ticketmaster.ca',
+        'limit': '40',
+        'offset': str(offset),
+        'sort': 'noTaxTotalprice'
+    }
+    
+    r = fetch_prices(event_id, params)
+    data = r.json()
+    return data
         # # Example extraction logic
         # for offer in data.get("_embedded", {}).get("offers", []):
         #     section = offer.get("place", {}).get("section", {}).get("name")

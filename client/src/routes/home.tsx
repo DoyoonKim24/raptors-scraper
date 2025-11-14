@@ -1,10 +1,11 @@
 import Search from "../components/Search";
+import Results from "../components/Results";
 import { useState, useEffect } from "react";
 
 export default function Home() {
-  const [total, setTotal] = useState<number>(0);
   const [picks, setPicks] = useState<any[]>([]);
   const [offers, setOffers] = useState<any[]>([]);
+  const [total, setTotal] = useState<number>(0);
   const [sectionViews, setSectionViews] = useState<{[section: string]: any}>({});
   const [imageUrls, setImageUrls] = useState<{[key: string]: string}>({});
 
@@ -95,47 +96,27 @@ export default function Home() {
     if (picks.length > 0) loadImages();
   }, [picks]);
 
-  const setData = (data: any) => {
-    console.log("Setting data in Home:", data);
-    setTotal(data.total);
-    setOffers(data._embedded.offer);
-    setPicks(data.picks);
-  }
-
-  const getPickData = (pick: any) => {
-    const offerId = pick.offerGroups[0].offers[0];
-    const offer = offers.find(o => o.offerId === offerId);
-    const cacheKey = `${pick.section}-${pick.row}`;
-    
-    return {
-      section: pick.section,
-      row: pick.row,
-      seats: pick.offerGroups[0].seats.join(", "),
-      price: offer?.totalPrice,
-      imageUrl: imageUrls[cacheKey] || ''
-    };
-  }
+  const handleDataUpdate = (data: { picks: any[], offers: any[], total: number, newSearch: boolean }) => {
+    if (data.newSearch) {
+      setPicks(data.picks);
+      setOffers(data.offers);
+      setTotal(data.total);
+    } else {
+      setPicks((prevPicks) => [...prevPicks, ...data.picks]);
+      setOffers((prevOffers) => {
+        const newOffers = data.offers.filter(
+          (newOffer) => !prevOffers.some((prevOffer) => prevOffer.offerId === newOffer.offerId)
+        );
+        return [...prevOffers, ...newOffers];
+      });
+      setTotal((prevTotal) => prevTotal + data.total);
+    }
+  };
 
   return (
     <div>
-      <Search setTotal={setTotal} setPicks={setPicks} setOffers={setOffers} />
-      {total > 0 && (
-        <div className="flex flex-wrap gap-4">
-          {picks.map((pick, index) => {
-            const { section, row, seats, price, imageUrl } = getPickData(pick);
-            return (
-              <div key={index} className="flex gap-8">
-                <img src={imageUrl} alt={`View from Section ${section}, Row ${row}`} className="w-48 h-48 object-cover rounded-md" />
-                <div>
-                  <h4>Section: {section} • Row: {row}</h4>
-                  <h4>Seats: {seats}</h4>
-                </div>
-                <h4 className="font-bold">${price}</h4>
-              </div>
-            );
-          })}
-        </div>
-      )}
+      <Search onDataUpdate={handleDataUpdate} />
+      <Results picks={picks} offers={offers} total={total} imageUrls={imageUrls} />
     </div>
   );
 }

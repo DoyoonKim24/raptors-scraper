@@ -12,9 +12,10 @@ def seats():
     sections = request.args.get('sections')
     max_price = request.args.get('max_price', type=int)
     tickets = request.args.get('tickets', type=int)
-    print(f"Received request - Sections: {sections}, Max Price: {max_price}, Tickets: {tickets}")
+    offset = request.args.get('offset', type=int, default=0)
+    print(f"Received request - Sections: {sections}, Max Price: {max_price}, Tickets: {tickets}, Offset: {offset}")
 
-    data = monitor_prices(event_id, sections, max_price, tickets)
+    data = monitor_prices(event_id, sections, max_price, tickets, offset)
     return data
 
 @app.route('/')
