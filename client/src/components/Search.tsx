@@ -1,16 +1,23 @@
 import Dropdown from "./Dropdown";
 import { useState } from "react";
 
-export default function Search({ setData }: { setData: (data: any) => void }) {
-
+export default function Search({ setTotal, setPicks, setOffers }: 
+  { 
+    setTotal: (total: number) => void, 
+    setPicks: (picks: any[]) => void, 
+    setOffers: (offers: any[]) => void 
+  }) {
+    
   const [selectedFilters, setSelectedFilters] = useState<{
     sections: string[];
-    rows: string[];
-    prices: number[];
+    maxRow: string;
+    tickets: number;
+    maxPrice: number | null;
   }>({
     sections: [],
-    rows: [],
-    prices: []
+    maxRow: 'All Rows',
+    tickets: 2,
+    maxPrice: null
   });
 
   const sectionOptions = [
@@ -66,24 +73,40 @@ export default function Search({ setData }: { setData: (data: any) => void }) {
     {name: "324", code: 's_129'},
   ];
 
-  const rowOptions = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32'];
+  const rowOptions = ['All Rows', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32'];
 
+  const ticketOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+  const compareRows = (row1: string, row2: string) => {
+    const getRowValue = (row: string) => {
+      if (/^[A-Za-z]$/.test(row)) {
+        return row.toUpperCase().charCodeAt(0) - 64;
+      } else if (/^\d+$/.test(row)) {
+        return parseInt(row) + 100;
+      } else {
+        return 1000 + row.charCodeAt(0);
+      }
+    };
+    const val1 = getRowValue(row1);
+    const val2 = getRowValue(row2);
+    return val1 - val2;
+  };
   const handleSubmit = async () => {
     // Convert section names to codes for submission
     const sectionCodes = selectedFilters.sections.map(name => {
       const section = sectionOptions.find(option => option.name === name);
       return section ? section.code : '';
     }).filter(code => code !== '');
-    console.log("Section Codes:", sectionCodes);
-    console.log("price:", selectedFilters.prices);
 
     const params = new URLSearchParams();
     if (sectionCodes.length > 0) {
       params.append('sections', sectionCodes.map(code => `'${code}'`).join(','));
     }
-    if (selectedFilters.prices.length > 0) {
-      params.append('max_price', selectedFilters.prices[0].toString());
+    if (selectedFilters.maxPrice !== null) {
+      params.append('max_price', selectedFilters.maxPrice.toString());
     }
+
+    params.append('tickets', selectedFilters.tickets.toString());
 
     console.log("Submitting with params:", params.toString());
 
@@ -93,6 +116,23 @@ export default function Search({ setData }: { setData: (data: any) => void }) {
       setData(data);
     } catch (error) {
       console.error("Error:", error);
+    }
+  }
+
+  const setData = (data: any) => {
+    console.log("Setting data in Home:", data);
+    setTotal(data.total);
+    setOffers(data._embedded.offer);
+    if (selectedFilters.maxRow === 'All Rows') {
+      setPicks(data.picks);
+    } else {
+      const filteredPicks = data.picks.filter((pick: any) => {
+        const row = pick.row;
+        if (compareRows(row, selectedFilters.maxRow) <= 0) {
+          return pick; 
+        }
+      });
+      setPicks(filteredPicks);
     }
   }
 
@@ -118,34 +158,51 @@ export default function Search({ setData }: { setData: (data: any) => void }) {
       </div>
       <hr className="border border-cocoa h-6" />
       <div className="flex-1 min-w-0">
-        <Dropdown
-          placeholder="All Rows"
-          options={rowOptions}
-          selected={selectedFilters.rows}
-          setSelected={(value: string | string[]) =>
+        <select
+          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          value={selectedFilters.maxRow}
+          onChange={(e) =>
             setSelectedFilters((prev) => ({
               ...prev,
-              rows: Array.isArray(value)
-                ? value
-                : prev.rows.includes(value)
-                  ? prev.rows
-                  : [...prev.rows, value],
+              maxRow: (e.target.value)
             }))
           }
-        />
+        >
+          {rowOptions.map((row) => (
+            <option key={row} value={row}>
+              {row === 'All Rows' ? 'All Rows' : `Row ${row} and below`}
+            </option>
+          ))}
+        </select>
+      </div>
+      <div className="flex-1 min-w-0">
+        <select
+          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          value={selectedFilters.tickets}
+          onChange={(e) =>
+            setSelectedFilters((prev) => ({
+              ...prev,
+              tickets: parseInt(e.target.value)
+            }))
+          }
+        >
+          {ticketOptions.map((num) => (
+            <option key={num} value={num}>
+              {num} Ticket{num > 1 ? 's' : ''}
+            </option>
+          ))}
+        </select>
       </div>
       <div className="flex-1 min-w-0">
         <input
           type="text"
           placeholder="Max Price"
           className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          value={selectedFilters.prices[0] || ""}
+          value={selectedFilters.maxPrice || ""}
           onChange={(e) =>
             setSelectedFilters((prev) => ({
               ...prev,
-              prices: e.target.value
-                ? [Number(e.target.value)]
-                : [],
+              maxPrice: Number(e.target.value)
             }))
           }
         />

@@ -2,8 +2,8 @@
   "schema": "urn:com.ticketmaster.services:schema:ismds:QuickPicks:4.0",
   "meta": {
     "type": "urn:com.ticketmaster.services:type:ismds:QuickPicks",
-    "modified": "2025-11-14T03:52:48.420765315Z",
-    "expires": "2025-11-14T03:53:48.420765315Z"
+    "modified": "2025-11-14T07:01:27.780009599Z",
+    "expires": "2025-11-14T07:02:27.780009599Z"
   },
   "eventId": "1000631AC86A30A0",
   "offset": 0,
@@ -252,8 +252,8 @@
         "schema": "urn:com.ticketmaster.services:schema:ismds:EventCompoundDescription:1.0",
         "meta": {
           "type": "urn:com.ticketmaster.services:type:ismds:Description",
-          "modified": "2025-11-14T03:52:48.420765315Z",
-          "expires": "2025-11-14T04:02:48.420765315Z"
+          "modified": "2025-11-14T07:01:27.780009599Z",
+          "expires": "2025-11-14T07:11:27.780009599Z"
         },
         "eventId": "1000631AC86A30A0",
         "descriptionId": "IE5DCNI",
@@ -279,8 +279,8 @@
         "schema": "urn:com.ticketmaster.services:schema:ismds:ResaleOffer:1.0",
         "meta": {
           "type": "urn:com.ticketmaster.services:type:ismds:EventOffer",
-          "modified": "2025-11-14T03:52:48.420765315Z",
-          "expires": "2025-11-14T03:53:48.420765315Z"
+          "modified": "2025-11-14T07:01:27.780009599Z",
+          "expires": "2025-11-14T07:02:27.780009599Z"
         },
         "offerId": "GN6DCMBRGI4TMOBTHE3XYMJUMZQTINJUME2DK",
         "rank": 0,
@@ -341,8 +341,8 @@
         "schema": "urn:com.ticketmaster.services:schema:ismds:ResaleOffer:1.0",
         "meta": {
           "type": "urn:com.ticketmaster.services:type:ismds:EventOffer",
-          "modified": "2025-11-14T03:52:48.420765315Z",
-          "expires": "2025-11-14T03:53:48.420765315Z"
+          "modified": "2025-11-14T07:01:27.780009599Z",
+          "expires": "2025-11-14T07:02:27.780009599Z"
         },
         "offerId": "GN6DSOJUG43DQNRVGN6DCNDGMEZWEYTGHE2Q",
         "rank": 0,
@@ -403,8 +403,8 @@
         "schema": "urn:com.ticketmaster.services:schema:ismds:ResaleOffer:1.0",
         "meta": {
           "type": "urn:com.ticketmaster.services:type:ismds:EventOffer",
-          "modified": "2025-11-14T03:52:48.420765315Z",
-          "expires": "2025-11-14T03:53:48.420765315Z"
+          "modified": "2025-11-14T07:01:27.780009599Z",
+          "expires": "2025-11-14T07:02:27.780009599Z"
         },
         "offerId": "GN6DSOJZHAZTSOBQGZ6DCNDGMEZWKM3GGM2Q",
         "rank": 0,
@@ -465,8 +465,8 @@
         "schema": "urn:com.ticketmaster.services:schema:ismds:ResaleOffer:1.0",
         "meta": {
           "type": "urn:com.ticketmaster.services:type:ismds:EventOffer",
-          "modified": "2025-11-14T03:52:48.420765315Z",
-          "expires": "2025-11-14T03:53:48.420765315Z"
+          "modified": "2025-11-14T07:01:27.780009599Z",
+          "expires": "2025-11-14T07:02:27.780009599Z"
         },
         "offerId": "GN6DCMBRGEYDQMRQGAZHYMJUMZQTIMZWMJSDK",
         "rank": 0,
@@ -527,8 +527,8 @@
         "schema": "urn:com.ticketmaster.services:schema:ismds:ResaleOffer:1.0",
         "meta": {
           "type": "urn:com.ticketmaster.services:type:ismds:EventOffer",
-          "modified": "2025-11-14T03:52:48.420765315Z",
-          "expires": "2025-11-14T03:53:48.420765315Z"
+          "modified": "2025-11-14T07:01:27.780009599Z",
+          "expires": "2025-11-14T07:02:27.780009599Z"
         },
         "offerId": "GN6DSOBWGI2DKNBWGJ6DCNJQG5TDMN3CGI2Q",
         "rank": 0,
@@ -589,8 +589,8 @@
         "schema": "urn:com.ticketmaster.services:schema:ismds:ResaleOffer:1.0",
         "meta": {
           "type": "urn:com.ticketmaster.services:type:ismds:EventOffer",
-          "modified": "2025-11-14T03:52:48.420765315Z",
-          "expires": "2025-11-14T03:53:48.420765315Z"
+          "modified": "2025-11-14T07:01:27.780009599Z",
+          "expires": "2025-11-14T07:02:27.780009599Z"
         },
         "offerId": "GN6DCMBQGU2DOMZQHE2HYMJVGA4DIMRSMQ2DK",
         "rank": 0,
@@ -651,8 +651,8 @@
         "schema": "urn:com.ticketmaster.services:schema:ismds:ResaleOffer:1.0",
         "meta": {
           "type": "urn:com.ticketmaster.services:type:ismds:EventOffer",
-          "modified": "2025-11-14T03:52:48.420765315Z",
-          "expires": "2025-11-14T03:53:48.420765315Z"
+          "modified": "2025-11-14T07:01:27.780009599Z",
+          "expires": "2025-11-14T07:02:27.780009599Z"
         },
         "offerId": "GN6DCMBQGU2DOMZQGA2HYMJVGA3WMNJXMFSTK",
         "rank": 0,
@@ -715,8 +715,8 @@
         "schema": "urn:com.ticketmaster.services:schema:ismds:EventArea:1.0",
         "meta": {
           "type": "urn:com.ticketmaster.services:type:ismds:EventArea",
-          "modified": "2025-11-14T03:52:48.420765315Z",
-          "expires": "2025-11-14T04:02:48.420765315Z"
+          "modified": "2025-11-14T07:01:27.780009599Z",
+          "expires": "2025-11-14T07:11:27.780009599Z"
         },
         "eventId": "1000631AC86A30A0",
         "areaId": "15",

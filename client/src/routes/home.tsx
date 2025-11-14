@@ -8,13 +8,6 @@ export default function Home() {
   const [sectionViews, setSectionViews] = useState<{[section: string]: any}>({});
   const [imageUrls, setImageUrls] = useState<{[key: string]: string}>({});
 
-  const setData = (data: any) => {
-    console.log("Setting data in Home:", data);
-    setTotal(data.total);
-    setPicks(data.picks);
-    setOffers(data._embedded.offer);
-  }
-
   const fetchSectionViews = async (section: string) => {
     if (sectionViews[section]) return sectionViews[section];
 
@@ -102,6 +95,13 @@ export default function Home() {
     if (picks.length > 0) loadImages();
   }, [picks]);
 
+  const setData = (data: any) => {
+    console.log("Setting data in Home:", data);
+    setTotal(data.total);
+    setOffers(data._embedded.offer);
+    setPicks(data.picks);
+  }
+
   const getPickData = (pick: any) => {
     const offerId = pick.offerGroups[0].offers[0];
     const offer = offers.find(o => o.offerId === offerId);
@@ -112,13 +112,13 @@ export default function Home() {
       row: pick.row,
       seats: pick.offerGroups[0].seats.join(", "),
       price: offer?.totalPrice,
-      imageUrl: imageUrls[cacheKey] || '' // Get image from state
+      imageUrl: imageUrls[cacheKey] || ''
     };
   }
 
   return (
     <div>
-      <Search setData={setData} />
+      <Search setTotal={setTotal} setPicks={setPicks} setOffers={setOffers} />
       {total > 0 && (
         <div className="flex flex-wrap gap-4">
           {picks.map((pick, index) => {

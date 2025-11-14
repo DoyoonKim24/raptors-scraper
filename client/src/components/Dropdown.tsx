@@ -10,7 +10,7 @@ interface DropdownProps {
   placeholder?: string;
   rounded?: "none" | "left";
   selected: string[];
-  setSelected: (selected: string[]) => void;
+  setSelected: (selected: string[] | string) => void;
 }
 
 export default function Dropdown({ options = [], placeholder, rounded = "none", selected, setSelected }: DropdownProps) {
