@@ -3,9 +3,10 @@ import { useState } from "react";
 
 interface SearchProps {
   onDataUpdate: (data: { picks: any[], offers: any[], total: number, newSearch: boolean }) => void;
+  eventId: string;
 }
 
-export default function Search({ onDataUpdate }: SearchProps) {
+export default function Search({ onDataUpdate, eventId }: SearchProps) {
   const [selectedFilters, setSelectedFilters] = useState<{
     sections: string[];
     maxRow: string;
@@ -149,7 +150,7 @@ export default function Search({ onDataUpdate }: SearchProps) {
       return section ? section.code : '';
     });
 
-    const params = new URLSearchParams();
+    const params = new URLSearchParams("event_id=" + eventId);
     if (sectionCodes.length > 0) {
       params.append('sections', sectionCodes.map(code => `'${code}'`).join(','));
     }

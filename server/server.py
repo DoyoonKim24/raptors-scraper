@@ -7,8 +7,7 @@ CORS(app)
 
 @app.route('/seats')
 def seats():
-    event_id = "1000631AC86A30A0"
-
+    event_id = request.args.get('event_id')
     sections = request.args.get('sections')
     max_price = request.args.get('max_price', type=int)
     tickets = request.args.get('tickets', type=int)

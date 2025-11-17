@@ -5,6 +5,10 @@ import { useParams } from "react-router";
 
 export default function Event() {
   const { id } = useParams();
+  const [eventId, setEventId] = useState<string>("");
+  const [date, setDate] = useState<string>("");
+  const [title, setTitle] = useState<string>("");
+
   const [picks, setPicks] = useState<any[]>([]);
   const [offers, setOffers] = useState<any[]>([]);
   const [total, setTotal] = useState<number>(0);
@@ -98,6 +102,29 @@ export default function Event() {
     if (picks.length > 0) loadImages();
   }, [picks]);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(
+          `https://app.ticketmaster.com/discovery/v2/events/${id}.json?apikey=${import.meta.env.VITE_TICKETMASTER_API_KEY}`
+        );
+        const data = await res.json();
+        setEventId(data.url.substring(data.url.lastIndexOf("/") + 1));
+        const date = new Date(data.dates.start.dateTime);
+        const monthName = date.toLocaleString("en-US", { month: "short", timeZone: "America/Toronto" });
+        const dayName = date.toLocaleString("en-US", { weekday: "short", timeZone: "America/Toronto" });
+        const day = date.toLocaleString("en-US", { day: "numeric", timeZone: "America/Toronto" });
+        const time = date.toLocaleString("en-US", { hour: "numeric", minute: "2-digit", hour12: true, timeZone: "America/Toronto" });
+        setDate(`${monthName} ${day} • ${dayName} • ${time}`);
+        setTitle(data.name);
+      } catch (err) {
+        console.error("bro it broke:", err);
+      }
+    };
+
+    fetchData();
+  }, [id]);
+
   const handleDataUpdate = (data: { picks: any[], offers: any[], total: number, newSearch: boolean }) => {
     if (data.newSearch) {
       setPicks(data.picks);
@@ -117,7 +144,9 @@ export default function Event() {
 
   return (
     <div>
-      <Search onDataUpdate={handleDataUpdate} />
+      <p>{date}</p>
+      <h4>{title}</h4>
+      <Search onDataUpdate={handleDataUpdate} eventId={eventId} />
       <Results picks={picks} offers={offers} total={total} imageUrls={imageUrls} />
     </div>
   );
