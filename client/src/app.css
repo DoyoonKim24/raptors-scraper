@@ -3,13 +3,37 @@
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-komu: "komu-new-f", ui-sans-serif, system-ui, sans-serif,
+  --font-cofo: "cofo-gothic-variable", sans-serif;
+  --color-grey: #2A2626;
+  --color-red: #921616;
 }
 
 html,
 body {
-  @apply bg-white dark:bg-gray-950;
+  @apply bg-[#1F1D1E] text-white;
+  background-image: url('/pinstripeBG.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
 
-  @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
+@layer base {
+  body {
+    font-family: cofo-gothic-variable, sans-serif;
+  }
+  h1 {
+    font-size: 56px;
+    font-family: komu-new-f, serif;
+    font-weight: 300;
+    line-height: 1.2;
   }
 }
+
+/* Custom Box Shadow Styles */
+.shadow-red:hover {
+  box-shadow: 4px 4px 0px 0px rgba(96, 15, 15, .5);
+  translate: -2px -2px;
+}
+
