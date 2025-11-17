@@ -2,6 +2,7 @@ import Search from "../components/Search";
 import Results from "../components/Results";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
+import sectionMap from "../images/sectionMap.png"
 
 export default function Event() {
   const { id } = useParams();
@@ -143,11 +144,20 @@ export default function Event() {
   };
 
   return (
-    <div>
-      <p>{date}</p>
-      <h4>{title}</h4>
-      <Search onDataUpdate={handleDataUpdate} eventId={eventId} />
-      <Results picks={picks} offers={offers} total={total} imageUrls={imageUrls} />
+    <div className="mx-auto pt-16 px-64">
+      <p className="text-lg">{date}</p>
+      <h4 className="text-[40px] font-bold">{title}</h4>
+      <div className="flex gap-8 relative">
+        <div className="flex-1">
+          <Search onDataUpdate={handleDataUpdate} eventId={eventId} />
+          <Results picks={picks} offers={offers} total={total} imageUrls={imageUrls} />
+        </div>
+        <div className="w-2/5">
+          <img src={sectionMap} className="w-full h-auto object-contain" alt="Section view" />
+        </div>
+        
+      </div>
+      
     </div>
   );
 }
