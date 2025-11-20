@@ -47,6 +47,11 @@ export default function Results({ picks, offers, total, imageUrls, loading, sear
           <p className="text-lg">No tickets found for the selected criteria. Try adjusting your filters and searching again.</p>
         </div>
       )}
+      {!loading && total === 0 && !searched && (
+        <div className="w-full items-center py-4">
+          <p className="text-[24px] font-semibold">Set your filters and click search to find tickets!</p>
+        </div>
+      )}
     </>
   );
 }
