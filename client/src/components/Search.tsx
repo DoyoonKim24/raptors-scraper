@@ -1,5 +1,9 @@
 import Dropdown from "./Dropdown";
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import Select from 'react-select';
+import SelectDropdown from "./SelectDropdown";
 
 interface SearchProps {
   onDataUpdate: (data: { picks: any[], offers: any[], total: number, newSearch: boolean }) => void;
@@ -80,9 +84,61 @@ export default function Search({ onDataUpdate, eventId }: SearchProps) {
     {name: "324", code: 's_129'},
   ];
 
-  const rowOptions = ['All Rows', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32'];
+  const rowOptions = [
+    { value: 'All Rows', label: 'All Rows' },
+    { value: 'A', label: 'Row A and below' },
+    { value: 'B', label: 'Row B and below' },
+    { value: 'C', label: 'Row C and below' },
+    { value: 'D', label: 'Row D and below' },
+    { value: 'E', label: 'Row E and below' },
+    { value: 'F', label: 'Row F and below' },
+    { value: 'G', label: 'Row G and below' },
+    { value: 'H', label: 'Row H and below' },
+    { value: '1', label: 'Row 1 and below' },
+    { value: '2', label: 'Row 2 and below' },
+    { value: '3', label: 'Row 3 and below' },
+    { value: '4', label: 'Row 4 and below' },
+    { value: '5', label: 'Row 5 and below' },
+    { value: '6', label: 'Row 6 and below' },
+    { value: '7', label: 'Row 7 and below' },
+    { value: '8', label: 'Row 8 and below' },
+    { value: '9', label: 'Row 9 and below' },
+    { value: '10', label: 'Row 10 and below' },
+    { value: '11', label: 'Row 11 and below' },
+    { value: '12', label: 'Row 12 and below' },
+    { value: '13', label: 'Row 13 and below' },
+    { value: '14', label: 'Row 14 and below' },
+    { value: '15', label: 'Row 15 and below' },
+    { value: '16', label: 'Row 16 and below' },
+    { value: '17', label: 'Row 17 and below' },
+    { value: '18', label: 'Row 18 and below' },
+    { value: '19', label: 'Row 19 and below' },
+    { value: '20', label: 'Row 20 and below' },
+    { value: '21', label: 'Row 21 and below' },
+    { value: '22', label: 'Row 22 and below' },
+    { value: '23', label: 'Row 23 and below' },
+    { value: '24', label: 'Row 24 and below' },
+    { value: '25', label: 'Row 25 and below' },
+    { value: '26', label: 'Row 26 and below' },
+    { value: '27', label: 'Row 27 and below' },
+    { value: '28', label: 'Row 28 and below' },
+    { value: '29', label: 'Row 29 and below' },
+    { value: '30', label: 'Row 30 and below' },
+    { value: '31', label: 'Row 31 and below' },
+    { value: '32', label: 'Row 32 and below' }
+  ];
 
-  const ticketOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const ticketOptions = [
+    {value: 1, label: '1 Ticket'},
+    {value: 2, label: '2 Tickets'},
+    {value: 3, label: '3 Tickets'},
+    {value: 4, label: '4 Tickets'},
+    {value: 5, label: '5 Tickets'},
+    {value: 6, label: '6 Tickets'},
+    {value: 7, label: '7 Tickets'},
+    {value: 8, label: '8 Tickets'},
+    {value: 9, label: '9 Tickets'}
+  ];
 
   const compareRows = (row1: string, row2: string) => {
     const getRowValue = (row: string) => {
@@ -228,12 +284,22 @@ export default function Search({ onDataUpdate, eventId }: SearchProps) {
   }
 
   return (
-    <div className="flex flex-1 min-w-0 items-center pt-16">
-      <div className="flex-1 min-w-0">
+    <div className="flex flex-1 min-w-0 items-center gap-2">
+      <SelectDropdown
+        defaultIndex={1}
+        options={ticketOptions}
+        instanceId="ticket-select"
+        onChange={(selectedOption: any) =>
+          setSelectedFilters((prev) => ({
+            ...prev,
+            tickets: selectedOption?.value || '2'
+          }))
+        }
+      />
+      <div className="w-1/4">
         <Dropdown
           placeholder="All Sections"
           options={sectionOptions.map(option => option.name)}
-          rounded="left"
           selected={selectedFilters.sections}
           setSelected={(value: string | string[]) =>
             setSelectedFilters((prev) => ({
@@ -247,62 +313,41 @@ export default function Search({ onDataUpdate, eventId }: SearchProps) {
           }
         />
       </div>
-      <hr className="border border-cocoa h-6" />
-      <div className="flex-1 min-w-0">
-        <select
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          value={selectedFilters.maxRow}
-          onChange={(e) =>
-            setSelectedFilters((prev) => ({
-              ...prev,
-              maxRow: (e.target.value)
-            }))
-          }
-        >
-          {rowOptions.map((row) => (
-            <option key={row} value={row}>
-              {row === 'All Rows' ? 'All Rows' : `Row ${row} and below`}
-            </option>
-          ))}
-        </select>
-      </div>
-      <div className="flex-1 min-w-0">
-        <select
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          value={selectedFilters.tickets}
-          onChange={(e) =>
-            setSelectedFilters((prev) => ({
-              ...prev,
-              tickets: parseInt(e.target.value)
-            }))
-          }
-        >
-          {ticketOptions.map((num) => (
-            <option key={num} value={num}>
-              {num} Ticket{num > 1 ? 's' : ''}
-            </option>
-          ))}
-        </select>
-      </div>
-      <div className="flex-1 min-w-0">
+      <SelectDropdown
+        defaultIndex={0}
+        options={rowOptions}
+        instanceId="row-select"
+        onChange={(selectedOption: any) =>
+          setSelectedFilters((prev) => ({
+            ...prev,
+            maxRow: selectedOption?.value || 'All Rows'
+          }))
+        }
+      />
+      
+      <div className="w-50 relative">
+        <span className={`absolute left-3 top-1/2 transform -translate-y-1/2 pointer-events-none ${selectedFilters.maxPrice ? 'block' : 'hidden'}`}>
+          &le;&nbsp;&nbsp;$
+        </span>
         <input
           type="text"
           placeholder="Max Price"
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className={`w-full h-9.5 border border-[#440C0C] bg-[#581d1d20] rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 ${selectedFilters.maxPrice ? 'pl-9 pr-4' : 'px-4'}`}
           value={selectedFilters.maxPrice || ""}
-          onChange={(e) =>
+          onChange={(e) => {
+            const value = e.target.value.replace(/[^0-9]/g, '');
             setSelectedFilters((prev) => ({
               ...prev,
-              maxPrice: Number(e.target.value)
+              maxPrice: value ? Number(value) : null
             }))
-          }
+          }}
         />
       </div>
       <button 
-        className="bg-[#AF3838] font-sweet font-semibold text-base text-white border-wine border-2 rounded-full px-6 py-3 m-2 whitespace-nowrap flex-shrink-0 disabled:opacity-50"
+        className="bg-[#AA0D0D] font-medium text-base text-white rounded-full px-6 py-2 whitespace-nowrap flex-shrink-0 disabled:opacity-50 hover:bg-[#880B0B] cursor-pointer ml-2"
         onClick={handleSubmit}
       >
-        Submit
+        Search
       </button>
     </div>
   );

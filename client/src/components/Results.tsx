@@ -9,7 +9,7 @@ export default function Results({ picks, offers, total, imageUrls }: ResultsProp
   return (
     <>
       {total > 0 && (
-        <div className="mt-8">
+        <div>
           <h2 className="text-xl font-bold mb-4">Found {total} tickets</h2>
           <div className="flex flex-col gap-4">
             {picks.map((pick, index) => {

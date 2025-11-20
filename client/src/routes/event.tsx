@@ -144,15 +144,18 @@ export default function Event() {
   };
 
   return (
-    <div className="mx-auto pt-16 px-64">
-      <p className="text-lg">{date}</p>
-      <h4 className="text-[40px] font-bold">{title}</h4>
+    <div className="mx-auto pt-16 px-64 gap-16 flex flex-col">
+      <div>
+        <p className="text-lg">{date}</p>
+        <h4 className="text-[40px] font-bold mb-4">{title}</h4>
+        <Search onDataUpdate={handleDataUpdate} eventId={eventId} />
+      </div>
       <div className="flex gap-8 relative">
         <div className="flex-1">
-          <Search onDataUpdate={handleDataUpdate} eventId={eventId} />
           <Results picks={picks} offers={offers} total={total} imageUrls={imageUrls} />
         </div>
-        <div className="w-2/5">
+        <div className="w-2/5 flex flex-col gap-2 items-center text-gray-300">
+          <p className="font-semibold text-lg">Section Map</p>
           <img src={sectionMap} className="w-full h-auto object-contain" alt="Section view" />
         </div>
         
