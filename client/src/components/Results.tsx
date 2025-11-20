@@ -1,3 +1,6 @@
+import type { SearchFilters } from "../routes/event";
+import { useState } from "react";
+
 interface ResultsProps {
   picks: any[];
   offers: any[];
@@ -5,9 +8,43 @@ interface ResultsProps {
   imageUrls: {[key: string]: string};
   loading?: boolean;
   searched?: boolean;
+  eventId?: string;
+  endTime?: string;
+  searchFilters?: SearchFilters;
 }
 
-export default function Results({ picks, offers, total, imageUrls, loading, searched  }: ResultsProps) {
+export default function Results({ picks, offers, total, imageUrls, loading, searched, eventId, endTime, searchFilters }: ResultsProps) {
+  const [email, setEmail] = useState<string>("");
+
+  const handleSetNotification = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/set-notification', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email,
+          event_id: eventId,
+          sections: searchFilters?.sections,
+          max_price: searchFilters?.maxPrice,
+          ticket_count: searchFilters?.tickets,
+          row: searchFilters?.maxRow,
+          expires: endTime
+        })
+      });
+      
+      if (response.ok) {
+        console.log(response.json())
+        alert('Notification set successfully!');
+      } else {
+        alert('Failed to set notification');
+      }
+    } catch (error) {
+      console.error('Error setting notification:', error);
+      alert('Error setting notification');
+    }
+  };
   return (
     <>
       {total > 0 && (
@@ -43,13 +80,21 @@ export default function Results({ picks, offers, total, imageUrls, loading, sear
         </div>
       )}
       {!loading && total === 0 && searched && (
-        <div className="w-full flex justify-center items-center py-4">
+        <div className="w-full flex flex-col justify-center items-center py-4">
           <p className="text-lg">No tickets found for the selected criteria. Try adjusting your filters and searching again.</p>
-        </div>
-      )}
-      {!loading && total === 0 && !searched && (
-        <div className="w-full items-center py-4">
-          <p className="text-[24px] font-semibold">Set your filters and click search to find tickets!</p>
+          <input 
+            type="email" 
+            placeholder="Enter your email" 
+            className="border border-gray-300 rounded-lg py-2 px-4 mb-4" 
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <button 
+            onClick={handleSetNotification}
+            className="bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-blue-700 transition-all duration-200"
+          >
+            Set Notification
+          </button>
         </div>
       )}
     </>

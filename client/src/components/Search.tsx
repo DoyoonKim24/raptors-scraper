@@ -1,28 +1,19 @@
 import Dropdown from "./Dropdown";
-import { useState, useRef } from "react";
+import { useRef } from "react";
 import SelectDropdown from "./SelectDropdown";
+import type { SearchFilters } from "../routes/event";
 
 interface SearchProps {
   onDataUpdate: (data: { picks: any[], offers: any[], total: number, newSearch: boolean }) => void;
   eventId: string;
   setLoading: (loading: boolean) => void;
+  searchFilters: SearchFilters;
+  setSearchFilters: (filters: SearchFilters) => void;
 }
 
-export default function Search({ onDataUpdate, eventId, setLoading }: SearchProps) {
+export default function Search({ onDataUpdate, eventId, setLoading, searchFilters, setSearchFilters }: SearchProps) {
   const abortControllerRef = useRef<AbortController | null>(null);
   const cleanupPromiseRef = useRef<Promise<void> | null>(null);
-  
-  const [selectedFilters, setSelectedFilters] = useState<{
-    sections: string[];
-    maxRow: string;
-    tickets: number;
-    maxPrice: number | null;
-  }>({
-    sections: [],
-    maxRow: 'All Rows',
-    tickets: 2,
-    maxPrice: null
-  });
 
   const sectionOptions = [
     {name: "All Sections", code: ''},
@@ -186,7 +177,7 @@ export default function Search({ onDataUpdate, eventId, setLoading }: SearchProp
     };
 
     // Convert section names to codes for submission
-    const sectionCodes = selectedFilters.sections.flatMap(name => {
+    const sectionCodes = searchFilters.sections.flatMap((name: string) => {
       if (name === "All Sections") {
         return sectionOptions
           .filter(option => option.code !== '')
@@ -239,11 +230,11 @@ export default function Search({ onDataUpdate, eventId, setLoading }: SearchProp
     if (sectionCodes.length > 0) {
       params.append('sections', sectionCodes.map(code => `'${code}'`).join(','));
     }
-    if (selectedFilters.maxPrice !== null) {
-      params.append('max_price', selectedFilters.maxPrice.toString());
+    if (searchFilters.maxPrice !== null) {
+      params.append('max_price', searchFilters.maxPrice.toString());
     }
 
-    params.append('tickets', selectedFilters.tickets.toString());
+    params.append('tickets', searchFilters.tickets.toString());
 
     let newSearch = true;
 
@@ -272,13 +263,13 @@ export default function Search({ onDataUpdate, eventId, setLoading }: SearchProp
         console.log(`Received ${data.picks.length} picks in this batch.`);
         console.log(data);
 
-        if (selectedFilters.maxRow === 'All Rows') {
+        if (searchFilters.maxRow === 'All Rows') {
           picks = data.picks;
           total = data.picks.length;
         } else {
           picks = data.picks.filter((pick: any) => {
             const row = pick.row;
-            if (compareRows(row, selectedFilters.maxRow) <= 0) {
+            if (compareRows(row, searchFilters.maxRow) <= 0) {
               total += 1;
               return pick; 
             }
@@ -330,26 +321,26 @@ export default function Search({ onDataUpdate, eventId, setLoading }: SearchProp
         options={ticketOptions}
         instanceId="ticket-select"
         onChange={(selectedOption: any) =>
-          setSelectedFilters((prev) => ({
-            ...prev,
-            tickets: selectedOption?.value || '2'
-          }))
+          setSearchFilters({
+            ...searchFilters,
+            tickets: selectedOption?.value || 2
+          })
         }
       />
       <div className="w-1/4">
         <Dropdown
           placeholder="All Sections"
           options={sectionOptions.map(option => option.name)}
-          selected={selectedFilters.sections}
+          selected={searchFilters.sections}
           setSelected={(value: string | string[]) =>
-            setSelectedFilters((prev) => ({
-              ...prev,
+            setSearchFilters({
+              ...searchFilters,
               sections: Array.isArray(value)
                 ? value
-                : prev.sections.includes(value)
-                  ? prev.sections
-                  : [...prev.sections, value],
-            }))
+                : searchFilters.sections.includes(value)
+                  ? searchFilters.sections
+                  : [...searchFilters.sections, value],
+            })
           }
         />
       </div>
@@ -358,28 +349,28 @@ export default function Search({ onDataUpdate, eventId, setLoading }: SearchProp
         options={rowOptions}
         instanceId="row-select"
         onChange={(selectedOption: any) =>
-          setSelectedFilters((prev) => ({
-            ...prev,
+          setSearchFilters({
+            ...searchFilters,
             maxRow: selectedOption?.value || 'All Rows'
-          }))
+          })
         }
       />
       
       <div className="w-50 relative">
-        <span className={`absolute left-3 top-1/2 transform -translate-y-1/2 pointer-events-none ${selectedFilters.maxPrice ? 'block' : 'hidden'}`}>
+        <span className={`absolute left-3 top-1/2 transform -translate-y-1/2 pointer-events-none ${searchFilters.maxPrice ? 'block' : 'hidden'}`}>
           &le;&nbsp;&nbsp;$
         </span>
         <input
           type="text"
           placeholder="Max Price"
-          className={`w-full h-9.5 border border-[#440C0C] bg-[#581d1d20] rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 ${selectedFilters.maxPrice ? 'pl-9 pr-4' : 'px-4'}`}
-          value={selectedFilters.maxPrice || ""}
+          className={`w-full h-9.5 border border-[#440C0C] bg-[#581d1d20] rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 ${searchFilters.maxPrice ? 'pl-9 pr-4' : 'px-4'}`}
+          value={searchFilters.maxPrice || ""}
           onChange={(e) => {
             const value = e.target.value.replace(/[^0-9]/g, '');
-            setSelectedFilters((prev) => ({
-              ...prev,
+            setSearchFilters({
+              ...searchFilters,
               maxPrice: value ? Number(value) : null
-            }))
+            })
           }}
         />
       </div>

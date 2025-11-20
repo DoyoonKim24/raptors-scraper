@@ -4,9 +4,17 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import sectionMap from "../images/sectionMap.png"
 
+export interface SearchFilters {
+  sections: string[];
+  maxRow: string;
+  tickets: number;
+  maxPrice: number | null;
+}
+
 export default function Event() {
   const { id } = useParams();
   const [eventId, setEventId] = useState<string>("");
+  const [endTime, setEndTime] = useState<string>("");
   const [date, setDate] = useState<string>("");
   const [title, setTitle] = useState<string>("");
 
@@ -18,6 +26,12 @@ export default function Event() {
 
   const [loading, setLoading] = useState<boolean>(false);
   const [searched, setSearched] = useState<boolean>(false);
+  const [searchFilters, setSearchFilters] = useState<SearchFilters>({
+    sections: [],
+    maxRow: 'All Rows',
+    tickets: 2,
+    maxPrice: null
+  });
 
   const fetchSectionViews = async (section: string) => {
     if (sectionViews[section]) return sectionViews[section];
@@ -114,6 +128,7 @@ export default function Event() {
         );
         const data = await res.json();
         setEventId(data.url.substring(data.url.lastIndexOf("/") + 1));
+        setEndTime(data.sales.public.endDateTime);
         const date = new Date(data.dates.start.dateTime);
         const monthName = date.toLocaleString("en-US", { month: "short", timeZone: "America/Toronto" });
         const dayName = date.toLocaleString("en-US", { weekday: "short", timeZone: "America/Toronto" });
@@ -152,11 +167,27 @@ export default function Event() {
       <div>
         <p className="text-lg">{date}</p>
         <h4 className="text-[40px] font-bold mb-4">{title}</h4>
-        <Search onDataUpdate={handleDataUpdate} eventId={eventId} setLoading={setLoading} />
+        <Search 
+          onDataUpdate={handleDataUpdate} 
+          eventId={eventId} 
+          setLoading={setLoading}
+          searchFilters={searchFilters}
+          setSearchFilters={setSearchFilters}
+        />
       </div>
       <div className="flex gap-8 relative">
         <div className="flex-1">
-          <Results picks={picks} offers={offers} total={total} imageUrls={imageUrls} loading={loading} searched={searched} />
+          <Results 
+            picks={picks} 
+            offers={offers} 
+            total={total} 
+            imageUrls={imageUrls} 
+            loading={loading} 
+            searched={searched} 
+            eventId={eventId}
+            endTime={endTime}
+            searchFilters={searchFilters}
+          />
         </div>
         <div className="w-2/5 flex flex-col gap-2 items-center text-gray-300">
           <p className="font-semibold text-lg">Section Map</p>

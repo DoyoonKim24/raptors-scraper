@@ -1,9 +1,10 @@
 from flask import Flask, request
 from flask_cors import CORS
+from supabaseClient import supabase
 from getQuickpicks import monitor_prices
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, origins="http://localhost:5173", supports_credentials=True)
 
 @app.route('/seats')
 def seats():
@@ -16,6 +17,36 @@ def seats():
 
     data = monitor_prices(event_id, sections, max_price, tickets, offset)
     return data
+
+@app.route('/set-notification', methods=['POST'])
+def set_notification():
+    content = request.json
+    email = content.get('email')
+    event_id = content.get('event_id')
+    sections = content.get('sections')
+    max_price = content.get('max_price')
+    ticket_count = content.get('ticket_count')
+    row = content.get('row')
+    expires = content.get('expires')
+
+    # Insert notification request into Supabase
+    response = supabase.table('alerts').insert({
+        'email': email,
+        'event_id': event_id,
+        'sections': sections,
+        'max_price': max_price,
+        'ticket_count': ticket_count,
+        'row': row,
+        'expires': expires,
+    }).execute()
+
+    if response:
+        return {'message': 'Notification request set successfully.'}, 201
+    else:
+        return {'message': 'Failed to set notification request.'}, 500
+    
+
+
 
 @app.route('/')
 def home():
