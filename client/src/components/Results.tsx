@@ -3,14 +3,16 @@ interface ResultsProps {
   offers: any[];
   total: number;
   imageUrls: {[key: string]: string};
+  loading?: boolean;
+  searched?: boolean;
 }
 
-export default function Results({ picks, offers, total, imageUrls }: ResultsProps) {
+export default function Results({ picks, offers, total, imageUrls, loading, searched  }: ResultsProps) {
   return (
     <>
       {total > 0 && (
         <div>
-          <h2 className="text-xl font-bold mb-4">Found {total} tickets</h2>
+          <h2 className="text-xl font-bold mb-4">Found {total} tickets {loading && <span className="animate-pulse">and counting...</span>}</h2>
           <div className="flex flex-col gap-4">
             {picks.map((pick, index) => {
               const offerId = pick.offerGroups[0].offers[0];
@@ -33,6 +35,16 @@ export default function Results({ picks, offers, total, imageUrls }: ResultsProp
               );
             })}
           </div>
+        </div>
+      )}
+      {loading && (
+        <div className="w-full flex justify-center items-center py-4">
+          <div className="animate-spin ease-linear rounded-full border-4 border-gray-300 border-t-red-600 h-8 w-8"></div>
+        </div>
+      )}
+      {!loading && total === 0 && searched && (
+        <div className="w-full flex justify-center items-center py-4">
+          <p className="text-lg">No tickets found for the selected criteria. Try adjusting your filters and searching again.</p>
         </div>
       )}
     </>

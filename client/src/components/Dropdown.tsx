@@ -52,7 +52,7 @@ export default function Dropdown({ options = [], placeholder, selected, setSelec
           {selected.length === 0 ? (
             <p> All Sections </p>
           ) : (
-            <div className="flex flex-wrap gap-1">
+            <div className="flex gap-1">
               {selected.map((item, index) => (
                 <div key={index} className="text-xs rounded-full flex bg-[#38354740] border border-[#2A1135] py-1 px-2 items-center gap-1 flex-shrink-0">
                   {item}

@@ -16,6 +16,9 @@ export default function Event() {
   const [sectionViews, setSectionViews] = useState<{[section: string]: any}>({});
   const [imageUrls, setImageUrls] = useState<{[key: string]: string}>({});
 
+  const [loading, setLoading] = useState<boolean>(false);
+  const [searched, setSearched] = useState<boolean>(false);
+
   const fetchSectionViews = async (section: string) => {
     if (sectionViews[section]) return sectionViews[section];
 
@@ -127,6 +130,7 @@ export default function Event() {
   }, [id]);
 
   const handleDataUpdate = (data: { picks: any[], offers: any[], total: number, newSearch: boolean }) => {
+    setSearched(true);
     if (data.newSearch) {
       setPicks(data.picks);
       setOffers(data.offers);
@@ -148,11 +152,11 @@ export default function Event() {
       <div>
         <p className="text-lg">{date}</p>
         <h4 className="text-[40px] font-bold mb-4">{title}</h4>
-        <Search onDataUpdate={handleDataUpdate} eventId={eventId} />
+        <Search onDataUpdate={handleDataUpdate} eventId={eventId} setLoading={setLoading} />
       </div>
       <div className="flex gap-8 relative">
         <div className="flex-1">
-          <Results picks={picks} offers={offers} total={total} imageUrls={imageUrls} />
+          <Results picks={picks} offers={offers} total={total} imageUrls={imageUrls} loading={loading} searched={searched} />
         </div>
         <div className="w-2/5 flex flex-col gap-2 items-center text-gray-300">
           <p className="font-semibold text-lg">Section Map</p>

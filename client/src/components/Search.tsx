@@ -1,16 +1,17 @@
 import Dropdown from "./Dropdown";
-import { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
-import Select from 'react-select';
+import { useState, useRef } from "react";
 import SelectDropdown from "./SelectDropdown";
 
 interface SearchProps {
   onDataUpdate: (data: { picks: any[], offers: any[], total: number, newSearch: boolean }) => void;
   eventId: string;
+  setLoading: (loading: boolean) => void;
 }
 
-export default function Search({ onDataUpdate, eventId }: SearchProps) {
+export default function Search({ onDataUpdate, eventId, setLoading }: SearchProps) {
+  const abortControllerRef = useRef<AbortController | null>(null);
+  const cleanupPromiseRef = useRef<Promise<void> | null>(null);
+  
   const [selectedFilters, setSelectedFilters] = useState<{
     sections: string[];
     maxRow: string;
@@ -156,6 +157,34 @@ export default function Search({ onDataUpdate, eventId }: SearchProps) {
   };
 
   const handleSubmit = async () => {
+    // Cancel any ongoing search
+    if (abortControllerRef.current) {
+      abortControllerRef.current.abort();
+    }
+    
+    // Wait for previous cleanup to complete
+    if (cleanupPromiseRef.current) {
+      await cleanupPromiseRef.current;
+    }
+    
+    // Create new abort controller for this search
+    abortControllerRef.current = new AbortController();
+    const signal = abortControllerRef.current.signal;
+    
+    let resolveCleanup: () => void;
+    cleanupPromiseRef.current = new Promise<void>(resolve => {
+      resolveCleanup = resolve;
+    });
+    
+    // Cleanup function to ensure loading state is reset
+    const cleanup = () => {
+      setLoading(false);
+      if (abortControllerRef.current) {
+        abortControllerRef.current = null;
+      }
+      resolveCleanup();
+    };
+
     // Convert section names to codes for submission
     const sectionCodes = selectedFilters.sections.flatMap(name => {
       if (name === "All Sections") {
@@ -215,7 +244,6 @@ export default function Search({ onDataUpdate, eventId }: SearchProps) {
     }
 
     params.append('tickets', selectedFilters.tickets.toString());
-    console.log("Submitting with params:", params.toString());
 
     let newSearch = true;
 
@@ -224,6 +252,14 @@ export default function Search({ onDataUpdate, eventId }: SearchProps) {
       let total = 0;
       let offset = 0;
       const limit = 40;
+
+      setLoading(true);
+      onDataUpdate({
+        picks: [],
+        offers: [],
+        total: 0,
+        newSearch: newSearch
+      });
       
       // Keep fetching until we get all data
       while (true) {
@@ -231,8 +267,10 @@ export default function Search({ onDataUpdate, eventId }: SearchProps) {
         currentParams.set('offset', offset.toString());
         
         console.log(`Fetching batch with offset ${offset}...`);
-        const response = await fetch(`http://localhost:5000/seats?${currentParams.toString()}`);
+        const response = await fetch(`http://localhost:5000/seats?${currentParams.toString()}`, { signal });
         const data = await response.json();
+        console.log(`Received ${data.picks.length} picks in this batch.`);
+        console.log(data);
 
         if (selectedFilters.maxRow === 'All Rows') {
           picks = data.picks;
@@ -260,6 +298,7 @@ export default function Search({ onDataUpdate, eventId }: SearchProps) {
           
           // If we got less than the limit, we've reached the end
           if (data.picks.length < limit) {
+            cleanup();
             break;
           }
           
@@ -267,19 +306,20 @@ export default function Search({ onDataUpdate, eventId }: SearchProps) {
           
           // Add delay between requests to avoid rate limiting (1-2 seconds)
           if (offset < 400) { // Only continue if reasonable number of results
-            console.log('Waiting 1.5 seconds before next request...');
             await new Promise(resolve => setTimeout(resolve, 1500));
           } else {
-            console.log('Stopping at 200+ results to avoid detection');
+            cleanup();
             break;
           }
         } else {
           // No more picks to fetch
+          cleanup();
           break;
         }
       }
     } catch (error) {
       console.error("Error:", error);
+      cleanup();
     }
   }
 
