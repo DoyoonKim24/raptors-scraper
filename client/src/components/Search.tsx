@@ -132,21 +132,6 @@ export default function Search({ onDataUpdate, eventId, setLoading, searchFilter
     {value: 9, label: '9 Tickets'}
   ];
 
-  const compareRows = (row1: string, row2: string) => {
-    const getRowValue = (row: string) => {
-      if (/^[A-Za-z]$/.test(row)) {
-        return row.toUpperCase().charCodeAt(0) - 64;
-      } else if (/^\d+$/.test(row)) {
-        return parseInt(row) + 100;
-      } else {
-        return 1000 + row.charCodeAt(0);
-      }
-    };
-    const val1 = getRowValue(row1);
-    const val2 = getRowValue(row2);
-    return val1 - val2;
-  };
-
   const handleSubmit = async () => {
     // Cancel any ongoing search
     if (abortControllerRef.current) {
@@ -233,6 +218,9 @@ export default function Search({ onDataUpdate, eventId, setLoading, searchFilter
     if (searchFilters.maxPrice !== null) {
       params.append('max_price', searchFilters.maxPrice.toString());
     }
+    if (searchFilters.maxRow !== 'All Rows') {
+      params.append('max_row', searchFilters.maxRow);
+    }
 
     params.append('tickets', searchFilters.tickets.toString());
 
@@ -251,67 +239,44 @@ export default function Search({ onDataUpdate, eventId, setLoading, searchFilter
         total: 0,
         newSearch: newSearch
       });
-      
+      let last_batch = false;
       // Keep fetching until we get all data
-      while (true) {
+      while (last_batch === false) {
         const currentParams = new URLSearchParams(params);
         currentParams.set('offset', offset.toString());
         
         console.log(`Fetching batch with offset ${offset}...`);
         const response = await fetch(`http://localhost:5000/seats?${currentParams.toString()}`, { signal });
         const data = await response.json();
-        console.log(`Received ${data.picks.length} picks in this batch.`);
+        console.log(`Received ${data.total} picks in this batch.`);
         console.log(data);
 
-        if (searchFilters.maxRow === 'All Rows') {
-          picks = data.picks;
-          total = data.picks.length;
-        } else {
-          picks = data.picks.filter((pick: any) => {
-            const row = pick.row;
-            if (compareRows(row, searchFilters.maxRow) <= 0) {
-              total += 1;
-              return pick; 
-            }
-          });
-        }
+        picks = data.picks;
+        total = data.total;
+        last_batch = data.last_batch;
 
         // Add picks from this batch
-        if (data.total > 0) {
-          onDataUpdate({
-            picks: picks,
-            offers: data._embedded.offer,
-            total: total,
-            newSearch: newSearch
-          });
-          newSearch = false;
-          total = 0;
-          
-          // If we got less than the limit, we've reached the end
-          if (data.picks.length < limit) {
-            cleanup();
-            break;
-          }
-          
-          offset += limit;
-          
-          // Add delay between requests to avoid rate limiting (1-2 seconds)
-          if (offset < 400) { // Only continue if reasonable number of results
-            await new Promise(resolve => setTimeout(resolve, 1500));
-          } else {
-            cleanup();
-            break;
-          }
+        onDataUpdate({
+          picks: picks,
+          offers: data._embedded.offer,
+          total: total,
+          newSearch: newSearch
+        });
+        newSearch = false;
+        offset += limit;
+        
+        // Add delay between requests to avoid rate limiting (1-2 seconds)
+        if (offset < 400) { // Only continue if reasonable number of results
+          await new Promise(resolve => setTimeout(resolve, 1500));
         } else {
-          // No more picks to fetch
           cleanup();
           break;
         }
       }
     } catch (error) {
-      console.error("Error:", error);
       cleanup();
     }
+    cleanup();
   }
 
   return (

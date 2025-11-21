@@ -40,29 +40,22 @@ def load_session(event_url):
     else:
         return get_new_session(event_url)
 
-def fetch_prices(event_id, params, max_retries=2):
+def fetch_prices(event_id, sections, max_price, max_row, tickets, offset=0):
     base_url = f"https://offeradapter.ticketmaster.ca/api/ismds/event/{event_id}/quickpicks"
     session = load_session(f"https://www.ticketmaster.ca/event/{event_id}")
     
-    # Add random delay to make requests look more human
-    import random
-    time.sleep(random.uniform(0.5, 1.5))
+    def compare_rows(row1, row2):
+        def get_row_value(row):
+            if isinstance(row, str) and len(row) == 1 and row.isalpha():
+                return ord(row.upper()) - 64
+            elif row.isdigit():
+                return int(row) + 100
+            else:
+                return 1000 + ord(row[0]) if row else 1000
+        val1 = get_row_value(row1)
+        val2 = get_row_value(row2)
+        return val1 - val2
     
-    for retry in range(max_retries):
-        r = requests.get(base_url, headers=session["headers"], cookies=session["cookies"], params=params)
-        if r.status_code == 200:
-            return r
-        elif r.status_code == 429:  # Rate limit
-            wait_time = random.uniform(3, 8)
-            print(f"[{r.status_code}] Rate limited. Waiting {wait_time:.1f} seconds...")
-            time.sleep(wait_time)
-        else:
-            print(f"[{r.status_code}] Refreshing session...")
-            session = get_new_session(f"https://www.ticketmaster.ca/event/{event_id}")
-            time.sleep(random.uniform(2, 4))
-    raise Exception("Session refresh failed")
-
-def monitor_prices(event_id, sections, max_price, tickets, offset=0):
     if sections is None and max_price is None:
         q_param = "not('accessible')"
     elif sections is None:
@@ -90,16 +83,49 @@ def monitor_prices(event_id, sections, max_price, tickets, offset=0):
         'sort': 'noTaxTotalprice'
     }
     
-    r = fetch_prices(event_id, params)
-    data = r.json()
-    return data
-        # # Example extraction logic
-        # for offer in data.get("_embedded", {}).get("offers", []):
-        #     section = offer.get("place", {}).get("section", {}).get("name")
-        #     price = offer.get("price", {}).get("amount")
-        #     if section in section_targets and price <= section_targets[section]:
-        #         print(f"🔥 {section} hit target: ${price}")
-        
-        # print("Checked. Waiting for next run...")
-        # time.sleep(interval)
+    # Add random delay to make requests look more human
+    import random
+    time.sleep(random.uniform(0.5, 1.5))
+    
+    for retry in range(2):
+        r = requests.get(base_url, headers=session["headers"], cookies=session["cookies"], params=params)
+        if r.status_code == 200:
+            data = r.json()
+            data['last_batch'] = (len(data.get('picks', [])) < 40)
+            
+            # Apply row filtering if max_row is specified
+            if max_row and max_row != 'All Rows':
+                filtered_picks = []
+                for pick in data.get('picks', []):
+                    row = pick.get('row', '')
+                    if compare_rows(row, max_row) <= 0:
+                        filtered_picks.append(pick)
+                data['picks'] = filtered_picks
+                data['total'] = len(filtered_picks)
+            
+            return data
+        elif r.status_code == 429:  # Rate limit
+            wait_time = random.uniform(3, 8)
+            print(f"[{r.status_code}] Rate limited. Waiting {wait_time:.1f} seconds...")
+            time.sleep(wait_time)
+        else:
+            print(f"[{r.status_code}] Refreshing session...")
+            session = get_new_session(f"https://www.ticketmaster.ca/event/{event_id}")
+            time.sleep(random.uniform(2, 4))
+    raise Exception("Session refresh failed")
 
+def fetch_all_prices(event_id, sections, max_price, max_row, tickets):
+    all_picks = []
+    all_offers = []
+    offset = 0
+    while True:
+        data = fetch_prices(event_id, sections, max_price, max_row, tickets, offset)
+        picks = data.get('picks', [])
+        all_picks.extend(picks)
+        offers = data.get('_embedded', {}).get('offer', [])
+        all_offers.extend(offers)
+        if not data.get('last_batch', True):
+            offset += len(picks)
+        else:
+            break
+    return {"picks": all_picks, "offers": all_offers}

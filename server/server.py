@@ -1,7 +1,7 @@
 from flask import Flask, request
 from flask_cors import CORS
 from supabaseClient import supabase
-from getQuickpicks import monitor_prices
+from getQuickpicks import fetch_prices
 
 app = Flask(__name__)
 CORS(app, origins="http://localhost:5173", supports_credentials=True)
@@ -11,11 +11,12 @@ def seats():
     event_id = request.args.get('event_id')
     sections = request.args.get('sections')
     max_price = request.args.get('max_price', type=int)
+    max_row = request.args.get('max_row')
     tickets = request.args.get('tickets', type=int)
     offset = request.args.get('offset', type=int, default=0)
-    print(f"Received request - Sections: {sections}, Max Price: {max_price}, Tickets: {tickets}, Offset: {offset}")
+    print(f"Received request - Sections: {sections}, Max Price: {max_price}, Max Row: {max_row}, Tickets: {tickets}, Offset: {offset}")
 
-    data = monitor_prices(event_id, sections, max_price, tickets, offset)
+    data = fetch_prices(event_id, sections, max_price, max_row, tickets, offset)
     return data
 
 @app.route('/set-notification', methods=['POST'])
