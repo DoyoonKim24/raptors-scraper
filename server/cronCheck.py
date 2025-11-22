@@ -46,8 +46,9 @@ def check_alerts():
           if offer.get("offerId") == offer_id:
             total_price = offer.get("totalPrice")
             break
-        
+
         seats = pick.get("offerGroups", [{}])[0].get("seats", [])
+
         ticket = {
           "section": pick.get("section"),
           "row": pick.get("row"),
@@ -56,19 +57,32 @@ def check_alerts():
         }
         tickets.append(ticket)
 
-      supabase.table('alert_history').insert({
-        "alert_id": alert_id, 
-        "found_tickets": tickets, 
-      }).execute()
-      # # 4. Send email
-      # send_email_notification(email, results)
+      # Compare with previously found tickets
+      previous_history = (
+        supabase.table("alert_history")
+        .select("found_tickets")
+        .eq("alert_id", alert_id)
+        .execute()
+      ).data
+      
+      previous_tickets = []
+      if previous_history and len(previous_history) > 0:
+        previous_tickets.extend(previous_history[0]["found_tickets"])
+      # Find new tickets that weren't found before
+      newTickets = []
+      for ticket in tickets:
+        if ticket not in previous_tickets:
+          newTickets.append(ticket)
 
-      # # 5. Mark alert as "notified" so user doesn't get spammed
-      # supabase.table("alerts").update(
-      #     {"notified": True, "notified_at": datetime.utcnow().isoformat()}
-      # ).eq("id", alert_id).execute()
+      # 4. Send email
+      send_email_notification(email, newTickets)
+      
+      # Update alert history with new tickets
+      result = supabase.table("alert_history").update({
+        "found_tickets": tickets
+      }).eq("alert_id", alert_id).execute()
+      print(f"Update result: {result}")
 
-      # print(f"Notified {email} for alert {alert_id}")
 
 def start_worker(interval_seconds=60):
     print(f"Cron worker started. Checking every {interval_seconds} seconds...")
