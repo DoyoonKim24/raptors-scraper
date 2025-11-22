@@ -64,7 +64,8 @@ def fetch_prices(event_id, sections, max_price, max_row, tickets, offset=0):
         q_param = f"and(not('accessible'),any(shapes,{sections}))"
     else:
         q_param = f"and(not('accessible'),and(any(shapes,{sections}),any(totalprices,$and(gte(@,0),lte(@,{max_price})))))"
-    
+
+    print(f"Query Param: {q_param}")
     params = {
         'show': 'places+maxQuantity+sections',
         'mode': 'primary:ppsectionrow+resale:ga_areas+platinum:all',
@@ -118,6 +119,7 @@ def fetch_all_prices(event_id, sections, max_price, max_row, tickets):
     all_picks = []
     all_offers = []
     offset = 0
+
     while True:
         data = fetch_prices(event_id, sections, max_price, max_row, tickets, offset)
         picks = data.get('picks', [])
