@@ -16,6 +16,7 @@
     "@fortawesome/react-fontawesome": "^3.1.0",
     "@react-router/node": "^7.9.2",
     "@react-router/serve": "^7.9.2",
+    "email-validator": "^2.0.4",
     "isbot": "^5.1.31",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",

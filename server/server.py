@@ -4,7 +4,7 @@ from supabaseClient import supabase
 from getQuickpicks import fetch_prices
 
 app = Flask(__name__)
-CORS(app, origins="http://localhost:5173", supports_credentials=True)
+CORS(app)
 
 @app.route('/seats')
 def seats():

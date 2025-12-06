@@ -1,5 +1,6 @@
 import type { SearchFilters } from "../routes/event";
 import { useState } from "react";
+import { validate } from "email-validator";
 
 interface ResultsProps {
   picks: any[];
@@ -77,7 +78,8 @@ export default function Results({ picks, offers, total, imageUrls, loading, sear
     {name: "324", code: 's_129'},
   ];
 
-  const handleSetNotification = async () => {
+  const handleSetNotification = async (e?: React.FormEvent) => {
+    e?.preventDefault();
     const sectionCodes = searchFilters?.sections.flatMap((name: string) => {
       if (name === "All Sections") {
         return sectionOptions
@@ -126,6 +128,12 @@ export default function Results({ picks, offers, total, imageUrls, loading, sear
       const section = sectionOptions.find(option => option.name === name);
       return section ? section.code : '';
     });
+    
+    if (!validate(email)) {
+      alert('Please enter a valid email address');
+      return;
+    }
+    
     try {
       const response = await fetch('http://localhost:5000/set-notification', {
         method: 'POST',
@@ -135,7 +143,7 @@ export default function Results({ picks, offers, total, imageUrls, loading, sear
         body: JSON.stringify({
           email: email,
           event_id: eventId,
-          sections: sectionCodes?.map(code => `"${code}"`).join(',') || '',
+          sections: sectionCodes?.join(',') || '',
           max_price: searchFilters?.maxPrice,
           ticket_count: searchFilters?.tickets,
           row: searchFilters?.maxRow,
@@ -154,12 +162,13 @@ export default function Results({ picks, offers, total, imageUrls, loading, sear
       alert('Error setting notification');
     }
   };
+  
   return (
     <>
       {total > 0 && (
         <div>
           <h2 className="text-xl font-bold mb-4">Found {total} tickets {loading && <span className="animate-pulse">and counting...</span>}</h2>
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-4 mb-8">
             {picks.map((pick, index) => {
               const offerId = pick.offerGroups[0].offers[0];
               const offer = offers.find((o: any) => o.offerId === offerId);
@@ -188,22 +197,33 @@ export default function Results({ picks, offers, total, imageUrls, loading, sear
           <div className="animate-spin ease-linear rounded-full border-4 border-gray-300 border-t-red-600 h-8 w-8"></div>
         </div>
       )}
-      {true && (
-        <div className="w-full flex flex-col justify-center items-center py-4">
-          <p className="text-lg">No tickets found for the selected criteria. Try adjusting your filters and searching again.</p>
-          <input 
-            type="email" 
-            placeholder="Enter your email" 
-            className="border border-gray-300 rounded-lg py-2 px-4 mb-4" 
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <button 
-            onClick={handleSetNotification}
-            className="bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-blue-700 transition-all duration-200"
+
+      {!loading && total === 0 && !searched && (
+        <div className="w-full items-center py-4">
+          <p className="text-[24px] font-semibold">Set your filters and click search to find tickets!</p>
+        </div>
+      )}
+      {!loading && total === 0 && searched && (
+        <div className="w-full flex flex-col justify-center items-center py-4 gap-8">
+          <p className="text-lg">No tickets found for the selected criteria. Enter your email to get alerts for tickets if they become available.</p>
+          <form 
+            onSubmit={handleSetNotification} 
+            className="flex justify-center w-full gap-4"
           >
-            Set Notification
-          </button>
+            <input 
+              type="email" 
+              placeholder="Enter your email" 
+              className="border border-gray-300 rounded-lg py-2 px-4 flex-1" 
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <button 
+              type="submit"
+              className="bg-[#AA0D0D] font-medium text-base text-white rounded-full px-6 py-2 hover:bg-[#880B0B] duration-200"
+            >
+              Set Notification
+            </button>
+          </form>
         </div>
       )}
     </>
