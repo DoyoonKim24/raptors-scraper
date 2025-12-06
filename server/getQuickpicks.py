@@ -22,7 +22,7 @@ def get_new_session(event_url):
                     "url": req.url,
                     "headers": dict(req.headers)
                 })
-            elif "ticketmaster" in req.url:
+            else:
                 print(f"• Other TM request: {req.url}")
                 
         page.on("request", log_request)
