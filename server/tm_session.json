@@ -1,1 +1,36 @@
-{"cookies": {"_GRECAPTCHA": "09ADiQh0fjrLYoaN_iLFoMh3jAMswMV5LgpG0m942FxORy_UzkTUgXFNBFxjD5Lr0ICbRK3fEc2y13vhIOMXOPXm4", "eps_sid": "899adeff0a87ecc8.1764990005.d/MC53I/gS1sB3pN8CxVl9F5oVBkwNtB5lHIheXCN8I=", "tmpt": "0:652b8996d1000000:1764990007544:7f157f48:a2e896803d9c5a16e7f9920545391c42:e88f4b0ed2c7d10ce9eb3127061df4a60f1c85400529111844414f735ce3c852", "SID": "5DI33yWIEIMaDolTERvpz5Qa7bUmxGfyWUX4ZoV0vWAkhWUwHdP-cJLJd_P-jQgcPfCLtgI_th22Ww7X", "BID": "cj0326dKhUAUeVtzUOohZKb2dSFicwS7AC8Z_EAsXVF0RRcGiYV8Y7Qvc9a2JvVu69HoD9S9JJBMf79u", "mt.v": "2.399582160.1764990009101", "mt.pc": "2.1", "TMUO": "east_SKMcbxRmSihDIF/54TZF2UZQqwv4SjROo8uCDcDIa90=", "mt.g.2f013145": "2.399582160.1764990009101", "_ga": "GA1.1.1356252419.1764990009", "_ga_H1KKSGW33X": "GS2.1.s1764990009$o1$g0$t1764990009$j60$l0$h0", "_ga_C1T806G4DF": "GS2.1.s1764990009$o1$g1$t1764990009$j60$l0$h0", "OptanonGroups": ",C0001,", "OptanonConsent": "isGpcEnabled=0&datestamp=Fri+Dec+05+2025+22%3A00%3A10+GMT-0500+(Eastern+Standard+Time)&version=202506.1.0&browserGpcFlag=0&isIABGlobal=false&hosts=&consentId=59097fef-9849-4746-a48a-91c63f69eb55&interactionCount=0&isAnonUser=1&landingPath=https%3A%2F%2Fwww.ticketmaster.ca%2Fevent%2F1000631AC88930D9&groups=C0001%3A1%2CC0003%3A0%2CC0002%3A0%2CC0004%3A0", "TM_PIXEL": "{\"_dvs\":\"0:mitphbtv:leqsiSN73nExlE~~GhIBIjmMLe4Av8o2\",\"_dvp\":\"0:mitphbtv:O0zuhsaLczjkCExFUwOiZNtraGVw8ayd\"}", "_dvs": "0:mitphbtv:leqsiSN73nExlE~~GhIBIjmMLe4Av8o2", "_dvp": "0:mitphbtv:O0zuhsaLczjkCExFUwOiZNtraGVw8ayd", "_pn": "eyJzdWIiOnsidWRyIjowLCJzcyI6MH0sImx1YSI6MTc2NDk5MDAxMDE2Nn0", "tmp_id": "7f9f287db73592f1f70012e1e8579e6b80a0a3f922f3fdebfb33a2fa012fff88", "__gads": "ID=7759469aa0eee049:T=1764990010:RT=1764990010:S=ALNI_MZHXpXmIvyAP93c0z0m2kIQrY7YkA", "__gpi": "UID=00001318f903bf24:T=1764990010:RT=1764990010:S=ALNI_MbGqXe-cYZ8qTGeHtJYWAUKMXOthw", "__eoi": "ID=41f33818a72f8c10:T=1764990010:RT=1764990010:S=AA-AfjZbyDLvNafLV9lpTphWNeHD", "IDE": "AHWqTUlL5hFeKn8mnKZIZvgHpfD1yKV9eNQBWzac8fSHp0QFFmqaQrLJVuMCaSbJ7Zw", "LANGUAGE": "en-ca"}, "headers": {"sec-ch-ua-platform": "\"macOS\"", "referer": "https://www.ticketmaster.ca/", "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/140.0.7339.16 Safari/537.36", "tmps-correlation-id": "d40e3433-cbc1-442e-9743-919b6a04ee28", "sec-ch-ua": "\"Chromium\";v=\"140\", \"Not=A?Brand\";v=\"24\", \"HeadlessChrome\";v=\"140\"", "sec-ch-ua-mobile": "?0"}}
+{
+  "cookies": {
+    "_GRECAPTCHA": "09ADiQh0cDiqNBg0eKbAJb7Jc3lAi_8SX3hhS4LJN6d42hGrdhBvsyjpfDZhQSbJvhtZHEp00wgk9xJi_GpjBZ2zQ",
+    "eps_sid": "5ee5728a372cada5.1764995801.YBfFmOHCy712r2X3izaV8gz0r7iTkb8iBbahVgZruQc=",
+    "tmpt": "0:7ee5ed1d29000000:1764995802333:b907caa1:a2e896803d9c5a16e7f9920545391c42:777e19b965093d9aab6f4862c3869957626578e78be5f67dbb7ecfb34eef7ba2",
+    "SID": "qsx4fF4nHKCDoTS_JRgiovRM613PZBN5RjcV4xLTZnZm2tqWEnmoJTJIspaH03elQKN54lADgvvW4-6q",
+    "BID": "1qPZuraxQk6IkvlKrfoHFlIEUseArm6Pku8yv_RhWO2G26-ejFqttvlZtY54ypp-54o45JVDVt4rC6z0",
+    "mt.v": "2.114830433.1764995803734",
+    "mt.pc": "2.1",
+    "mt.g.2f013145": "2.114830433.1764995803734",
+    "TMUO": "west_HB3lmjJyIQUC14Bz/SdrRljlg3YEhzwW17tDbzA5OQA=",
+    "_ga": "GA1.1.173254326.1764995804",
+    "_ga_C1T806G4DF": "GS2.1.s1764995804$o1$g0$t1764995804$j60$l0$h0",
+    "_ga_H1KKSGW33X": "GS2.1.s1764995804$o1$g0$t1764995804$j60$l0$h0",
+    "OptanonGroups": ",C0001,",
+    "OptanonConsent": "isGpcEnabled=0&datestamp=Fri+Dec+05+2025+23%3A36%3A44+GMT-0500+(Eastern+Standard+Time)&version=202506.1.0&browserGpcFlag=0&isIABGlobal=false&hosts=&consentId=3b6256a1-492b-463a-b7a0-8fd57083e6a1&interactionCount=0&isAnonUser=1&landingPath=https%3A%2F%2Fwww.ticketmaster.ca%2Fevent%2F1000631AC88930D9&groups=C0001%3A1%2CC0003%3A0%2CC0002%3A0%2CC0004%3A0",
+    "_pn": "eyJzdWIiOnsidWRyIjowLCJzcyI6MH0sImx1YSI6MTc2NDk5NTgwNDQ3OH0",
+    "TM_PIXEL": "{\"_dvs\":\"0:mitsxirq:lZ9~roVhaTtvPw9zQeQ~iSaOuK0a9URO\",\"_dvp\":\"0:mitsxirq:DpHsEk2roepiMbLGgN7phWtvh2Wax6rt\"}",
+    "_dvs": "0:mitsxirq:lZ9~roVhaTtvPw9zQeQ~iSaOuK0a9URO",
+    "_dvp": "0:mitsxirq:DpHsEk2roepiMbLGgN7phWtvh2Wax6rt",
+    "tmp_id": "7f9f287db73592f1f70012e1e8579e6b80a0a3f922f3fdebfb33a2fa012fff88",
+    "__gads": "ID=660a65ecdecdb383:T=1764995804:RT=1764995804:S=ALNI_MYljub_jBxKteZTKCzi91bFhXyc0A",
+    "__gpi": "UID=000012cf5bf52f54:T=1764995804:RT=1764995804:S=ALNI_MYgL1JZ1qGk2cgKxCR-l7Smw88QRw",
+    "__eoi": "ID=97ae5f1bb15d6a12:T=1764995804:RT=1764995804:S=AA-AfjaCS1js1rJndcGKVBpB4V9H",
+    "IDE": "AHWqTUkOdYvyjUMjW4nHR6Tj_0TJghpCwcDbXJnJW4Z4icoO1CqWnpAwNJFlJ-mVjDM",
+    "LANGUAGE": "en-ca"
+  },
+  "headers": {
+    "sec-ch-ua-platform": "\"macOS\"",
+    "referer": "https://www.ticketmaster.ca/",
+    "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/140.0.7339.16 Safari/537.36",
+    "tmps-correlation-id": "e5799499-d0c1-44cd-b6d1-f217e64c1c79",
+    "sec-ch-ua": "\"Chromium\";v=\"140\", \"Not=A?Brand\";v=\"24\", \"HeadlessChrome\";v=\"140\"",
+    "sec-ch-ua-mobile": "?0"
+  }
+}

@@ -4,28 +4,45 @@ from playwright.sync_api import sync_playwright
 SESSION_FILE = "tm_session.json"
 
 def get_new_session(event_url):
+    print(f"Creating new session for: {event_url}")
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
         context = browser.new_context()
         page = context.new_page()
+        print("Browser launched and page created")
 
         logs = []
         def log_request(req):
             if "offeradapter.ticketmaster.ca" in req.url:
+                print(f"Captured request to: {req.url}")
                 logs.append({
                     "url": req.url,
                     "headers": dict(req.headers)
                 })
         page.on("request", log_request)
+        print("Navigating to event page...")
         page.goto(event_url, wait_until="domcontentloaded", timeout=60000)
+        print("Page loaded, waiting 10 seconds...")
         page.wait_for_timeout(10000)
 
         cookies = context.cookies()
+        print(f"Collected {len(cookies)} cookies and {len(logs)} API requests")
         browser.close()
 
     cookies_dict = {c["name"]: c["value"] for c in cookies}
     
-    headers = logs[0]["headers"]
+    # Use headers from logs if available, otherwise use default headers
+    if logs:
+        headers = logs[0]["headers"]
+    else:
+        headers = {
+            "sec-ch-ua-platform": "\"macOS\"",
+            "referer": "https://www.ticketmaster.ca/",
+            "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/140.0.7339.16 Safari/537.36",
+            "tmps-correlation-id": "e5799499-d0c1-44cd-b6d1-f217e64c1c79",
+            "sec-ch-ua": "\"Chromium\";v=\"140\", \"Not=A?Brand\";v=\"24\", \"HeadlessChrome\";v=\"140\"",
+            "sec-ch-ua-mobile": "?0"
+  }
     
     session = {"cookies": cookies_dict, "headers": headers}
     with open(SESSION_FILE, "w") as f:
