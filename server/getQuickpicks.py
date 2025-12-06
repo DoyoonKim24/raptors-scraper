@@ -56,11 +56,11 @@ def fetch_prices(event_id, sections, max_price, max_row, tickets, offset=0):
         val2 = get_row_value(row2)
         return val1 - val2
     
-    if sections is None and max_price is None:
+    if not sections and not max_price:
         q_param = "not('accessible')"
-    elif sections is None:
+    elif not sections:
         q_param = f"and(not('accessible'),any(totalprices,$and(gte(@,0),lte(@,{max_price}))))"
-    elif max_price is None:
+    elif not max_price:
         q_param = f"and(not('accessible'),any(shapes,{sections}))"
     else:
         q_param = f"and(not('accessible'),and(any(shapes,{sections}),any(totalprices,$and(gte(@,0),lte(@,{max_price})))))"

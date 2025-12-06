@@ -1,5 +1,5 @@
 import type { SearchFilters } from "../routes/event";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { validate } from "email-validator";
 
 interface ResultsProps {
@@ -79,6 +79,13 @@ export default function Results({ picks, offers, total, imageUrls, loading, sear
     {name: "324", code: 's_129'},
   ];
 
+  useEffect(() => {
+    if (loading) {
+      setNotificationSet(false);
+    }
+  }, [loading]);
+
+
   const handleSetNotification = async (e?: React.FormEvent) => {
     e?.preventDefault();
     const sectionCodes = searchFilters?.sections.flatMap((name: string) => {
@@ -144,7 +151,7 @@ export default function Results({ picks, offers, total, imageUrls, loading, sear
         body: JSON.stringify({
           email: email,
           event_id: eventId,
-          sections: sectionCodes?.join(',') || '',
+          sections: sectionCodes?.length ? sectionCodes.map(code => `'${code}'`).join(',') : null,
           max_price: searchFilters?.maxPrice,
           ticket_count: searchFilters?.tickets,
           row: searchFilters?.maxRow,
