@@ -12,18 +12,33 @@ def get_new_session(event_url):
         print("Browser launched and page created")
 
         logs = []
+        all_requests = []
+        
         def log_request(req):
+            all_requests.append(req.url)
             if "offeradapter.ticketmaster.ca" in req.url:
-                print(f"Captured request to: {req.url}")
+                print(f"✓ Captured target request to: {req.url}")
                 logs.append({
                     "url": req.url,
                     "headers": dict(req.headers)
                 })
+            elif "ticketmaster" in req.url:
+                print(f"• Other TM request: {req.url}")
+                
         page.on("request", log_request)
         print("Navigating to event page...")
-        page.goto(event_url, wait_until="domcontentloaded", timeout=60000)
-        print("Page loaded, waiting 10 seconds...")
+        page.goto(event_url, wait_until="networkidle", timeout=30000)
         page.wait_for_timeout(10000)
+        
+        
+        print(f"Total requests captured: {len(all_requests)}")
+        print(f"Target API requests: {len(logs)}")
+        if len(all_requests) > 0:
+            print("Sample requests:")
+            for url in all_requests[:5]:
+                print(f"  - {url}")
+        else:
+            print("⚠️  No requests captured at all!")
 
         cookies = context.cookies()
         print(f"Collected {len(cookies)} cookies and {len(logs)} API requests")
@@ -35,14 +50,21 @@ def get_new_session(event_url):
     if logs:
         headers = logs[0]["headers"]
     else:
+        print("⚠️  No API requests captured, using fallback headers")
         headers = {
-            "sec-ch-ua-platform": "\"macOS\"",
+            "accept": "application/json, text/plain, */*",
+            "accept-language": "en-US,en;q=0.9",
+            "cache-control": "no-cache",
+            "pragma": "no-cache",
             "referer": "https://www.ticketmaster.ca/",
-            "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/140.0.7339.16 Safari/537.36",
-            "tmps-correlation-id": "e5799499-d0c1-44cd-b6d1-f217e64c1c79",
-            "sec-ch-ua": "\"Chromium\";v=\"140\", \"Not=A?Brand\";v=\"24\", \"HeadlessChrome\";v=\"140\"",
-            "sec-ch-ua-mobile": "?0"
-  }
+            "sec-ch-ua": '"Chromium";v="120", "Not=A?Brand";v="24", "HeadlessChrome";v="120"',
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": '"Linux"',
+            "sec-fetch-dest": "empty",
+            "sec-fetch-mode": "cors",
+            "sec-fetch-site": "same-site",
+            "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/120.0.0.0 Safari/537.36"
+        }
     
     session = {"cookies": cookies_dict, "headers": headers}
     with open(SESSION_FILE, "w") as f:
