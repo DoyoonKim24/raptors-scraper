@@ -1,0 +1,14 @@
+services:
+  - type: cron
+    name: ticket-alert-checker
+    runtime: docker
+    dockerfilePath: ./server/Dockerfile
+    dockerContext: ./server
+    schedule: "*/20 * * * *"
+    envVars:
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_KEY
+        sync: false
+      - key: MAILGUN_API_KEY
+        sync: false
