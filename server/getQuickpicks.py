@@ -103,6 +103,8 @@ def fetch_prices(event_id, sections, max_price, max_row, tickets, offset=0):
                         filtered_picks.append(pick)
                 data['picks'] = filtered_picks
                 data['total'] = len(filtered_picks)
+            else :
+                data['total'] = len(data.get('picks', []))
             
             return data
         elif r.status_code == 429:  # Rate limit

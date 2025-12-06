@@ -16,6 +16,7 @@ interface ResultsProps {
 
 export default function Results({ picks, offers, total, imageUrls, loading, searched, eventId, endTime, searchFilters }: ResultsProps) {
   const [email, setEmail] = useState<string>("");
+  const [notificationSet, setNotificationSet] = useState<boolean>(false);
 
   const sectionOptions = [
     {name: "All Sections", code: ''},
@@ -153,7 +154,7 @@ export default function Results({ picks, offers, total, imageUrls, loading, sear
       
       if (response.ok) {
         console.log(response.json())
-        alert('Notification set successfully!');
+        setNotificationSet(true);
       } else {
         alert('Failed to set notification');
       }
@@ -203,7 +204,7 @@ export default function Results({ picks, offers, total, imageUrls, loading, sear
           <p className="text-[24px] font-semibold">Set your filters and click search to find tickets!</p>
         </div>
       )}
-      {!loading && total === 0 && searched && (
+      {!loading && total === 0 && searched && !notificationSet && (
         <div className="w-full flex flex-col justify-center items-center py-4 gap-8">
           <p className="text-lg">No tickets found for the selected criteria. Enter your email to get alerts for tickets if they become available.</p>
           <form 
@@ -224,6 +225,12 @@ export default function Results({ picks, offers, total, imageUrls, loading, sear
               Set Notification
             </button>
           </form>
+        </div>
+      )}
+      {!loading && total === 0 && searched && notificationSet && (
+        <div className="w-full flex flex-col justify-center py-4 gap-2">
+          <h6 className="text-2xl font-semibold">Notifications Set!</h6>
+          <p className="text-lg">You will be notified when tickets become available. In the meantime, alter your filters to find more tickets!</p>
         </div>
       )}
     </>
