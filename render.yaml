@@ -3,8 +3,8 @@ services:
     name: tm-scraper-alerts
     env: python
     schedule: "*/20 * * * *"  
-    buildCommand: "pip install -r requirements.txt && playwright install chromium"
-    startCommand: "python server/cronCheck.py"
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "playwright install chromium && python server/cronCheck.py"
     envVars:
       - key: MAILGUN_API_KEY
         sync: false 
