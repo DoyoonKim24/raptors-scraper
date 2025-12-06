@@ -113,19 +113,7 @@ def check_alerts():
   print(f"[{datetime.datetime.now()}] Alert check completed!")
 
 
-def start_worker(interval_seconds=60):
-    print(f"Cron worker started. Checking every {interval_seconds} seconds...")
-    while True:
-        try:
-            check_alerts()
-        except Exception as e:
-            print("Worker error:", e)
-
-        time.sleep(interval_seconds)
-
-
 if __name__ == "__main__":
     print(f"[{datetime.datetime.now()}] Cron job started on Render!")
     check_alerts()
     print(f"[{datetime.datetime.now()}] Cron job finished!")
-    # start_worker(60)
