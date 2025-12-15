@@ -1,103 +1,40 @@
 import requests, json, time, os
 from playwright.sync_api import sync_playwright
 
-SESSION_FILE = "tm_session.json"
+# In-memory cache for session data
+session_cache = {}
 
 def get_new_session(event_url):
     with sync_playwright() as p:
-        browser = p.chromium.launch(
-            headless=True,
-            args=[
-                '--disable-blink-features=AutomationControlled',
-                '--disable-dev-shm-usage',
-                '--no-sandbox',
-                '--disable-setuid-sandbox',
-            ]
-        )
-        
-        # Create context with realistic browser fingerprint
-        context = browser.new_context(
-            viewport={'width': 1920, 'height': 1080},
-            user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-            locale='en-US',
-            timezone_id='America/Toronto',
-        )
-        
-        # Add stealth scripts
-        context.add_init_script("""
-            Object.defineProperty(navigator, 'webdriver', {
-                get: () => undefined
-            });
-        """)
-        
+        browser = p.chromium.launch(headless=True)
+        context = browser.new_context()
         page = context.new_page()
-        print("Browser launched and page created")
 
         logs = []
-        all_requests = []
-        
         def log_request(req):
-            all_requests.append(req.url)
             if "offeradapter.ticketmaster.ca" in req.url:
-                print(f"✓ Captured target request to: {req.url}")
                 logs.append({
                     "url": req.url,
                     "headers": dict(req.headers)
                 })
-            else:
-                print(f"• Other TM request: {req.url}")
-                
         page.on("request", log_request)
-        print("Navigating to event page...")
-        page.goto(event_url, wait_until="networkidle", timeout=30000)
+        page.goto(event_url, wait_until="domcontentloaded", timeout=60000)
         page.wait_for_timeout(10000)
-        
-        
-        print(f"Total requests captured: {len(all_requests)}")
-        print(f"Target API requests: {len(logs)}")
-        if len(all_requests) > 0:
-            print("Sample requests:")
-            for url in all_requests[:5]:
-                print(f"  - {url}")
-        else:
-            print("⚠️  No requests captured at all!")
 
         cookies = context.cookies()
-        print(f"Collected {len(cookies)} cookies and {len(logs)} API requests")
         browser.close()
 
     cookies_dict = {c["name"]: c["value"] for c in cookies}
     
-    # Use headers from logs if available, otherwise use default headers
-    if logs:
-        headers = logs[0]["headers"]
-    else:
-        print("⚠️  No API requests captured, using fallback headers")
-        headers = {
-            "accept": "application/json, text/plain, */*",
-            "accept-language": "en-US,en;q=0.9",
-            "cache-control": "no-cache",
-            "pragma": "no-cache",
-            "referer": "https://www.ticketmaster.ca/",
-            "sec-ch-ua": '"Chromium";v="120", "Not=A?Brand";v="24", "HeadlessChrome";v="120"',
-            "sec-ch-ua-mobile": "?0",
-            "sec-ch-ua-platform": '"Linux"',
-            "sec-fetch-dest": "empty",
-            "sec-fetch-mode": "cors",
-            "sec-fetch-site": "same-site",
-            "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/120.0.0.0 Safari/537.36"
-        }
+    headers = logs[0]["headers"]
     
     session = {"cookies": cookies_dict, "headers": headers}
-    with open(SESSION_FILE, "w") as f:
-        json.dump(session, f)
+    session_cache[event_url] = session
     return session
 
 def load_session(event_url):
-    if os.path.exists(SESSION_FILE):
-        with open(SESSION_FILE) as f:
-            session = json.load(f)
-        return session
+    if event_url in session_cache:
+        return session_cache[event_url]
     else:
         return get_new_session(event_url)
 
