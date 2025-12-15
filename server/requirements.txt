@@ -2,3 +2,4 @@ requests
 python-dotenv
 supabase
 playwright
+gunicorn==23.0.0
