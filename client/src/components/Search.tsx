@@ -246,7 +246,7 @@ export default function Search({ onDataUpdate, eventId, setLoading, searchFilter
         currentParams.set('offset', offset.toString());
         
         console.log(`Fetching batch with offset ${offset}...`);
-        const response = await fetch(`http://localhost:5000/seats?${currentParams.toString()}`, { signal });
+        const response = await fetch(`https://raptors-scraper.onrender.com/seats?${currentParams.toString()}`, { signal });
         const data = await response.json();
         console.log(`Received ${data.total} picks in this batch.`);
         console.log(data);

@@ -143,7 +143,7 @@ export default function Results({ picks, offers, total, imageUrls, loading, sear
     }
     
     try {
-      const response = await fetch('http://localhost:5000/set-notification', {
+      const response = await fetch('https://raptors-scraper.onrender.com/set-notification', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
