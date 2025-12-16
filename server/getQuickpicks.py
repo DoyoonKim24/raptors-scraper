@@ -12,6 +12,7 @@ def get_new_session(event_url):
                 "--no-sandbox",
                 "--disable-dev-shm-usage",
                 "--disable-gpu",
+                "--single-process",
             ]
         )
         context = browser.new_context()
