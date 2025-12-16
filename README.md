@@ -4,7 +4,10 @@ As a Raptors fan, I was frustrated with searching for tickets on Ticketmaster as
 
 Therefore, I created the Raptors Ticket Finder, a tool to help Raptors fans monitor Ticketmaster for specific seats at their target price. Users can filter by section, row, and maximum price, and get notified via email when tickets matching their criteria become available.
 
+### Finding tickets
 ![Feature 1](findTickets.gif)
+
+### Setting notifcations
 ![Feature 1](noTickets.gif)
 
 ## Features
@@ -15,7 +18,6 @@ Therefore, I created the Raptors Ticket Finder, a tool to help Raptors fans moni
 - **Cron Jobs**: Cron-like worker periodically checks for ticket availability and updates the database.
 - **Email Notifications**: Sends email notifications when tickets matching user-defined criteria become available.
 - **Raptors-Inspired UI**: Designed the website based on the Raptors 2025 City Edition Jerseys.
-
 
 ## Tech Stack
 
