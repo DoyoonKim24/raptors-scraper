@@ -25,6 +25,10 @@ export const links: Route.LinksFunction = () => [
     rel: "stylesheet",
     href: "https://use.typekit.net/ivj5tbx.css",
   },
+  {
+    rel: "stylesheet",
+    href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css",
+  },
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
@@ -38,6 +42,15 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         {children}
+        <a 
+          href="https://github.com/DoyoonKim24/raptors-scraper" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="fixed bottom-4 right-4 text-white hover:text-gray-500 text-4xl transition-colors duration-200 z-50"
+          aria-label="View source on GitHub"
+        >
+          <i className="fab fa-github"></i>
+        </a>
         <ScrollRestoration />
         <Scripts />
       </body>
