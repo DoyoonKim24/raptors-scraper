@@ -26,6 +26,7 @@ export default function SelectDropdown(
       styles={{
         control: (provided) => ({
           ...provided,
+          width: '100%',
           backgroundColor: '#581d1d20',
           borderColor: '#440C0C',
           color: '#ffffff',
@@ -33,7 +34,6 @@ export default function SelectDropdown(
             borderColor: '#000',
           },
           borderRadius: '8px',
-          width: '180px',
           fontSize: '16px',
         }),
         singleValue: (provided) => ({
@@ -48,10 +48,10 @@ export default function SelectDropdown(
         }),
         option: (provided, state) => ({
           ...provided,
-          backgroundColor: state.isSelected ? '#4C0000' : state.isFocused ? '#37141480' : '#351E1E90',
+          backgroundColor: state.isSelected ? '#4C0000' : state.isFocused ? '#371414' : '#351E1E',
           color: '#ffffff',
           '&:hover': {
-            backgroundColor: '#37141480',
+            backgroundColor: '#371414',
           },
         }),
       }}

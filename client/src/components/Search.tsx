@@ -280,71 +280,152 @@ export default function Search({ onDataUpdate, eventId, setLoading, searchFilter
   }
 
   return (
-    <div className="flex flex-1 min-w-0 items-center gap-2">
-      <SelectDropdown
-        defaultIndex={1}
-        options={ticketOptions}
-        instanceId="ticket-select"
-        onChange={(selectedOption: any) =>
-          setSearchFilters({
-            ...searchFilters,
-            tickets: selectedOption?.value || 2
-          })
-        }
-      />
-      <div className="w-1/4">
-        <Dropdown
-          placeholder="All Sections"
-          options={sectionOptions.map(option => option.name)}
-          selected={searchFilters.sections}
-          setSelected={(value: string | string[]) =>
-            setSearchFilters({
-              ...searchFilters,
-              sections: Array.isArray(value)
-                ? value
-                : searchFilters.sections.includes(value)
-                  ? searchFilters.sections
-                  : [...searchFilters.sections, value],
-            })
-          }
-        />
+    <>
+      <div className="hidden md:flex flex-1 min-w-0 items-center gap-2">
+        <div className="w-[180px]">
+          <SelectDropdown
+            defaultIndex={1}
+            options={ticketOptions}
+            instanceId="ticket-select"
+            onChange={(selectedOption: any) =>
+              setSearchFilters({
+                ...searchFilters,
+                tickets: selectedOption?.value || 2
+              })
+            }
+          />
+        </div>
+        <div className="w-1/4">
+          <Dropdown
+            placeholder="All Sections"
+            options={sectionOptions.map(option => option.name)}
+            selected={searchFilters.sections}
+            setSelected={(value: string | string[]) =>
+              setSearchFilters({
+                ...searchFilters,
+                sections: Array.isArray(value)
+                  ? value
+                  : searchFilters.sections.includes(value)
+                    ? searchFilters.sections
+                    : [...searchFilters.sections, value],
+              })
+            }
+          />
+        </div>
+        <div className="w-[180px]">
+          <SelectDropdown
+            defaultIndex={0}
+            options={rowOptions}
+            instanceId="row-select"
+            onChange={(selectedOption: any) =>
+              setSearchFilters({
+                ...searchFilters,
+                maxRow: selectedOption?.value || 'All Rows'
+              })
+            }
+          />
+        </div>
+        
+        <div className="w-50 relative">
+          <span className={`absolute left-3 top-1/2 transform -translate-y-1/2 pointer-events-none ${searchFilters.maxPrice ? 'block' : 'hidden'}`}>
+            &le;&nbsp;&nbsp;$
+          </span>
+          <input
+            type="text"
+            placeholder="Max Price"
+            className={`w-full h-9.5 border border-[#440C0C] bg-[#581d1d20] rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 ${searchFilters.maxPrice ? 'pl-9 pr-4' : 'px-4'}`}
+            value={searchFilters.maxPrice || ""}
+            onChange={(e) => {
+              const value = e.target.value.replace(/[^0-9]/g, '');
+              setSearchFilters({
+                ...searchFilters,
+                maxPrice: value ? Number(value) : null
+              })
+            }}
+          />
+        </div>
+        <button 
+          className="bg-[#AA0D0D] font-medium text-base text-white rounded-full px-6 py-2 whitespace-nowrap flex-shrink-0 disabled:opacity-50 hover:bg-[#880B0B] cursor-pointer ml-2"
+          onClick={handleSubmit}
+        >
+          Search
+        </button>
       </div>
-      <SelectDropdown
-        defaultIndex={0}
-        options={rowOptions}
-        instanceId="row-select"
-        onChange={(selectedOption: any) =>
-          setSearchFilters({
-            ...searchFilters,
-            maxRow: selectedOption?.value || 'All Rows'
-          })
-        }
-      />
-      
-      <div className="w-50 relative">
-        <span className={`absolute left-3 top-1/2 transform -translate-y-1/2 pointer-events-none ${searchFilters.maxPrice ? 'block' : 'hidden'}`}>
-          &le;&nbsp;&nbsp;$
-        </span>
-        <input
-          type="text"
-          placeholder="Max Price"
-          className={`w-full h-9.5 border border-[#440C0C] bg-[#581d1d20] rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 ${searchFilters.maxPrice ? 'pl-9 pr-4' : 'px-4'}`}
-          value={searchFilters.maxPrice || ""}
-          onChange={(e) => {
-            const value = e.target.value.replace(/[^0-9]/g, '');
-            setSearchFilters({
-              ...searchFilters,
-              maxPrice: value ? Number(value) : null
-            })
-          }}
-        />
+      <div className="flex flex-col md:hidden flex-1 min-w-0 items-center gap-2">
+        <div className="flex w-full gap-2">
+          <div className="flex-1">
+            <SelectDropdown
+              defaultIndex={1}
+              options={ticketOptions}
+              instanceId="ticket-select"
+              onChange={(selectedOption: any) =>
+                setSearchFilters({
+                  ...searchFilters,
+                  tickets: selectedOption?.value || 2
+                })
+              }
+            />
+          </div>
+          <div className="w-50 relative flex-1">
+            <span className={`absolute left-3 top-1/2 transform -translate-y-1/2 pointer-events-none ${searchFilters.maxPrice ? 'block' : 'hidden'}`}>
+              &le;&nbsp;&nbsp;$
+            </span>
+            <input
+              type="text"
+              placeholder="Max Price"
+              className={`w-full h-9.5 border border-[#440C0C] bg-[#581d1d20] rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 ${searchFilters.maxPrice ? 'pl-9 pr-4' : 'px-4'}`}
+              value={searchFilters.maxPrice || ""}
+              onChange={(e) => {
+                const value = e.target.value.replace(/[^0-9]/g, '');
+                setSearchFilters({
+                  ...searchFilters,
+                  maxPrice: value ? Number(value) : null
+                })
+              }}
+            />
+          </div>
+        </div>
+        <div className="flex w-full gap-2">
+          <div className="w-[49%]">
+            <Dropdown
+              placeholder="All Sections"
+              options={sectionOptions.map(option => option.name)}
+              selected={searchFilters.sections}
+              setSelected={(value: string | string[]) =>
+                setSearchFilters({
+                  ...searchFilters,
+                  sections: Array.isArray(value)
+                    ? value
+                    : searchFilters.sections.includes(value)
+                      ? searchFilters.sections
+                      : [...searchFilters.sections, value],
+                })
+              }
+            />
+          </div>
+          <div className="flex-1">
+            <SelectDropdown
+              defaultIndex={0}
+              options={rowOptions}
+              instanceId="row-select"
+              onChange={(selectedOption: any) =>
+                setSearchFilters({
+                  ...searchFilters,
+                  maxRow: selectedOption?.value || 'All Rows'
+                })
+              }
+            />
+          </div>
+        </div>
+        
+  
+        <button 
+          className="bg-[#AA0D0D] font-medium text-base text-white rounded-full px-6 py-2 w-full mt-4 whitespace-nowrap flex-shrink-0 disabled:opacity-50 hover:bg-[#880B0B] cursor-pointer ml-2"
+          onClick={handleSubmit}
+        >
+          Search
+        </button>
       </div>
-      <button 
-        className="bg-[#AA0D0D] font-medium text-base text-white rounded-full px-6 py-2 whitespace-nowrap flex-shrink-0 disabled:opacity-50 hover:bg-[#880B0B] cursor-pointer ml-2"
-        onClick={handleSubmit}
-      >
-        Search
-      </button>
-    </div>
+    </>
   );
 }

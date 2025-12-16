@@ -82,7 +82,7 @@ export default function Dropdown({ options = [], placeholder, selected, setSelec
         </div>
       </div>
       {open && (
-          <div className="absolute top-full border-2 border-[#440C0C] bg-[#351E1E90] rounded-md z-10 mt-2 w-full md:w-[16vw] md:min-w-[200px] overflow-hidden">
+          <div className="absolute top-full border-2 border-[#440C0C] bg-[#351E1E] rounded-md z-10 mt-2 w-full md:w-[16vw] md:min-w-[200px] overflow-hidden">
             <div className="overflow-y-auto flex flex-col max-h-160">
               {filtered.map((opt) => {
                 const option = opt as string;
@@ -98,7 +98,7 @@ export default function Dropdown({ options = [], placeholder, selected, setSelec
                         setSelected(selected.filter(item => item !== option));
                       }
                     }}
-                    className={`cursor-pointer px-3 py-2 gap-1 flex flex-col text-wrap break-words hover:bg-[#37141480]
+                    className={`cursor-pointer px-3 py-2 gap-1 flex flex-col text-wrap break-words hover:bg-[#371414]
                       ${isSelected && 'bg-[#4C0000]'}`}
                   >
                     <p className="font-semibold text-blue">{option}</p>

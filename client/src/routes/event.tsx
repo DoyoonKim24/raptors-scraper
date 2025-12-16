@@ -163,10 +163,10 @@ export default function Event() {
   };
 
   return (
-    <div className="mx-auto pt-16 px-64 gap-16 flex flex-col">
+    <div className="mx-auto pt-16 max-w-[1400px] px-4 sm:px-16 md:px-24 gap-16 flex flex-col">
       <div>
         <p className="text-lg">{date}</p>
-        <h4 className="text-[40px] font-bold mb-4">{title}</h4>
+        <h4 className="text-3xl sm:text-[40px] font-bold mb-4">{title}</h4>
         <Search 
           onDataUpdate={handleDataUpdate} 
           eventId={eventId} 
@@ -189,7 +189,7 @@ export default function Event() {
             searchFilters={searchFilters}
           />
         </div>
-        <div className="w-2/5 flex flex-col gap-2 items-center text-gray-300">
+        <div className="hidden w-2/5 md:flex flex-col gap-2 items-center text-gray-300">
           <p className="font-semibold text-lg">Section Map</p>
           <img src={sectionMap} className="w-full h-auto object-contain" alt="Section view" />
         </div>

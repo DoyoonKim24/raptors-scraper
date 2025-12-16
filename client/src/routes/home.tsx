@@ -1,5 +1,7 @@
 import { NavLink } from "react-router";
 import { useState, useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
 
 export default function Home() {
@@ -23,8 +25,8 @@ export default function Home() {
 
   return (
     <div className="max-w-[840px] mx-auto pt-16 px-4">
-      <h1>Raptors Ticket Finder</h1>
-      <h3 className="text-lg">Choose your ideal section and row for any raptors game, and get notified when tickets reach your set price point</h3>
+      <h1 className="text-4xl sm:text-[56px]">Raptors Ticket Finder</h1>
+      <h3 className="text-base sm:text-lg">Choose your ideal section and row for any raptors game, and get notified when tickets reach your set price point</h3>
       <div className="flex flex-col gap-4 pt-8">
         {events.map((event: any, index: number) => {
           const date = new Date(event.dates.start.dateTime);
@@ -37,19 +39,23 @@ export default function Home() {
             <NavLink 
               to={`/event/${event.id}`}
               key={index}
-              className="flex items-center bg-grey py-2 pl-2 pr-6 justify-between rounded-lg cursor-pointer shadow-red transition-all"
+              className="flex items-center bg-grey py-2 pl-2 pr-6 gap-2 justify-between rounded-lg cursor-pointer shadow-red transition-all"
               end>
               <div className="flex items-center gap-4">
-                <div className="flex flex-col items-center justify-center w-16 h-16 bg-[#1F1D1E] rounded-sm">
-                  <p>{monthName}</p>
-                  <p className="text-xl font-medium">{day}</p>
+                <div className="flex flex-col items-center justify-center w-12 h-12 sm:w-16 sm:h-16 bg-[#1F1D1E] rounded-sm shrink-0">
+                  <p className="text-sm sm:text-base">{monthName}</p>
+                  <p className="text-base sm:text-xl font-medium">{day}</p>
                 </div>
                 <div>
-                  <p>{dayName} • {time}</p>
-                  <p className="text-xl font-medium"> {event.name} </p>
+                  <p className="text-sm sm:text-base">{dayName} • {time}</p>
+                  <p className="text-base sm:text-xl font-medium"> {event.name} </p>
                 </div>
               </div>
-              <div className="bg-red py-2 px-4 rounded-sm font-medium"> Search Tickets </div>
+
+              <div className="sm:hidden flex items-center justify-center bg-red h-8 w-8 rounded-full shrink-0">
+                <FontAwesomeIcon icon={faChevronRight} className="text-white fa-sm" />
+              </div>
+              <div className="hidden sm:block text-sm sm:text-base bg-red py-2 px-4 rounded-sm font-medium"> Search Tickets </div>
             </NavLink>
           );
         })}
