@@ -208,7 +208,8 @@ export default function Results({ picks, offers, total, imageUrls, loading, sear
 
       {!loading && total === 0 && !searched && (
         <div className="w-full items-center py-4">
-          <p className="text-[24px] font-semibold">Set your filters and click search to find tickets!</p>
+          {/* <p className="text-[24px] font-semibold">Set your filters and click search to find tickets!</p> */}
+          <p className="text-[24px] font-medium">Unfortunately, due to Ticketmaster’s anti-bot measures and firewall restrictions, ticket search is not available in the production version. See the demo on my <span className="text-blue-500"><a href="https://github.com/DoyoonKim24/raptors-scraper" target="_blank" rel="noopener noreferrer">Github!</a></span></p>
         </div>
       )}
       {!loading && total === 0 && searched && !notificationSet && (
