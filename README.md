@@ -2,6 +2,8 @@
 
 A tool to help Raptors fans monitor Ticketmaster for specific seats at their target price. Users can filter by section, row, and maximum price, and get notified via email when tickets matching their criteria become available.
 
+![Feature 1](findTickets.gif)
+![Feature 1](noTickets.gif)
 ## Tech Stack
 
 - **Frontend:** React
