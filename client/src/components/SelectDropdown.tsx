@@ -30,6 +30,7 @@ export default function SelectDropdown(
           backgroundColor: '#581d1d20',
           borderColor: '#440C0C',
           color: '#ffffff',
+          cursor: 'pointer',
           '&:hover': {
             borderColor: '#000',
           },
@@ -50,6 +51,7 @@ export default function SelectDropdown(
           ...provided,
           backgroundColor: state.isSelected ? '#4C0000' : state.isFocused ? '#371414' : '#351E1E',
           color: '#ffffff',
+          cursor: 'pointer',
           '&:hover': {
             backgroundColor: '#371414',
           },

@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { faX } from "@fortawesome/free-solid-svg-icons";
-import type { MouseEvent, ChangeEvent } from "react";
+import type { MouseEvent } from "react";
 
 
 interface DropdownProps {
@@ -42,6 +42,7 @@ export default function Dropdown({ options = [], placeholder, selected, setSelec
 
   return (
     <div ref={dropdownRef} className="relative flex flex-col h-full">
+      {/* dropdown button */}
       <div
         tabIndex={0}
         onClick={() => setOpen(true)}
@@ -50,7 +51,7 @@ export default function Dropdown({ options = [], placeholder, selected, setSelec
       >
         <div className="flex items-start gap-1 overflow-y-auto flex-1">
           {selected.length === 0 ? (
-            <p> All Sections </p>
+            <p> {placeholder} </p>
           ) : (
             <div className="flex gap-1">
               {selected.map((item, index) => (
@@ -81,6 +82,7 @@ export default function Dropdown({ options = [], placeholder, selected, setSelec
           <FontAwesomeIcon icon={faChevronDown} className="fa-sm" />
         </div>
       </div>
+      {/* dropdown content */}
       {open && (
           <div className="absolute top-full border-2 border-[#440C0C] bg-[#351E1E] rounded-md z-10 mt-2 w-full md:w-[16vw] md:min-w-[200px] overflow-hidden">
             <div className="overflow-y-auto flex flex-col max-h-160">

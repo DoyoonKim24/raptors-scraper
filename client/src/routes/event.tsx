@@ -2,6 +2,7 @@ import Search from "../components/Search";
 import Results from "../components/Results";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
+import { compareRows, formatEventDate } from "../utils/ticketUtils";
 import sectionMap from "../images/sectionMap.png"
 
 export interface SearchFilters {
@@ -11,21 +12,26 @@ export interface SearchFilters {
   maxPrice: number | null;
 }
 
+type SearchState = 'idle' | 'searching' | 'searched';
+
 export default function Event() {
   const { id } = useParams();
-  const [eventId, setEventId] = useState<string>("");
-  const [endTime, setEndTime] = useState<string>("");
-  const [date, setDate] = useState<string>("");
-  const [title, setTitle] = useState<string>("");
+  const [event, setEvent] = useState({
+    id: "",
+    endTime: "",
+    date: "",
+    title: ""
+  });
 
-  const [picks, setPicks] = useState<any[]>([]);
-  const [offers, setOffers] = useState<any[]>([]);
-  const [total, setTotal] = useState<number>(0);
+  const [searchResults, setSearchResults] = useState({
+    picks: [] as any[],
+    offers: [] as any[],
+    total: 0
+  });
   const [sectionViews, setSectionViews] = useState<{[section: string]: any}>({});
   const [imageUrls, setImageUrls] = useState<{[key: string]: string}>({});
 
-  const [loading, setLoading] = useState<boolean>(false);
-  const [searched, setSearched] = useState<boolean>(false);
+  const [searchState, setSearchState] = useState<SearchState>('idle');
   const [searchFilters, setSearchFilters] = useState<SearchFilters>({
     sections: [],
     maxRow: 'All Rows',
@@ -48,27 +54,12 @@ export default function Event() {
     }
   };
 
-  const compareRows = (row1: string, row2: string) => {
-    const getRowValue = (row: string) => {
-      if (/^[A-Za-z]$/.test(row)) {
-        return row.toUpperCase().charCodeAt(0) - 64;
-      } else if (/^\d+$/.test(row)) {
-        return parseInt(row) + 100;
-      } else {
-        return 1000 + row.charCodeAt(0);
-      }
-    };
-    const val1 = getRowValue(row1);
-    const val2 = getRowValue(row2);
-    return val1 - val2;
-  };
-
   const getImageUrlForRow = (sectionData: any, row: string) => {
     if (sectionData.views.length === 1) {
       return sectionData.views[0].content[2]?.url;
     }
     for (const view of sectionData.views) {
-      const isInRange = compareRows(view.rowFrom?.name, row) <= 0 && compareRows(row, view.rowTo?.name) <= 0;
+      const isInRange = compareRows(view.rowFrom?.name, row, view.rowTo?.name)
       if (isInRange) {
         return view.content[2]?.url;
       }
@@ -77,48 +68,40 @@ export default function Event() {
 
   useEffect(() => {
     const loadImages = async () => {
-      // Get unique sections
-      const uniqueSections = [...new Set(picks.map(pick => pick.section))];
-      
-      // Fetch section data for each unique section
-      const sectionTasks = uniqueSections.map(async (section) => {
-        const views = await fetchSectionViews(section);
-        return { section, views };
-      });
+      const picks = searchResults.picks;
+      if (picks.length === 0) return;
 
-      const sectionResults = await Promise.all(sectionTasks);
-      
-      // Build a complete section data map
-      const allSectionData: {[key: string]: any} = { ...sectionViews };
-      sectionResults.forEach((res) => {
-        if (res && res.views) {
-          allSectionData[res.section] = res.views;
-        }
-      });
+      // Fetch section data only for sections we don't already have
+      const missingSections = Array.from(
+        new Set(picks.map((pick) => pick.section).filter((section) => !sectionViews[section]))
+      );
 
-      // Generate image URLs for each pick using the complete data
-      const imageUpdates: {[key: string]: string} = {};
-      picks.forEach((pick) => {
+      if (missingSections.length > 0) {
+        await Promise.all(missingSections.map((section) => fetchSectionViews(section)));
+      }
+
+      // Generate image URLs for picks that don't have cached images yet
+      const imageUpdates: { [key: string]: string } = {};
+      for (const pick of picks) {
         const cacheKey = `${pick.section}-${pick.row}`;
-        if (!imageUrls[cacheKey]) {
-          const sectionData = allSectionData[pick.section];
-          if (sectionData) {
-            const url = getImageUrlForRow(sectionData, pick.row);
-            if (url) {
-              imageUpdates[cacheKey] = url;
-            }
-          }
-        }
-      });
+        if (imageUrls[cacheKey]) continue;
 
-      // Update both section views and image URLs
+        const sectionData = sectionViews[pick.section];
+        if (!sectionData) continue;
+
+        const url = getImageUrlForRow(sectionData, pick.row);
+        if (url) {
+          imageUpdates[cacheKey] = url;
+        }
+      }
+
       if (Object.keys(imageUpdates).length > 0) {
         setImageUrls((prev) => ({ ...prev, ...imageUpdates }));
       }
     };
 
-    if (picks.length > 0) loadImages();
-  }, [picks]);
+    void loadImages();
+  }, [searchResults.picks, sectionViews, imageUrls]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -127,17 +110,18 @@ export default function Event() {
           `https://app.ticketmaster.com/discovery/v2/events/${id}.json?apikey=${import.meta.env.VITE_TICKETMASTER_API_KEY}`
         );
         const data = await res.json();
-        setEventId(data.url.substring(data.url.lastIndexOf("/") + 1));
-        setEndTime(data.sales.public.endDateTime);
-        const date = new Date(data.dates.start.dateTime);
-        const monthName = date.toLocaleString("en-US", { month: "short", timeZone: "America/Toronto" });
-        const dayName = date.toLocaleString("en-US", { weekday: "short", timeZone: "America/Toronto" });
-        const day = date.toLocaleString("en-US", { day: "numeric", timeZone: "America/Toronto" });
-        const time = date.toLocaleString("en-US", { hour: "numeric", minute: "2-digit", hour12: true, timeZone: "America/Toronto" });
-        setDate(`${monthName} ${day} • ${dayName} • ${time}`);
-        setTitle(data.name);
+        const eventId = data.url.substring(data.url.lastIndexOf("/") + 1);
+        const endTime = data.sales.public.endDateTime;
+        const { monthName, dayName, day, time } = formatEventDate(data.dates.start.dateTime);
+        
+        setEvent({
+          id: eventId,
+          endTime: endTime,
+          date: `${monthName} ${day} • ${dayName} • ${time}`,
+          title: data.name
+        });
       } catch (err) {
-        console.error("bro it broke:", err);
+        console.error("Error:", err);
       }
     };
 
@@ -145,32 +129,32 @@ export default function Event() {
   }, [id]);
 
   const handleDataUpdate = (data: { picks: any[], offers: any[], total: number, newSearch: boolean }) => {
-    setSearched(true);
     if (data.newSearch) {
-      setPicks(data.picks);
-      setOffers(data.offers);
-      setTotal(data.total);
-    } else {
-      setPicks((prevPicks) => [...prevPicks, ...data.picks]);
-      setOffers((prevOffers) => {
-        const newOffers = data.offers.filter(
-          (newOffer) => !prevOffers.some((prevOffer) => prevOffer.offerId === newOffer.offerId)
-        );
-        return [...prevOffers, ...newOffers];
+      setSearchResults({
+        picks: data.picks,
+        offers: data.offers,
+        total: data.total
       });
-      setTotal((prevTotal) => prevTotal + data.total);
+    } else {
+      setSearchResults((prev) => {
+        return {
+          picks: [...prev.picks, ...data.picks],
+          offers: [...prev.offers, ...data.offers],
+          total: prev.total + data.total
+        };
+      });
     }
   };
 
   return (
     <div className="mx-auto pt-16 max-w-[1400px] px-4 sm:px-16 md:px-24 gap-16 flex flex-col">
       <div>
-        <p className="text-lg">{date}</p>
-        <h4 className="text-3xl sm:text-[40px] font-bold mb-4">{title}</h4>
+        <p className="text-lg">{event.date}</p>
+        <h4 className="text-3xl sm:text-[40px] font-bold mb-4">{event.title}</h4>
         <Search 
           onDataUpdate={handleDataUpdate} 
-          eventId={eventId} 
-          setLoading={setLoading}
+          eventId={event.id} 
+          setSearchState={setSearchState}
           searchFilters={searchFilters}
           setSearchFilters={setSearchFilters}
         />
@@ -178,14 +162,13 @@ export default function Event() {
       <div className="flex gap-8 relative">
         <div className="flex-1">
           <Results 
-            picks={picks} 
-            offers={offers} 
-            total={total} 
+            searchResults={searchResults}
             imageUrls={imageUrls} 
-            loading={loading} 
-            searched={searched} 
-            eventId={eventId}
-            endTime={endTime}
+            searchState={searchState} 
+            eventId={event.id}
+            eventName={event.title}
+            eventDate={event.date}
+            endTime={event.endTime}
             searchFilters={searchFilters}
           />
         </div>
